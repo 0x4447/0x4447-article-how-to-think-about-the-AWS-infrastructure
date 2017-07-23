@@ -18,7 +18,27 @@ You have to think about AWS like legos bricks scatered all on the floor with no 
 
 If a tutorial is not workign for you, the problem is not with you, it is with the tutorial iteslfe. 
 
-# Structure of this repo
+# Zones Vs. Regions or Regions Vs. Zones?
+
+What is the difference right? Amazon have datacenters in different cities, states and countries. You could say that a Region is a different country, but a Region can also be a datacenter in a different time zone. For example the US hase different regions named after states. Where other smaller countries are just the name of the country. 
+
+Zones on the other hand are different datacenters within the same city, or they might be servers in the same datacenter but on a independent nettwork, infrastrucutre, internet conenction etc. This means that if a Zone in a region fails, all the other Zones will still work - since they are indepenedent, but let say that the California datacenters will be hit by a earth quake, then all the zones in that Region will fail. Thus takign down all the Zones.
+
+This Zones Vs. Regions is alos another lie that AWS sells, where they want to let you belvie that havign server all over the world is as easy as jsut pushing a bunh of buttoens, and vluala, you have a global reach. This is achivable only if you deal with Zones. If you want to have your infrastructure spread across Regions, then you'll end up in a substantial nightmare. Becasue Regions are a compellty separate from each other. For example
+
+## Load balancer
+
+You can't have a load balancer in one Region and attached it to servers from another one...
+
+## IAM - so called sytem iamges
+
+They are Region specifci, and you have to phisically copy thoes images betwne Regions. If you wanted to create one image and spread it across all the Regions that AWS supports, well good lick, this proces even with a clever script will take proably more then 24 if you coutn a 8G image. If you have something bigger, o well, you'll wait days before you finish the whole process. 
+
+AWS wants to let you belive that their infrstructure is homogeneous as if it was workign as one big machine. But in reality it is very Region specific. Once you create all your infrstructure in one Region, well you are stuck there, and to setup the infrastructure the way AWS adevrtise it - well, let say I get goosebumps jsut thinking about it. It literarly requrie writign lots of code (maybe scripts if you are not a develoepr per se) to make it all works. Whichi means it is not a trivial things - it is a serios, serious undertaking. 
+
+But by the end of this article you should be able to make it work 😱🤞.
+
+# The Structure of this repo
 
 Each foder will contain a self contained tutorial of a specific AWS feature, to help you focus on on thing at the time before we end up buildign a full fledged solution. Be patient and take your time, becasue AWS is time consuming.
 
