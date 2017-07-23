@@ -1,0 +1,3 @@
+# how to think about the AWS infrastructure
+
+In Progres...
