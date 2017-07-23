@@ -1,6 +1,10 @@
 # how to think about the AWS infrastructure
 
-# 🚧🍺 Work In Progres... 
+---
+
+## 🚧🍺 Work In Progres... 
+
+---
 
 The biggest ommision in documentation is the frame of reference and if you check my GitHub profile you'll see that I alasy try to build one first before I dive in to the nitty gritty details. Whoever write documentation thing that we develoeprs or SYsAdmisn will eventually understadn how to use whathever is thronw at us. True, but why wastign time commign up with a freme of reference which will start wrong and have the wrogn asumtpion before you'll have osmethign that make sesne. When the expert in that topic could save us so much time and frustration. We are not telepatic, and if you luck telepaty as I do, then this guide should help you understand how to go about AWS. Since I spend the past 6 months wrappign my head around this whole infrastructure. 
 
