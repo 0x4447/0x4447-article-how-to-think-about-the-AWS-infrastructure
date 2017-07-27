@@ -2,11 +2,11 @@
 
 A AWS VPC is basically a LAN, that have no "phisicall" presence. Meaninig you can build a nettwork hoewer you want remotely on AWS, and this are the tools that are given to you
 
-- Internet: well the general Internet
-- Internet Getaway: is the DSL Modem, Cable Modem, whathever mode. The device that moves the traffci to the internet
-- Route Tables: The Router that will route the traffci to different devices in our virtual LAN. There is only one Internet Getaway per Router
-- Network ACL: This is the firwall. Meaninig here you can decide what type of traffic do you wan to allow or block. It is exactly the same idea as ACL for a specifci EC2 instance, with the diference is that here you controll all the traffic gettgin out and in.
-- Subnets: No idea how to xplain this yet.
+- **Internet**: well the general Internet
+- **Internet Getaway**: is the DSL Modem, Cable Modem, whathever mode. The device that moves the traffci to the internet
+- **Route Tables**: The Router that will route the traffci to different devices in our virtual LAN. There is only one Internet Getaway per Router
+- **Network ACL**: This is the firwall. Meaninig here you can decide what type of traffic do you wan to allow or block. It is exactly the same idea as ACL for a specifci EC2 instance, with the diference is that here you controll all the traffic gettgin out and in.
+- **Subnets**: No idea how to xplain this yet.
 
 # Steps to create a VPC from Scratch
 
