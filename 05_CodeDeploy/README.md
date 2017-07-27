@@ -1,3 +1,13 @@
+# What is CodeDeploy
+
+Basically CodeDeploy is the biggest lie of them all, which makes it the most confusign thing on the whole AWS platform. CodeDeploy is nothing more then a RoR or Python app that you have to install on a EC2 instance. You can then tell this app that you would like to deploy a new version of your app usign GitHub (configuration is a nightmare) or from a ZIP file that is on S3. 
+
+CodeDeploy is basically the main tool to grab some code, and then copy it in to a folder inside a server. It is not this magical and autoamted and simple thing that AWS tryis to convince you. 
+
+You have to use CodeDeploy if you want to set up AWS to AutoDeploy new code, and I'll explain how to use GitHub and S3 to do that. But bare in midn. This is far from simple, far fro mstraight forward. It hase an insane aamount of steps, and if you'll miss just one, evrythign will fall apart. 
+
+Trully brace yourself.
+
 All the steps
 
 One time Setup
