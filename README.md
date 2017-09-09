@@ -38,7 +38,8 @@ Each folder will contain a self contained tutorial of a specific AWS feature, to
 - [VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
 - [EC2](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_EC2)
 - [RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_RDS)
-- [CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_CodeDeploy)
+- [IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_IAM)
+- [CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/05_CodeDeploy)
 
 # In the end
 
