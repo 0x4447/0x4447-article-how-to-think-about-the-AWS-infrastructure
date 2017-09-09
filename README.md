@@ -1,46 +1,48 @@
-# how to think about the AWS infrastructure
+# How to think about the AWS infrastructure
 
 ---
 
-## 🚧🍺 Work In Progres... 
+Still 🚧🍺 Work In Progres...
 
 ---
 
-The biggest ommision in documentation is the frame of reference and if you check my GitHub profile you'll see that I alasy try to build one first before I dive in to the nitty gritty details. Whoever write documentation thing that we develoeprs or SYsAdmisn will eventually understadn how to use whathever is thronw at us. True, but why wastign time commign up with a freme of reference which will start wrong and have the wrogn asumtpion before you'll have osmethign that make sesne. When the expert in that topic could save us so much time and frustration. We are not telepatic, and if you luck telepaty as I do, then this guide should help you understand how to go about AWS. Since I spend the past 6 months wrappign my head around this whole infrastructure. 
+A biggest omission in documentations in general is the frame of reference, a story, and explanation that will help you better understand a complex idea. Some very simple truth, that you can build on top of.
 
-# The lie Amazon tells us
+If you were to check all the other articles and project that I have on [GitHub](), you’d see that I try to give that to you. My hope is that I’m doing a good job of it.
 
-Evrywhere you watch, read and talk to will tell you that AWS is amazign, evrythign is automatic, scales idefinetly, and is just few clciks away. This is complete nonsesne, and the sooner you realzie this the sooner you'll understand that you have to put all the epaces together, write code and create configurations fiels to make it all work autoamtically and automagicaly, as advertised.
+# The frame of reference for AWS
 
-# Lego blocks
+Now day we need two frame of reference, because over the years AWS accumulated a huge amount of lies on things that are just not true
 
-You have to think about AWS like legos bricks scatered all on the floor with no instruction what to do with them. You have documentaiton for each individial pace, but no guides or tutorial with ideas what could you created with all this peaces. The most sceptial of you might say that there are tutorials out there done by AWS people. But the reality is that either there were wrtien 5 years ago, and the AWS interface alone chagned dtrastically sicne then, or the steps now are different and nobody bothere udpatign thoes tutorials. I argued a lot with AWS Tech Support and they walsy came back to me teelgi nthey will notficy the outor to dupate thoes posts, but nothign never happend. 
+## The lie Amazon tells us
 
-If a tutorial is not workign for you, the problem is not with you, it is with the tutorial iteslfe. 
+Everywhere you watch, read and talk to will tell you that AWS is amazing, everything is automatic, scales indefinitely, and is just few clicks away. This is complete nonsense, and the sooner you realize this the sooner you'll understand that you have to put all the peaces together yourself, write code and create configurations files to make it all work automatically and automagically, as advertised.
 
-# Zones Vs. Regions or Regions Vs. Zones?
+## Lego blocks
 
-What is the difference right? Amazon have datacenters in different cities, states and countries. You could say that a Region is a different country, but a Region can also be a datacenter in a different time zone. For example the US hase different regions named after states. Where other smaller countries are just the name of the country. 
+You have to think about AWS like Lego bricks scattered all on the floor with no instruction what to do with them. You have documentation for each individual pace, but no guides or tutorial with ideas what could you created with all this peaces. The most special of you might say that there are tutorials out there done by AWS people. But the reality is that either there were written 5 years ago, and the AWS interface alone changed drastically since then, or the steps now are different and nobody bothers updating those tutorials. I argued a lot with AWS Tech Support and they always came back to me telling me the will notify the author to updated those posts, but nothing ever happens.
 
-Zones on the other hand are different datacenters within the same city, or they might be servers in the same datacenter but on a independent nettwork, infrastrucutre, internet conenction etc. This means that if a Zone in a region fails, all the other Zones will still work - since they are indepenedent, but let say that the California datacenters will be hit by a earth quake, then all the zones in that Region will fail. Thus takign down all the Zones.
+If a tutorial is not working for you, the problem is not with you, it is with the tutorial itself.
 
-This Zones Vs. Regions is alos another lie that AWS sells, where they want to let you belvie that havign server all over the world is as easy as jsut pushing a bunh of buttoens, and vluala, you have a global reach. This is achivable only if you deal with Zones. If you want to have your infrastructure spread across Regions, then you'll end up in a substantial nightmare. Becasue Regions are a compellty separate from each other. For example
+# Take your time
 
-## Load balancer
+It is hard to for our minds to let go of a previous truth. It takes a lot of energy, and our minds don’t like to waste it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set, and AWS never did a good job at it.
 
-You can't have a load balancer in one Region and attached it to servers from another one...
-
-## IAM - so called sytem iamges
-
-They are Region specifci, and you have to phisically copy thoes images betwne Regions. If you wanted to create one image and spread it across all the Regions that AWS supports, well good lick, this proces even with a clever script will take proably more then 24 if you coutn a 8G image. If you have something bigger, o well, you'll wait days before you finish the whole process. 
-
-AWS wants to let you belive that their infrstructure is homogeneous as if it was workign as one big machine. But in reality it is very Region specific. Once you create all your infrstructure in one Region, well you are stuck there, and to setup the infrastructure the way AWS adevrtise it - well, let say I get goosebumps jsut thinking about it. It literarly requrie writign lots of code (maybe scripts if you are not a develoepr per se) to make it all works. Whichi means it is not a trivial things - it is a serios, serious undertaking. 
-
-But by the end of this article you should be able to make it work 😱🤞.
+Once you think you are ready jump in to all the different topics, and see what is really possible and how to achieve what was false advertised to us.
 
 # The Structure of this repo
 
-Each foder will contain a self contained tutorial of a specific AWS feature, to help you focus on on thing at the time before we end up buildign a full fledged solution. Be patient and take your time, becasue AWS is time consuming.
+Each folder will contain a self contained tutorial of a specific AWS feature, to help you focus on on thing at the time. Be patient and take your time, because AWS is time consuming.
+
+[Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
+[VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
+[EC2](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_EC2)
+[RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_RDS)
+[CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_CodeDeploy)
+
+# In the end
+
+My hope is this. If I managed to explain how to handle the AWS lies, and you accepted this truth. Then you should be able to do anything with AWS, since it is a powerful platform, and the documentation is good, once you stop looking for the magical button that will to everything for you. The documentation tis in the lego logic, you get a detail explanation of the part that you are dealign with, but don’t look for a general instruction that will tell you how to put it all together.
 
 # The End
 

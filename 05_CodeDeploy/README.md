@@ -1,23 +1,51 @@
-# What is CodeDeploy
+# Did AWS automated anything with this CodeDeploy
 
-Basically CodeDeploy is the biggest lie of them all, which makes it the most confusign thing on the whole AWS platform. CodeDeploy is nothing more then a RoR or Python app that you have to install on a EC2 instance. You can then tell this app that you would like to deploy a new version of your app usign GitHub (configuration is a nightmare) or from a ZIP file that is on S3. 
+There is one thing that they did that actually helps you automat a deployment and it is called appspec.yml. This is a file where you can specify what will happen when codeDeploy kicks inside a EC2 instance.
 
-CodeDeploy is basically the main tool to grab some code, and then copy it in to a folder inside a server. It is not this magical and autoamted and simple thing that AWS tryis to convince you. 
+You can specify where to copy your code, what todo before running the new code. But again this are simple instructions, where you tell run this Bash script before running the server, where of course you have to write your own Bash script, debug it, test it etc.
 
-You have to use CodeDeploy if you want to set up AWS to AutoDeploy new code, and I'll explain how to use GitHub and S3 to do that. But bare in midn. This is far from simple, far fro mstraight forward. It hase an insane aamount of steps, and if you'll miss just one, evrythign will fall apart. 
+# appspec.yml example
 
-Trully brace yourself.
+# Before instal Bash example
 
-All the steps
+# Start Bash example
 
-One time Setup
+This are of course my own examples, that you don’t have to follow. If I’d recommend checking out the documentation to find out all the options that are at your disposal http://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html.
 
-Before we start working with CodeDeploy we need two things to do in our account that thankfully once done, they don’t need to be changed, edited or redone. We need to create 2 new Roles:
+# Hot to debug CodeDeploy
 
-- One for CodeDeploy itself (The Service)
-- One for a EC2 Instance (The Instance)
+OK, the last helpful peace of information that I can give you is how to debug a setup for auto deployment. Since nobody tells you how to do this, because remember, all is magical and so automatic…
+
+Check version
+sudo dpkg -s codedeploy-agent
+
+Code deploy installation logs
+/tmp/codedeploy-agent.update.log
+
+Code Deploy work logs
+tail -f /var/log/aws/codedeploy-agent/codedeploy-agent.log
+
+Also when you install CodeDeploy on your system, you’ll find it in /opt/codedeploy. Worth getting around the folder to get a sense of what you can find there.
+
+Test
+echo $(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/)
+curl http://169.254.169.254/latest/meta-data/iam/security-credentials/CodeDeploy
+
+## CloudTrail
+
+Also a good rule of thumb is to enable CloudTrail for you account, normally this is done if you want to get an invite on what is happening in your AWS, since CloudTrail will show you Actions taken by a user, role, or an AWS service. But most importantly is what is being logged, which is actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.
+
+The last part is what we care about, the APIs actions. They will show you all the actions triggered by API calls of various sorts. In our case we could see that GitHub tried to call CodeDeploy, but for example had the wrong credentials.
+
+# Lets do this!
+
+OK, by now I trulls hope you’ve got all the information and understanding on how this whole AWS works, the main idea, the foundation on which it stands… Legos. Time to sit down on the floor and build our pirate ship! Reality check - this is far from simple, far from straight forward. It has an insane amount of steps, and if you'll miss just one, everything will fall apart.
+
+Before we start working with CodeDeploy we need two things to do in our account that thankfully once done, they don’t need to be changed, edited or redone. We need to create 2 new Roles and 1 custom policy
 
 The Service
+
+This is a Role that will be used for CodeDeploy, so when you create a new App in the CodeDeploy UI, you can give this auto deployment the rights to perform actions on your behalf.
 
 1. Go to AWS IAM Roles
     1. Click Create new role
@@ -29,6 +57,8 @@ The Service
 
 The Instance
 
+This is a Role that will be used for all your EC2 instance to give CodeDeploy installed the chance to perform all the necessary actions on your behalf
+
 1. Go to AWS IAM Roles
     1. Click Create new role
     2. From the AWS Service Role select Amazon EC2
@@ -39,9 +69,9 @@ The Instance
     4. Name the service however you want, but make sure the name contains the word Instance, better identification
     5. Click Create role
 
-The User Policy
+The GitHub User Policy
 
-
+The user that is going to be used on the GitHub side
 
 - Go to AWS IAM
     - Go to Policies
@@ -51,8 +81,38 @@ The User Policy
     - Set the Description
     - Paste the JSON from bello in to Policy Document
 
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "codedeploy:GetDeploymentConfig",
+      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:deploymentconfig:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "codedeploy:RegisterApplicationRevision",
+      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:application:DemoApplication"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "codedeploy:GetApplicationRevision",
+      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:application:DemoApplication"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "codedeploy:CreateDeployment",
+      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:deploymentgroup:DemoApplication/DemoFleet"
+    }
+  ]
+}
+```
 
 The Setup
+
+-VPC
+
 
 - Go to AWS EC2 Load Balancer section
     - Click Create Load Balancer
@@ -73,13 +133,6 @@ The Setup
     - Click Review and Create
     - Click Create
 - Create a new Launch Configuration if you don’t have one. Launch Configurations can be reused
-- Go to AWS IAM
-    - Go to Policies
-    - Click Create Policy
-    - Select Create Your Own Policy
-    - Set the Policy Name
-    - Set the Description
-    - Paste the JSON from bello in to Policy Document
 - Go to AWS IAM
     - Go to Users
     - Click Add User
@@ -135,29 +188,3 @@ All the steps to put it together
         3. Don’t check Deploy on status
         4. Don’t set GitHub api url
         5. Check Active
-
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:GetDeploymentConfig",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:deploymentconfig:*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:RegisterApplicationRevision",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:application:DemoApplication"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:GetApplicationRevision",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:application:DemoApplication"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:CreateDeployment",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:deploymentgroup:DemoApplication/DemoFleet"
-    }
-  ]
-}
