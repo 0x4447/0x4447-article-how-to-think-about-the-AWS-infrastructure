@@ -31,12 +31,6 @@ Test
 echo $(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/)
 curl http://169.254.169.254/latest/meta-data/iam/security-credentials/CodeDeploy
 
-## CloudTrail
-
-Also a good rule of thumb is to enable CloudTrail for you account, normally this is done if you want to get an invite on what is happening in your AWS, since CloudTrail will show you Actions taken by a user, role, or an AWS service. But most importantly is what is being logged, which is actions taken in the AWS Management Console, AWS Command Line Interface, and AWS SDKs and APIs.
-
-The last part is what we care about, the APIs actions. They will show you all the actions triggered by API calls of various sorts. In our case we could see that GitHub tried to call CodeDeploy, but for example had the wrong credentials.
-
 # Lets do this!
 
 OK, by now I trulls hope you’ve got all the information and understanding on how this whole AWS works, the main idea, the foundation on which it stands… Legos. Time to sit down on the floor and build our pirate ship! Reality check - this is far from simple, far from straight forward. It has an insane amount of steps, and if you'll miss just one, everything will fall apart.
