@@ -34,11 +34,11 @@ Once you think you are ready jump in to all the different topics, and see what i
 
 Each folder will contain a self contained tutorial of a specific AWS feature, to help you focus on on thing at the time. Be patient and take your time, because AWS is time consuming.
 
-[Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
-[VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
-[EC2](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_EC2)
-[RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_RDS)
-[CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_CodeDeploy)
+- [Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
+- [VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
+- [EC2](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_EC2)
+- [RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_RDS)
+- [CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_CodeDeploy)
 
 # In the end
 
