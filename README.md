@@ -8,31 +8,31 @@ Still 🚧🍺 Work In Progres...
 
 A biggest omission in documentations in general is the frame of reference, a story, and explanation that will help you better understand a complex idea. Some very simple truth, that you can build on top of.
 
-If you were to check all the other articles and project that I have on [GitHub](), you’d see that I try to give that to you. My hope is that I’m doing a good job of it.
+If you were to check all the other articles and project that I have on [GitHub](https://github.com/davidgatti), you’d see that I try to give that to you, because I believe it is the most important peace of information that you should get.
 
-# The frame of reference for AWS
+Lets start with lies.
 
-Now day we need two frame of reference, because over the years AWS accumulated a huge amount of lies on things that are just not true
-
-## The lie Amazon tells us
+# The lie Amazon tells us
 
 Everywhere you watch, read and talk to will tell you that AWS is amazing, everything is automatic, scales indefinitely, and is just few clicks away. This is complete nonsense, and the sooner you realize this the sooner you'll understand that you have to put all the peaces together yourself, write code and create configurations files to make it all work automatically and automagically, as advertised.
 
-## Lego blocks
+# Lego blocks - The frame of reference for AWS
 
-You have to think about AWS like Lego bricks scattered all on the floor with no instruction what to do with them. You have documentation for each individual pace, but no guides or tutorial with ideas what could you created with all this peaces. The most special of you might say that there are tutorials out there done by AWS people. But the reality is that either there were written 5 years ago, and the AWS interface alone changed drastically since then, or the steps now are different and nobody bothers updating those tutorials. I argued a lot with AWS Tech Support and they always came back to me telling me the will notify the author to updated those posts, but nothing ever happens.
+You have to think about AWS like Lego bricks scattered all on the floor with no instruction what to do with them. You get documentation for each individual pace, but no blueprint or tutorial how to put this peaces together. The most skeptical of you might say that there are tutorials out there. But the reality is that either were written 5 years ago (the AWS interface changed drastically since then), or the steps now are different and nobody bothers updating those tutorials. I argued a lot with AWS Tech Support and they always came back to me telling me the will notify the author to updated those posts, but nothing ever happens.
 
 If a tutorial is not working for you, the problem is not with you, it is with the tutorial itself.
 
+So remember... Lego blocks.
+
 # Take your time
 
-It is hard to for our minds to let go of a previous truth. It takes a lot of energy, and our minds don’t like to waste it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set, and AWS never did a good job at it.
+It is hard to for our minds to let go of a previous truth. It takes a lot of energy, and our minds don’t like wasting it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set, and AWS never did a good job creating a good one.
 
-Once you think you are ready jump in to all the different topics, and see what is really possible and how to achieve what was false advertised to us.
+Once you think you are ready jump, in to all the different topics, and see what is really possible and how to achieve what was falsely advertised to us.
 
 # The Structure of this repo
 
-Each folder will contain a self contained tutorial of a specific AWS feature, to help you focus on on thing at the time. Be patient and take your time, because AWS is time consuming.
+Each folder
 
 - [Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
 - [VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
@@ -40,6 +40,10 @@ Each folder will contain a self contained tutorial of a specific AWS feature, to
 - [RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_RDS)
 - [IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_IAM)
 - [CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/05_CodeDeploy)
+- [Blueprint]()
+  - [CodeDeploy]()
+    - [GitHub to AWS]()
+    - [Github to S3 to AWS]()
 
 # In the end
 
