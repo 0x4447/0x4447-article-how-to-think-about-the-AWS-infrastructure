@@ -32,13 +32,13 @@ So remember... Lego blocks with documentation but no blueprint on how o put he b
 
 # Take your time
 
-It is hard for our minds to let go of a previous truth. It takes a lot of energy, and our minds don’t like wasting it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set, and AWS never did a good job creating a good one.
+For us humans it is hard to let go of a previous truths. It takes a lot of energy to chagne our minds, and our minds don’t like wasting energy doing it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set.
 
-Once you think you are ready jump, in to all the different topics, and see what is really possible and how to achieve what was falsely advertised to us.
+Keep readign each folder in this repo where I explain usign reality and not Marketing jargon what eac hsepcifci service is all about. And once you'll reach the end, and jump to the Blueprint section, you'll trully understand better how to put evrythign toghether. Doign it in this orther it will honeslty save your sanity, and the whole process will be more enjoiable.
 
 # The Structure of this repo
 
-Each folder
+The order of this list is on purpose. It will help you build the foundation in the right order where each section builds on top of the previous one. Honeslty take your time and enjoy the list 🙂.
 
 - [Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
 - [VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
