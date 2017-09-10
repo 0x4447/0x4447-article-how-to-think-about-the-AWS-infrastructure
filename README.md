@@ -16,7 +16,7 @@ Lets start with lies.
 
 Everywhere you watch, read and talk to will tell you that AWS is amazing, everything is automatic, scales indefinitely, and is just few clicks away. This is complete nonsense, and the sooner you realize this the sooner you'll understand that you have to put all the peaces together yourself, write code and create configurations files to make it all work automatically and automagically, as advertised.
 
-# Lego blocks - The frame of reference for AWS
+# Lego blocks - The lost frame of reference
 
 You have to think about AWS like Lego bricks scattered all on the floor with no instruction what to do with them. You get documentation for each individual pace, but no blueprint or tutorial how to put this peaces together. The most skeptical of you might say that there are tutorials out there. But the reality is that either were written 5 years ago (the AWS interface changed drastically since then), or the steps now are different and nobody bothers updating those tutorials. I argued a lot with AWS Tech Support and they always came back to me telling me the will notify the author to updated those posts, but nothing ever happens.
 
