@@ -1,10 +1,10 @@
-# How to think about the AWS infrastructure
-
 ---
 
 Still 🚧🍺 Work In Progres...
 
 ---
+
+# How to think about the AWS infrastructure
 
 A biggest omission in documentations in general is the frame of reference, a story, and explanation that will help you better understand a complex idea. Some very simple truth, that you can build on top of.
 
