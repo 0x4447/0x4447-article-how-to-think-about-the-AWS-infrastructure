@@ -24,15 +24,15 @@ Meaninig... stop lookign for the magic button - there is none.
 
 # Lego blocks - The frame of reference for AWS
 
-You have to think about AWS like Lego bricks scattered all on the floor with no instruction what to do with them. You get documentation for each individual pace, but no blueprint or tutorial how to put this peaces together. The most skeptical of you might say that there are tutorials out there. But the reality is that either were written 5 years ago (the AWS interface changed drastically since then), or the steps now are different and nobody bothers updating those tutorials. I argued a lot with AWS Tech Support and they always came back to me telling me the will notify the author to updated those posts, but nothing ever happens.
+You have to think about AWS like Lego bricks scattered all on the floor with no instruction what to do with them. You get documentation for each individual pace, but no blueprint or tutorial how to put this peaces together. The most skeptical of you might say that there are tutorials out there. But the reality is that either were written 5 years ago, and the steps now are different and nobody bothers updating those tutorials. I argued a lot with AWS Tech Support and they always came back telling me the will notify the author to updated those posts, but nothing ever happens.
 
 If a tutorial is not working for you, the problem is not with you, it is with the tutorial itself.
 
-So remember... Lego blocks.
+So remember... Lego blocks with documentation but no blueprint on how o put he blocks together.
 
 # Take your time
 
-It is hard to for our minds to let go of a previous truth. It takes a lot of energy, and our minds don’t like wasting it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set, and AWS never did a good job creating a good one.
+It is hard for our minds to let go of a previous truth. It takes a lot of energy, and our minds don’t like wasting it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set, and AWS never did a good job creating a good one.
 
 Once you think you are ready jump, in to all the different topics, and see what is really possible and how to achieve what was falsely advertised to us.
 
