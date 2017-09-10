@@ -1,17 +1,22 @@
 # What is a EC2
 
-This is the easiest part of AWS, where a EC2 is just a fancy name for a regular virtual server/computer. There is nothing fancy or magical here. The only thing to remember is that this are virtual machines, meaning Amazon uses one real computer and then runs many virtual servers, so they can more efficiently use real hardware.
+This is the easiest part of AWS to understand. EC2 is nothing more then a fancy name for a regular virtual server. The only thing to remember is that EC2 instances are virtual machines, meaning Amazon uses one real computer to run a bunch of virtual machines to more eficently manage the resoruces.
 
-But EC2 is the biggest misconception, the biggest lie that AWS tells you. They say, with EC2 you can scale your application to 1000 of servers all around the world. Sure… in theory yes, but you have to build the whole infrastructure that will do this. There are zero shortcuts here.
+On the other hand EC2 is the biggest misconception, the starting point of all the AWS lies. 
+
+All the demos done at various events shows how easy it is to scale a web app on thousends of EC2 instances all over the world. But we know already that Region are separated from each other. So how can this be? Well it can after a month fo work, lods of code written, and Bash script made to actually make this happens.
+
+There is no magic button... I repeat, there is none. Just plain old servers that you have to put together.
 
 # Heroku
 
-This is a small digression, but Heroku for example is a good example of the challenge that it takes to make AWS as advertised. Because Heroku just uses all the lego blogs that AWS provides, the difference is that they took years to develop a solution that just works.
+This is a small digression, but Heroku is a perfect example of waht you can do with the AWS infrastructure. Becasue Heroku is built on top AWS - Heroku is AWS but with easy to use UI, end extra featureslike 
 
-Auto-deployment from GitHub just works
-Scaling to more server just works - you move a slider and your app will automatically be deployed to all the new servers. Zero hustle.
-Load balancing jut works
-Enabling free SSL just works
+- true autodeployment
+- true autoscalign with just a slider
+- load balancign that works out of the box
+- easy and free to sue SSL certificats 
 
-People say that Heroku is expensive, true, because you have to pay for all the amazing layer that they had to build to make AWS work as the original dream that whoever that came up with AWS had in mind.
+To build what Heroku did is I undertakign, which I hope by the end of this article/tutoria you'll know how to do, but it will never look so nice and it won't be as felxible as waht Heroku did.
 
+People say taht Heroku is expensive, there is a good reason for that - the work that went in to makign this whole service is trully unvalibable once you get to know waht AWS really is.
