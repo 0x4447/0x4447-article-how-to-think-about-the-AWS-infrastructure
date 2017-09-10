@@ -8,9 +8,13 @@ Still 🚧🍺 Work In Progres...
 
 A biggest omission in documentations in general is the frame of reference, a story, and explanation that will help you better understand a complex idea. Some very simple truth, that you can build on top of.
 
-If you were to check all the other articles and project that I have on [GitHub](https://github.com/davidgatti), you’d see that I try to give that to you, because I believe it is the most important peace of information that you should get.
+If you were to check all the other articles and project that I have on [GitHub](https://github.com/davidgatti), you’d see that I try to give that to you. I honeslty believe it is the most important peace of information that you should get as a developer.
 
-Lets start with lies.
+# What to expect from this Repo
+
+This repo is a place where I collect all the knoledged and experiacne that I aquired over the yers so I actualy don't forget waht I learned, since I normaly don't work regualrly on AWS. While also trying to fix all the lies that AWS spread over the years which make it very hard for a new commer to trully udnerstand waht AWS is all about. 
+
+Make a cup of ☕️, or 🍵 and take your time. AWS can't be understood in one day.
 
 # The lie Amazon tells us
 
