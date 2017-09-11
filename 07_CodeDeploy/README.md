@@ -20,14 +20,25 @@ If AWS are Legos scattered on the ground, then CodeDepoy are even more fine peac
 
 **Availability Zones**
 
-The “easiest” way to deploy a new commit to multiple server is be just staying in one Region, and deploy to multiple servers scattered across multiple Availability Zones.
+The "easiest" way to deploy a new commit to multiple server is by just staying in one Region, and deploy to multiple servers scattered across multiple Availability Zones.
 
-The high level concept is that you setup your project on GitHub repo to fire a webhook to CodeDeploy and based on the configuration on both sides. 
-
-But since AWS is Region specific, CodeDeploy is also tied to a specific Region, and there is no way (using what AWS gives us) to trigger a noter CodeDeploy in a different region. 
-
-This is why is it “easier” make Auto Deployment work for just one Region. 
+This way you can setup a GitHub project to fire a webhook to a seelcted CodeDeploy, which will initiate the deployment if configured the right way. 
 
 **Multi Region Deployment**
 
-...
+Since you can't setup GitHub to fire a webhook to multipe CodeDeploys in diffeent regions, we need to chagne the aproach, and the simplest solution is this:
+
+1. You create a Lambda function waht will receive the GitHub webhook notifciation when there is a new commit. 
+1. The Lambda function will dowload the compressed repo and save it in a S3 Bucket
+1. Any code Deploy that you might have setup will listen to events created by that S3 bucket 
+1. A new file will trigger CodeDeploy to get the file and deploy it.
+
+This solution will allow you to trully deploy acros Regions since S3 is not Region specifci. Simple right? Just works right? Wait untill you'll see the real setup 🤣.
+
+# And done!
+
+We arrive at the end, where you should have the bare minimum knoledge require to start to have an undestandign how to put the Lego blocks together. I know there is a lot to take in, but my hope is that I'll shorten the time required to get a graps of the core elemtns of AWS. 
+
+Personally it tooke me 6 months to understand this. I hope you'll do better then me. 
+
+Before you move to the Bluepritns I'd recommend you take a brake from this, and come back with a fresh midn. Becasue this was the easy part. 
