@@ -32,9 +32,11 @@ Once you think you are ready jump, in to all the different topics, and see what 
 
 # The Structure of this repo
 
-Each folder
+First thing first, the order of this list is on purposue. It was designed this way becasue I belive this is the right order to go about learning the AWS ecosystem. Becasue again, with the Lego anaglogy, the blocks are sctered on the floor, and nobody tells you where to start. 
 
-- [Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
+The first goal of this article is to reach a point where we can acomplish one prosmies thisng by AWS, to trully autodeploy code around the world. After this we'll keep on exploring what AWS has to offer and create some Blueprints and show how to use thoes features with some trully simple examples.
+
+- [Regions vs. Zones](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
 - [VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
 - [EC2](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM)
 - [RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_EC2)
