@@ -36,14 +36,17 @@ Each folder
 
 - [Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions)
 - [VPC](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/01_VPC)
-- [EC2](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_EC2)
-- [RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_RDS)
-- [IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_IAM)
-- [CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/05_CodeDeploy)
-- [Blueprint]()
-  - [CodeDeploy]()
-    - [GitHub to AWS]()
-    - [Github to S3 to AWS]()
+- [EC2](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM)
+- [RDS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/03_EC2)
+- [IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/04_RDS)
+- [CloudTrail](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/05_CloudTrail)
+- [Lambda](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/06_Lambda)
+- [CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/07_CodeDeploy)
+- [Blueprint](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints)
+  - [CodeDeploy](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/CodeDeploy)
+    - [GitHub to AWS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/CodeDeploy/GitHub%20to%20AWS)
+    - [Github to S3 to AWS](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/CodeDeploy/Github%20to%20S3%20to%20AWS)
+  - [RDS Backups](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/RDS%20Backups)
 
 # In the end
 
