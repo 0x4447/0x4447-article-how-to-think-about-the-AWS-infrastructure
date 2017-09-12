@@ -62,7 +62,9 @@ If you've enjoyed this article/project, please consider giving it a 🌟 or dona
 
 Also check out my [GitHub account](https://github.com/davidgatti), where I have other articles and apps that you might find interesting.
 
----
+## For Hire
+
+If you'd like me to help you, I'm available for hire. Contact me at jobs@gatti.pl.
 
 ## Where to follow
 
