@@ -64,7 +64,7 @@ Also check out my [GitHub account](https://github.com/davidgatti), where I have 
 
 ## For Hire 👨‍💻
 
-If you'd like me to help you, I'm available for hire. Contact me at jobs@gatti.pl.
+If you'd like me to help you, I'm available for hire. Contact me at job@gatti.pl.
 
 ## Where to follow
 
