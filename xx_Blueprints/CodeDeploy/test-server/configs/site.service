@@ -1,0 +1,17 @@
+[Unit]
+Description=Test Node
+Documentation=https://example.com
+After=network.target
+
+[Service]
+EnvironmentFile=/home/admin/.env
+Type=simple
+User=admin
+ExecStart=/usr/bin/node /var/www/bin/server
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=code_deploy_site
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

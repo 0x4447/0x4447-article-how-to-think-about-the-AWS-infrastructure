@@ -1,0 +1,19 @@
+{
+	"name": "",
+	"description": "",
+	"repository": "",
+	"success_url": "/",
+	"env": {
+		"NODE_ENV": {
+			"description": "The environment can be: production, staging or development"
+		},
+		"NPM_CONFIG_PRODUCTION": {
+			"description": "By default Heroku sets this to true, if you are deploying a dev version of the code, set this false.",
+			"value": "true"
+		},
+		"BASE_URL": {
+			"description": "The URL of the project",
+			"value": "https://NAME_OF_THE_SERVER.herokuapp.com"
+		}
+	}
+}

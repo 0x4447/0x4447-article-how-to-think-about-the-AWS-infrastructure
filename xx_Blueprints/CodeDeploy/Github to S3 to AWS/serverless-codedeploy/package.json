@@ -1,0 +1,23 @@
+{
+  "name": "sequr-serverless-codedeploy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://davidgatti@github.com/sequr/sequr-serverless-codedeploy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sequr/sequr-serverless-codedeploy/issues"
+  },
+  "homepage": "https://github.com/sequr/sequr-serverless-codedeploy#readme",
+  "dependencies": {
+    "aws-sdk": "2.74.0",
+    "request": "2.81.0"
+  }
+}

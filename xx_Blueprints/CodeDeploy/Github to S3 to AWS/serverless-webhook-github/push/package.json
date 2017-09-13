@@ -1,0 +1,11 @@
+{
+  "name": "push",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "dependencies": {
+    "aws-sdk": "2.70.0",
+    "rimraf": "2.6.1",
+    "tar": "3.1.5",
+    "unirest": "0.5.1"
+  }
+}
