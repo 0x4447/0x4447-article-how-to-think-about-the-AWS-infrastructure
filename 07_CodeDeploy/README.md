@@ -37,8 +37,8 @@ This solution will allow you to trully deploy acros Regions since S3 is not Regi
 
 # And done!
 
-We arrive at the end, where you should have the bare minimum knoledge require to start to have an undestandign how to put the Lego blocks together. I know there is a lot to take in, but my hope is that I'll shorten the time required to get a graps of the core elemtns of AWS. 
+We arrive at the end, where you should have the bare minimum knoledge require to start having an undestandign how to put the Lego blocks together. I know there is a lot to take in, but my hope is that I'll shorten the time required to get a graps of the core elemtns of AWS. 
 
 Personally it tooke me 6 months to understand this. I hope you'll do better then me. 
 
-Before you move to the Bluepritns I'd recommend you take a brake from this, and come back with a fresh midn. Becasue this was the easy part. 
+Before you move to the Bluepritns or to the other folders I'd recommend you take a brake from this, and come back with a fresh midn. Becasue this was the easy part. 
