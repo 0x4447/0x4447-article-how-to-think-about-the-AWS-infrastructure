@@ -33,20 +33,29 @@ This are of course my own examples, that you don’t have to follow. If I’d re
 
 # Hot to debug CodeDeploy
 
-OK, the last helpful peace of information that I can give you is how to debug a setup for auto deployment. Since nobody tells you how to do this, because remember, all is magical and so automatic…
+The last helpful peace of information that I can give you is how to debug a setup for auto deployment. 
 
-Check version
-sudo dpkg -s codedeploy-agent
+### Check CodeDeploy version
 
-Code deploy installation logs
-/tmp/codedeploy-agent.update.log
+`sudo dpkg -s codedeploy-agent`
 
-Code Deploy work logs
-tail -f /var/log/aws/codedeploy-agent/codedeploy-agent.log
+### Code deploy installation logs
 
-Also when you install CodeDeploy on your system, you’ll find it in /opt/codedeploy. Worth getting around the folder to get a sense of what you can find there.
+`tail -f /tmp/codedeploy-agent.update.log`
 
-Test
-echo $(curl http://169.254.169.254/latest/meta-data/iam/security-credentials/)
-curl http://169.254.169.254/latest/meta-data/iam/security-credentials/CodeDeploy
+### Code Deploy work logs
+
+`tail -f /var/log/aws/codedeploy-agent/codedeploy-agent.log`
+
+### Where is CodeDeploy in my system?
+
+You’ll find it in `/opt/codedeploy`. Worth getting around the folder to get a sense of what you can find there.
+
+### Test if you have the right Roles
+
+As mentioned in the folder before. Each EC2 Instance needs to have the right permissions to perform the right task. This is done with IAM Roles, and to check if they are set correctly you can call this URLs to see what you have.
+
+`curl http://169.254.169.254/latest/meta-data/iam/security-credentials/`
+
+`curl curl http://169.254.169.254/latest/meta-data/iam/security-credentials/CodeDeploy`
 
