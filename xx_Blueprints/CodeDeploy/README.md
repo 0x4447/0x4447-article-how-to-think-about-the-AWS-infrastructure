@@ -55,7 +55,7 @@ You’ll find it in `/opt/codedeploy`. Worth getting around the folder to get a 
 
 As mentioned in the folder before. Each EC2 Instance needs to have the right permissions to perform the right task. This is done with IAM Roles, and to check if they are set correctly you can call this URLs to see what you have.
 
-`curl http://169.254.169.254/latest/meta-data/iam/security-credentials/`
+`curl http://169.254.169.254/latest/meta-data/iam/security-credentials/` will show you the name of the Role that is applyed to the EC2 Instance 
 
-`curl curl http://169.254.169.254/latest/meta-data/iam/security-credentials/CodeDeploy`
+`curl http://169.254.169.254/latest/meta-data/iam/security-credentials/NAME_OF_THE_ROLE_THAT_YOU_GOT_FROM_THE_COMMAND_BEFORE` will show you details about the Role.
 
