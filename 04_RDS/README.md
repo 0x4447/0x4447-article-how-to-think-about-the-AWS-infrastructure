@@ -14,11 +14,11 @@ We have 3 options to make our database disaster pronet. Meaninig there are 3 dif
 
 Lets brake down each one.
 
-**Regular Backup**
+### Regular Backup
 
 When you create a database you have the option to set it so it will take a snapshot of the whole DB every so often, and you can as low as one day. The cool thing is that once you set this option it will do its thing, and you can forget about it.
 
-**Multiple DBs in different AZ**
+### Multiple DBs in different AZ
 
 Similar to a EC2 instance, you can take advantage of the AZ (Availability Zones) of your VPC. Meaninig when you create or edit a DB, you can specify that you want the DB to have a copy in another AZ. If you enable this option you'll get a automated system which will switch automatically to the other DB from the other AZ.
 
@@ -26,7 +26,7 @@ If the main becomes unavailable for whathever reson, AWS will automatically fall
 
 Now, when the original DB comes back on-line, it wil be come the new fail over one, so with this system in theory you should be good. Since the servers will constatly rotate if somethign bad happens.
 
-**Read Replica**
+### Read Replica
 
 You can take your data resilinacy one step further, and take advantage of a Read Replica and the AWS Regions. The two options above here, are solutions where your data stayis in the same Region, and if that Region fails your data will be lost. Not likelly, but you never know. 
 
