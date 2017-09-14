@@ -33,7 +33,7 @@ This are of course my own examples, that you don’t have to follow. If I’d re
 
 # Hot to debug CodeDeploy
 
-The last helpful peace of information that I can give you is how to debug a setup for auto deployment. 
+The last helpful peace of information that I can give you is how to debug a setup for auto deployment.
 
 ### Check CodeDeploy version
 
@@ -51,11 +51,19 @@ The last helpful peace of information that I can give you is how to debug a setu
 
 You’ll find it in `/opt/codedeploy`. Worth getting around the folder to get a sense of what you can find there.
 
+### Manage CodeDeploy
+
+Since CodeDeploy is run as a service, it is easy to manage it:
+
+`sudo service codedeploy-agent status`
+
+You can stop it, restart it etc using `service`
+
 ### Test if you have the right Roles
 
 As mentioned in the folder before. Each EC2 Instance needs to have the right permissions to perform the right task. This is done with IAM Roles, and to check if they are set correctly you can call this URLs to see what you have.
 
-The following command will show you the name of the Role that is applyed to the EC2 Instance 
+The following command will show you the name of the Role that is applyed to the EC2 Instance
 
 ```
 curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
