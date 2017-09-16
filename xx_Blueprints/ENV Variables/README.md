@@ -16,8 +16,25 @@ Well you could write something like this:
 
 ```
 #!/bin/bash
-set -e -x
+
+#
+# exit at the first command that fails unexpectedly
+#
+set -e 
+
+#
+# Print each command to stdout before executing it
+#
+set -x
+
+#
+# Create file
+#
 touch /home/admin/.env
+
+#
+# Appedn data to the file
+#
 echo TEST_ENV=Hello >> /home/admin/.env
 ```
 
