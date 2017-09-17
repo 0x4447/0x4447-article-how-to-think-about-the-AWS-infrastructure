@@ -24,5 +24,18 @@ I'm gogin to use 2 AWS Lambda functions
 
 This fodler contains two other folders which contains code that you can use in your Lambda functions, this way you don't have to write evrythign from scratch. But my code is JavaScript code, and if you prefere another language, go ahead and use whtheer AWS Lambda supports.
 
-# Lets execute 
+# The Good
 
+Yes, you can take and use my code, but also you can reuse the setup from the more simplicstic CodeDeploy setup. 
+
+- The roles stay the same
+- Load Balancer
+- Configuration
+- Autoscaling
+- CodeDeploy just minor changes
+
+Overall the big next step is to learn how to use AWS Lambda function and for that we are coing to use https://serverless.com whichi is goign to make our life much easier.
+
+# Lets Execute 
+
+How to install serverless etc.
