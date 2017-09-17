@@ -130,9 +130,18 @@ The setup to create a Auto Scaling Group
     
 ### CodeDeploy
 
-So many words to just reach this "simple" point in space. The place that all just works, you know, like magic, and can be done in minutes. Yea right ;).
+So many words to just reach this "simple" point in space. The place where all just works, you know, like magic, and can be done in minutes. Yea right ;).
 
-The CodeDeploy section will have a list of all the "Apps", lets put them in big air quotes here, this has nothign to do with an app, becasue that would imply some sorth of automation. An app is jsut a colelction of configurations that will be executed 
+The CodeDeploy section will have a list of all the "Apps", but lets put big air quotes here, this has nothign to do with an app, becasue that word implys some sorth of automation. An app is just a colelction of configurations that will be executed when an event happens. Meaninig when an event happens, the CodeDeploy from the dashboard will reach out to the CodeDeploy installed in the EC2 instacne, whichi in that case will pull the new code and follow the instructions from the `appspec.yml` configuration file.
+
+The thing that you can specify in the Dashboard is how the code will be deployed, for example:
+
+- Deploy the new code on each EC2 one by one, and stop if somethign goes wrong. 
+- Replace the code at the same time on all servers.
+
+A little bit of automation ;)
+
+The setup to create a CodeDeploy app
 
 1. Go to the CodeDeploy section
 1. Create a new app
@@ -145,11 +154,18 @@ The CodeDeploy section will have a list of all the "Apps", lets put them in big 
 
 ### GitHub
 
+We are almost at the finish line. Now we need to go to our GitHub project settigns, to add support for CodeDeploy, by basically telling GitHub to send a webhook to our seelcted CodeDeploy to let it know that there was a new commit. To achive this we need to add two things:
+
+- Add AWS CodeDeploy
+- Add GitHub Auto-Deployment 
+
+The setup to create Auto-Deployment 
+
 1. Got to GitHub
 1. Go to a project
 1. Go in to Settings
 1. Go in to Integrations & services
-1. A1d AWS CodeDeploy
+1. Add AWS CodeDeploy
     1. Set the Application name
     1. Set the Deployment group
     1. Set the Aws access key
