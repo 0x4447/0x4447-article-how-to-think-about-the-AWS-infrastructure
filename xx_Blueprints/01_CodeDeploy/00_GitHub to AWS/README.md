@@ -1,45 +1,54 @@
+# It is time to trully do it
 
-OK, by now I trulls hope you’ve got all the information and understanding on how this whole AWS works, the main idea, the foundation on which it stands… Legos. Time to sit down on the floor and build our pirate ship! Reality check - this is far from simple, far from straight forward. It has an insane amount of steps, and if you'll miss just one, everything will fall apart.
+By now I trulls hope I gave you a good picture of AWS, and if you give yoursefle some time to process all of the previous information, from now on, nothing should look complicated anymore. 
 
-Before we start working with CodeDeploy we need two things to do in our account that thankfully once done, they don’t need to be changed, edited or redone. We need to create 2 new Roles and 1 custom policy
+But since you are goign to do this the first time, there is a good chance that the setup won't work the first time. If this happens, scrap averythign and start over. THere are meny steps in this process, and if you miss one, nothing will wokr. Give yourself time, and be patient. There is a lot to go thorough.
 
-The Service
+# Do it once, and never again 
 
-This is a Role that will be used for CodeDeploy, so when you create a new App in the CodeDeploy UI, you can give this auto deployment the rights to perform actions on your behalf.
+Before we start working with CodeDeploy we need to do two things in our AWS account. We need to create 2 new Roles and 1 custom policy
 
-1. Go to AWS IAM Roles
-    1. Click Create new role
-    2. From the AWS Service Role select AWS CodeDeploy
-    3. Check AWSCodeDeployRole
-    4. Click Next Step
-    5. Name the service however you want, but make sure the name contains the word Service, better identification
-    6. Click Create role
+### The Service Role
 
-The Instance
+This is a Role that will be used by CodeDeploy, this wya when you create a new "App" in the CodeDeploy UI, you can give this setup the rights to perform actions on your behalf. In this case you'll give it access to the EC2 Instances.
 
-This is a Role that will be used for all your EC2 instance to give CodeDeploy installed the chance to perform all the necessary actions on your behalf
+Steps to make the Service Role
 
 1. Go to AWS IAM Roles
-    1. Click Create new role
-    2. From the AWS Service Role select Amazon EC2
-        1. Check AmazonEC2RoleforAWSCodeDeploy
-        2. Check AutoScalingNotificationAccessRole
-        3. Check AdministratorAccess
-    3. Click Next Step
-    4. Name the service however you want, but make sure the name contains the word Instance, better identification
-    5. Click Create role
+1. Click Create new role
+1. From the AWS Service Role select AWS CodeDeploy
+1. Check AWSCodeDeployRole
+1. Click Next Step
+1. Name the service however you want, but make sure the name contains the word Service, better identification
+1. Click Create role
 
-The GitHub User Policy
+### The Instance Role
+
+This is a Role that will be used by all the EC2 Instance attached to CodeDeploy
+
+Steps to make the Instance Role
+
+1. Go to AWS IAM Roles
+1. Click Create new role
+1. From the AWS Service Role select Amazon EC2
+   1. Check AmazonEC2RoleforAWSCodeDeploy
+   1. Check AutoScalingNotificationAccessRole
+   1. Check AdministratorAccess
+1. Click Next Step
+1. Name the service however you want, but make sure the name contains the word Instance, better identification
+1. Click Create role
+
+### The GitHub User Policy
 
 The user that is going to be used on the GitHub side
 
-- Go to AWS IAM
-    - Go to Policies
-    - Click Create Policy
-    - Select Create Your Own Policy
-    - Set the Policy Name
-    - Set the Description
-    - Paste the JSON from bello in to Policy Document
+1. Go to AWS IAM
+1. Go to Policies
+1. Click Create Policy
+1. Select Create Your Own Policy
+1. Set the Policy Name
+1. Set the Description
+1. Paste the JSON from bello in to Policy Document
 
 ```
 {
@@ -69,82 +78,82 @@ The user that is going to be used on the GitHub side
 }
 ```
 
-The Setup
+# Start
 
--VPC
+The result of the previous steps can be reused in your AutoDeployment, where the followign one needs to be repeated for each project you want to deploy. Meaninig let say you have a micro-servcie infrastructure, you'll have to repeate the followign steps for each micro service. Or to put it even in a differetn way, you'll have to repeat this step for each repository you have on GitHub.
 
+### Load Balancer
 
-- Go to AWS EC2 Load Balancer section
-    - Click Create Load Balancer
-    - Select Classic Load Balancer
-    - Click Continue
-    - Set the Load Balancer name
-    - Select the right VPC if you have more then one
-    - Don’t check Create an internal load balancer
-    - Don’t check Enable advanced VPC configuration
-    - In the Load Balancer Protocol section select the options that best fits your app
-    - Click Next: Assign Security Groups
-    - Select a Security Group
-    - Click Next: Configure Security Settings
-    - Click Next: Configure Health Check
-    - Select TCP in the drop down menu for Ping Protocol
-    - Click Next: Add EC2 Instances
-    - Click Next: Add Tags
-    - Click Review and Create
-    - Click Create
-- Create a new Launch Configuration if you don’t have one. Launch Configurations can be reused
-- Go to AWS IAM
-    - Go to Users
-    - Click Add User
-    - Set the User name
-    - Check Programmatic access
-    - Click Attach existing policies directly
-    - Search for the Policy that you created in the step above
-    - Click Next:Review
-    - Click Create user
-    - Save the Key and Secret in a secure place
-- Create a GitHub Access Token
-    - Go to GitHub
-    - Click on your avatar
-    - Select Settings
-    - Go to Personal access tokens
-    - Click on to Generate new token
-    - Set the Token description
-    - Check repo:status
-    - Check repo_deployment
-    - Click Generate token
-    - Save the Generated Token in a safe place
+The idea of the cloud is resiliance, and the ability to spin multiple servers with the same code, so the load can be split across multiple machines. In this setup we are going to have aminimum of two servers (always) thus we need a load balancer which will split the traffci betwen the servers that are gogin to be atacched to it.
 
-All the steps to put it together
+The setup to create a Load Balancer
+
+1. Go to AWS EC2 Load Balancer section
+1. Click Create Load Balancer
+1. Select Classic Load Balancer
+1. Click Continue
+1. Set the Load Balancer name
+1. Select the right VPC if you have more then one
+1. Don’t check Create an internal load balancer
+1. Don’t check Enable advanced VPC configuration
+1. In the Load Balancer Protocol section select the options that best fits your app
+1. Click Next: Assign Security Groups
+1. Select a Security Group
+1. Click Next: Configure Security Settings
+1. Click Next: Configure Health Check
+1. Select TCP in the drop down menu for Ping Protocol
+1. Click Next: Add EC2 Instances
+1. Click Next: Add Tags
+1. Click Review and Create
+1. Click Create
+
+### Launch Configurations
+
+As you learned before from the Env Variable section. A Launch Configuration allows you to create identical EC2 instances, based on what is specified in such configuration. A LC must be created if you are going to use the Auto Scaling featire. 
+
+A thing worth nothing, is that a Launch Configuration can be reused and applayed to different Auto Scalign Groups. This should help you name a LC in a way that will make more sense to you. Since as with AWS, most of the time you can't reneame somethign once you created it.
+
+The setup to create a Launch Configurations
+
+1. Go to...
+
+### Auto Scaling Group
+
 
 1. Go to the Auto Scaling Group section and make a new one
-    1. Select the Launch Configuration
-    2. Select the Load Balancer
-    3. Change the cool down time to 120 sec
-2. Go to the CodeDeploy section
-    1. Create a new app
-    2. Set a name
-    3. Set a group
-    4. Select Blue/green deployment
-    5. Select the Auto Scaling Group that you created
-    6. Select the Load Balancer
-    7. Set the Service Role
-3. Got to GitHub
-    1. Go to a project
-    2. Go in to Settings
-    3. Go in to Integrations & services
-    4. Add AWS CodeDeploy
-        1. Set the Application name
-        2. Set the Deployment group
-        3. Set the Aws access key
-        4. Set the Aws region
-        5. Don’t set GitHub api url
-        6. Set the Aws secret access key
-        7. Don’t set the GitHub token
-        8. Check Active
-    5. Add GitHub Auto-Deployment
-        1. Set the GitHub token
-        2. Set the Environments
-        3. Don’t check Deploy on status
-        4. Don’t set GitHub api url
-        5. Check Active
+1. Select the Launch Configuration
+1. Select the Load Balancer
+1. Change the cool down time to 120 sec
+    
+### CodeDeploy
+
+1. Go to the CodeDeploy section
+1. Create a new app
+1. Set a name
+1. Set a group
+1. Select Blue/green deployment
+1. Select the Auto Scaling Group that you created
+1. Select the Load Balancer
+1. Set the Service Role
+
+### GitHub
+
+1. Got to GitHub
+1. Go to a project
+1. Go in to Settings
+1. Go in to Integrations & services
+1. A1d AWS CodeDeploy
+    1. Set the Application name
+    1. Set the Deployment group
+    1. Set the Aws access key
+    1. Set the Aws region
+    1. Don’t set GitHub api url
+    1. Set the Aws secret access key
+    1. Don’t set the GitHub token
+    1. Check Active
+1. Add GitHub Auto-Deployment
+    1. Set the GitHub token
+    1. Set the Environments
+    1. Don’t check Deploy on status
+    1. Don’t set GitHub api url
+    1. Check Active
