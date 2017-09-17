@@ -12,7 +12,7 @@ Before we start working with CodeDeploy we need to do two things in our AWS acco
 
 This is a Role that will be used by CodeDeploy, this wya when you create a new "App" in the CodeDeploy UI, you can give this setup the rights to perform actions on your behalf. In this case you'll give it access to the EC2 Instances.
 
-Steps to make the Service Role
+**Steps to make the Service Role**
 
 1. Go to AWS IAM Roles
 1. Click Create new role
@@ -26,7 +26,7 @@ Steps to make the Service Role
 
 This is a Role that will be used by all the EC2 Instance attached to CodeDeploy
 
-Steps to make the Instance Role
+**Steps to make the Instance Role**
 
 1. Go to AWS IAM Roles
 1. Click Create new role
@@ -86,7 +86,7 @@ The result of the previous steps can be reused in your AutoDeployment, where the
 
 The idea of the cloud is resiliance, and the ability to spin multiple servers with the same code, so the load can be split across multiple machines. In this setup we are going to have aminimum of two servers (always) thus we need a load balancer which will split the traffci betwen the servers that are gogin to be atacched to it.
 
-The setup to create a Load Balancer
+**The setup to create a Load Balancer**
 
 1. Go to AWS EC2 Load Balancer section
 1. Click Create Load Balancer
@@ -113,7 +113,7 @@ As you learned before from the Env Variable section. A Launch Configuration allo
 
 A thing worth nothing, is that a Launch Configuration can be reused and applayed to different Auto Scalign Groups. This should help you name a LC in a way that will make more sense to you. Since as with AWS, most of the time you can't reneame somethign once you created it.
 
-The setup to create a Launch Configurations
+**The setup to create a Launch Configurations**
 
 1. Go to...
 
@@ -121,7 +121,7 @@ The setup to create a Launch Configurations
 
 This is where you define how many EC2 Instances you would like to have with the exact same configuration. Based on for example a minimum number of servers, CPU load, Traffic in/out or based on waht the waht is seat to a specifci Load Balancer. This means that you can for example say, that you want a minimum o 2 EC2 Servers. This means that AWS will created 2 servers and apply the Launh Configurations that you have selected, and will alwasy keep a minimum of 2 EC2 Instances.
 
-The setup to create a Auto Scaling Group
+**The setup to create a Auto Scaling Group**
 
 1. Go to the Auto Scaling Group section and make a new one
 1. Select the Launch Configuration
@@ -141,7 +141,7 @@ The thing that you can specify in the Dashboard is how the code will be deployed
 
 A little bit of automation ;)
 
-The setup to create a CodeDeploy app
+**The setup to create a CodeDeploy app**
 
 1. Go to the CodeDeploy section
 1. Create a new app
@@ -159,7 +159,7 @@ We are almost at the finish line. Now we need to go to our GitHub project settig
 - Add AWS CodeDeploy
 - Add GitHub Auto-Deployment 
 
-The setup to create Auto-Deployment 
+**The setup to create Auto-Deployment**
 
 1. Got to GitHub
 1. Go to a project
