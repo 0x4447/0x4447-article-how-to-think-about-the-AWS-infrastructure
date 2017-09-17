@@ -119,6 +119,9 @@ The setup to create a Launch Configurations
 
 ### Auto Scaling Group
 
+This is where you define how many EC2 Instances you would like to have with the exact same configuration. Based on for example a minimum number of servers, CPU load, Traffic in/out or based on waht the waht is seat to a specifci Load Balancer. This means that you can for example say, that you want a minimum o 2 EC2 Servers. This means that AWS will created 2 servers and apply the Launh Configurations that you have selected, and will alwasy keep a minimum of 2 EC2 Instances.
+
+The setup to create a Auto Scaling Group
 
 1. Go to the Auto Scaling Group section and make a new one
 1. Select the Launch Configuration
@@ -126,6 +129,10 @@ The setup to create a Launch Configurations
 1. Change the cool down time to 120 sec
     
 ### CodeDeploy
+
+So many words to just reach this "simple" point in space. The place that all just works, you know, like magic, and can be done in minutes. Yea right ;).
+
+The CodeDeploy section will have a list of all the "Apps", lets put them in big air quotes here, this has nothign to do with an app, becasue that would imply some sorth of automation. An app is jsut a colelction of configurations that will be executed 
 
 1. Go to the CodeDeploy section
 1. Create a new app
