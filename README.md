@@ -6,6 +6,8 @@ Still 🚧🍺 Work In Progres...
 
 ---
 
+> I don't know everything, but what I know, I know how to explain 😄
+
 A biggest omission in documentations in general is the frame of reference, a story, and explanation that will help you better understand a complex idea. Some very simple truth, that you can build on top of.
 
 If you were to check all the other articles and project that I have on [GitHub](https://github.com/davidgatti), you’d see that I try to give that to you, because I believe it is the most important peace of information that you should get.
