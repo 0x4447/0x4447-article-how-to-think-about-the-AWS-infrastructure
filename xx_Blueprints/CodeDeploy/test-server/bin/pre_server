@@ -1,6 +1,0 @@
-#!/bin/sh
-if [ "$NODE_ENV" = "local" ]; then
-  node ./bin/server
-else
-  node ./bin/server
-fi
