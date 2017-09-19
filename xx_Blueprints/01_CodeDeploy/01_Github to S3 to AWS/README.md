@@ -12,18 +12,6 @@ How to solve this? Well your skills are the limit, and dependign on what type of
 
 This fodler contains two other folders which contains code that you can use in your Lambda functions, this way you don't have to write evrythign from scratch. But my code is JavaScript code, and if you prefere another language, go ahead and use whtheer AWS Lambda supports.
 
-# The plan 
-
-We'll need two lambda functions to perform all the magic
-
-### serverless-github-listner
-
-This project is a webhook listner which will be trigered by GitHub itselfe every time there is a new commit to the repo we added the webhook for. GitHub by default react to every commit, but the code will take in cosideration only the Master branch. 
-
-### serverless-codedeploy-trigger
-
-This project is responsabile for listening to S3 events created by the previous function and trigerign a CodeDeployment uppon a new file upload.
-
 # The Good
 
 Yes, you can take and use my code, but also you can reuse the setup from the more simplicstic CodeDeploy setup. 
@@ -35,6 +23,18 @@ Yes, you can take and use my code, but also you can reuse the setup from the mor
 - CodeDeploy just minor changes
 
 Overall the big next step is to learn how to use AWS Lambda function and for that we are coing to use https://serverless.com whichi is goign to make our life much easier.
+
+# The plan 
+
+We'll need two lambda functions to perform all the magic
+
+### serverless-github-listner
+
+This project is a webhook listner which will be trigered by GitHub itselfe every time there is a new commit to the repo we added the webhook for. GitHub by default react to every commit, but the code will take in cosideration only the Master branch. 
+
+### serverless-codedeploy-trigger
+
+This project is responsabile for listening to S3 events created by the previous function and trigerign a CodeDeployment uppon a new file upload.
 
 # Lets Execute 
 
