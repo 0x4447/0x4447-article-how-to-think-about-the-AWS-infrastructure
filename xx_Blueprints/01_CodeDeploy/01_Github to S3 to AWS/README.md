@@ -8,21 +8,21 @@ If you remember, I explained the issue with AWS Regions, and how they are islola
 
 How to solve this? Well your skills are the limit, and dependign on what type of expert you are you might solve this problem in a different way then I'm doing, but sicne I'm a Software Developer, I'll be solvign this problem with some code.
 
-# The plan 
-
-I'm gogin to use 2 AWS Lambda functions
-
-- One function will recive webhooks from GitHub everytime there is a new commit. The function will 
-  - only react to commit to the Master brnach
-  - dowload the new code from GitHub
-  - save it on S3 
-- The second function will
-  - Listent for events hapennigni on S3
-  - if a new file shows up, I grab the file and notify CodeDeploy that there is work to do. I'll notify any CodeDeploy in any Region that I care about. 
-  
 # You can use my code
 
 This fodler contains two other folders which contains code that you can use in your Lambda functions, this way you don't have to write evrythign from scratch. But my code is JavaScript code, and if you prefere another language, go ahead and use whtheer AWS Lambda supports.
+
+# The plan 
+
+We'll need two lambda functions to perform all the magic
+
+### serverless-github-listner
+
+This project is a webhook listner which will be trigered by GitHub itselfe every time there is a new commit to the repo we added the webhook for. GitHub by default react to every commit, but the code will take in cosideration only the Master branch. 
+
+### serverless-codedeploy-trigger
+
+This project is responsabile for listening to S3 events created by the previous function and trigerign a CodeDeployment uppon a new file upload.
 
 # The Good
 
@@ -38,4 +38,7 @@ Overall the big next step is to learn how to use AWS Lambda function and for tha
 
 # Lets Execute 
 
-How to install serverless etc.
+Follow the READE.md file fo each projects, where you'll learn how to start workign with Serverless and how to setup each project.
+
+- [serverless-codedeploy-trigger](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/01_CodeDeploy/01_Github%20to%20S3%20to%20AWS/serverless-codedeploy-trigger)
+- [serverless-github-listner](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/01_CodeDeploy/01_Github%20to%20S3%20to%20AWS/serverless-github-listner)
