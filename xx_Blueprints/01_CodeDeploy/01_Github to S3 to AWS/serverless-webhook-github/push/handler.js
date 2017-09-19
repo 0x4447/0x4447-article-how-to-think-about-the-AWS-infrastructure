@@ -9,19 +9,22 @@ let unirest = require('unirest');
 let aws = require('aws-sdk');
 
 //
-//  Initiate the S3 Object.
+//  Initiate the S3 Object while specifying the region where the data is.
 //
 let s3 = new aws.S3({
 	region: "us-east-1"
 });
 
 //
-//  The main function that do stuff.
+//  This Webhook will react to events created by GitHub itself. Every time
+//  someone commits new code to a selected Repo, this Webhook will know
+//  about it.
 //
 module.exports.push = function (event, context, callback) {
 
 	//
-	//  1.  Create a container to pass around the promises.
+	//  1.  Make a container that is going to be passed in the in promise
+	//  	chain.
 	//
 	let container = {
 		secret: event.headers["X-Hub-Signature"].split("=")[1],
@@ -29,27 +32,29 @@ module.exports.push = function (event, context, callback) {
 	}
 
 	//
-	//  1. Start by making sure the event is related to the master branch.
+	//  2. 	Before we do anything we just check if we didn't forget
+	//  	to add a Env variable with the GitHub API key.
 	//
 	check_if_the_api_key_is_present(container)
 		.then(function(container) {
 
 			//
-			//  2.  Make sure the API Key exists.
+			//  2.  Make also sure the Secret env variable is present
 			//
 			return check_if_the_secret_is_present(container);
 
 		}).then(function(container) {
 
 			//
-			//  2.  Make sure the API Key exists.
+			//  2.	Validate the GitHub request by checking the Hash
 			//
 			return check_if_the_request_is_from_github(container);
 
 		}).then(function(container) {
 
 			//
-			//  2.  Make sure the API Key exists.
+			//  2.  Make sure we are going to deploy new code only when it
+			//  	lands in the master branch
 			//
 			return react_only_to_master_branch(container);
 
@@ -70,21 +75,21 @@ module.exports.push = function (event, context, callback) {
 		}).then(function(container) {
 
 			//
-			//  4.  Get the url to the ZIP file on GitHub.
+			//  4.  Get the URL to the archive file on GitHub with the code
 			//
 			return get_ball_url(container);
 
 		}).then(function(container) {
 
 			//
-			//  5.  Download the repo th the tmp dir.
+			//  5.  Download the repo to the tmp dir. max 500MB
 			//
 			return download_the_repo_to_the_tmp_dir(container);
 
 		}).then(function(container) {
 
 			//
-			//  6.  Make a folder where to extract the archive.
+			//  6.  Create a folder where to extract the code
 			//
 			return make_extraction_folder(container);
 
@@ -98,8 +103,7 @@ module.exports.push = function (event, context, callback) {
 		}).then(function(container) {
 
 			//
-			//  8.  Get the root dir from inside the archive so we can
-			//  	removed it.
+			//  8.  Remove the parent folder
 			//
 			return get_the_root_dir_from_the_extracted_repo(container);
 
@@ -379,7 +383,13 @@ function get_ball_url(container)
 }
 
 //
-//  Get the URL where from download the zipped repository.
+//  Download the archived code to the TMP directory.
+//
+//  IMPORTANT
+//
+//  	- 	The size of the TMP dir is 500MB
+//  	- 	The TMP won't be cleared evry time the function runs, meaning you
+//  		can't relies on its state.
 //
 function download_the_repo_to_the_tmp_dir(container)
 {
@@ -442,7 +452,7 @@ function make_extraction_folder(container)
 		//	1.	Check first if the folder already exists. Since it turns out
 		//		that the TMP directory is some what persistent, if the function
 		//		is being executed in short succession, the TMP dir remains
-		//		in place. But it will be deleted if not the function won't be
+		//		in place. But it will be deleted if the function won't be
 		//		used for a longer period of time.
 		//
 		if(!fs.existsSync("/tmp/extracted"))
@@ -492,8 +502,14 @@ function extract_the_files(container)
 }
 
 //
-//	Go inside the extracted repo and look for the root dir where all the files
-//	are nested in, so we can get rid of that folder.
+//	Turns out that when GitHub compresses your repo, it creates a folder, in
+//	which it puts the content of the folder.
+//
+//	Sadly CodeDeploy won't work with nested folders, all the necessary files
+//	need to be in the highest hierarchy.
+//
+//	Meaning we need to extract the archive, and decompress the project to
+//	remove the parent folder.
 //
 function get_the_root_dir_from_the_extracted_repo(container)
 {
@@ -510,8 +526,14 @@ function get_the_root_dir_from_the_extracted_repo(container)
 		//
 		container.folder_to_go = content[0];
 
-		let file = fs.readFileSync("/tmp/extracted/" + container.folder_to_go+ "/README.md");
+		//
+		//
+		//
+		let file = fs.readFileSync("/tmp/extracted/" + container.folder_to_go + "/README.md");
 
+		//
+		//	<> Debug
+		//
 		console.log(file.toString());
 
 		//
@@ -561,7 +583,7 @@ function recompress_the_content_of_the_extraced_folder(container)
 }
 
 //
-//  After having a new compressed file we can take it and stream it to S3.
+//  Send the repository to S3
 //
 function stream_data_to_s3(container)
 {

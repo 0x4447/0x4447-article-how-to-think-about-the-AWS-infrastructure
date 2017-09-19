@@ -1,35 +1,45 @@
 let aws = require('aws-sdk');
 let request = require('request');
 
+//
+//	This Webhook will react to changes that happened in a S3 bucket. This way
+//	when a file receives
+//
 module.exports.autodeploy = (event, context, callback) => {
 
 	//
-	//	<> For debugging
+	//	<> 	For debugging to see what type of data is exactly inside
+	//		the event variable
 	//
 	console.log(JSON.stringify(event, null, '  '));
 
 	//
-	//	1.	Get all the necessary data from the event
+	//	1.	Every time an event o course we save some key information needed
+	//		to then perform other actions
 	//
 	let region = event.Records[0].awsRegion
 	let bucket = event.Records[0].s3.bucket.name
 	let file_name = event.Records[0].s3.object.key
 
 	//
-	//	2.	Create a object to CodeDeploy
+	//	2.	Create a CodeDeploy object while specifying the region this
+	//		CodeDeploy setup was made
 	//
 	let codedeploy = new aws.CodeDeploy({
 		region: region
 	});
 
 	//
-	//	3.	Create a configuration so code deploy knows which deployment to
-	//		trigger, and which code to provide.
+	//	3.	Create a deployment configuration to let CodeDeploy know where
+	//		to get the latest code.
+	//
+	//		The "description" parameter is quite useful since it will be
+	//		added in to CloudTrail for easy debugging.
 	//
 	let params = {
 		applicationName: "www",
 		deploymentGroupName: "name",
-		description: 'Lambda invoked codedeploy deployment',
+		description: 'Lambda invoked CodeDeploy deployment',
 		ignoreApplicationStopFailures: false,
 		revision: {
 			revisionType: 'S3',
@@ -42,7 +52,7 @@ module.exports.autodeploy = (event, context, callback) => {
 	};
 
 	//
-	//	4.	Execute a deployment based on the data that we are going to pass
+	//	4.	Execute a deployment
 	//
 	codedeploy.createDeployment(params, function(cd_error, data) {
 
@@ -55,25 +65,26 @@ module.exports.autodeploy = (event, context, callback) => {
 			//	->	Stop the function and notify the other side that there was
 			//		and error.
 			//
-			callback(cd_error)
+			callback(cd_error);
 		}
 
 		//
 		//	2.	Create a message to let us know that all went well
 		//
-		let message = "---> Success!!! Deployment " + data.deploymentId + " is running.";
+		let message = "---> Success!!! Deployment "
+					+ data.deploymentId
+					+ " is running.";
 
 		//
-		//	3.	Just to have an entry in the log that tels us that all went
-		//		well/
+		//	3.	Use console log to show the that the deployment started.
 		//
-		console.log(message)
+		console.log(message);
 
 		//
 		//	->	Stop the function and send an empty positive response to the
-		//		other side
+		//		other side.
 		//
-		callback()
+		callback();
 
 	});
 
