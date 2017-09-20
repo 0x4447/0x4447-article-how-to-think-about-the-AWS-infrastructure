@@ -35,10 +35,10 @@ Just type this in your terminal and you should see all the logs for that specifi
 
 `serverless logs -f autodeploy -t`
 
-# Env Variables
+# Environment Variables
 
 This project also requires two Env Variables that can be set in the main page of the specific lambda function. 
 
-1. API_KEY - this is a key that you have to create in your personal GitHub account in the  [Personal access tokens](https://github.com/settings/tokens) section. When you crate a new API Key make sure to check the box that ses `repo`. The Key will be used to access to the URL with the ZIP file of a private repo.
-1. SECRET - this is a secret used to make sure that the request that we get comes from GitHub itself. This strign is up to you, and you'll have to use it when you add a Webhook for the selected repo.
+1. **API_KEY** - this is a key that you have to create in your personal GitHub account in the  [Personal access tokens](https://github.com/settings/tokens) section. When you crate a new API Key make sure to check the box that ses `repo`. The Key will be used to access to the URL with the ZIP file of a private repo.
+1. **SECRET** - this is a secret used to make sure that the request that we get comes from GitHub itself. This strign is up to you, and you'll have to use it when you add a Webhook for the selected repo.
 
