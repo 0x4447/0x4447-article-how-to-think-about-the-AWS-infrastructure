@@ -6,7 +6,9 @@ Zones on the other hand are different. This are datacenter within the same city,
 
 But let say that California is hit by a earth quake, then all the Zones in that Region will fail. Thus taking down all the Zones you might have.
 
-This Zones Vs. Regions is also another lie that AWS sells you. They want to let you believe that having server all over the world is as easy as just pushing a bunch of buttons, and vuala, you have a global reach. This is achievable only if you deal with Zones. If you want to have your infrastructure spread across Regions (the world), then you'll end up in a substantial nightmare. Because Regions are completely separate from each other. For example
+This Zones Vs. Regions is also another lie that AWS sells you. They want to let you believe that having server all over the world is as easy as just pushing a bunch of buttons, and vuala, you have a global reach. This is achievable only if you deal with Zones. If you want to have your infrastructure spread across Regions (the world), then you'll end up in a substantial nightmare. Because Regions are completely separate from each other. 
+
+# For Example
 
 ### Load balancer
 
