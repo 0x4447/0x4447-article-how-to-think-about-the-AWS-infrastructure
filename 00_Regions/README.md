@@ -8,17 +8,21 @@ But let say that California is hit by a earth quake, then all the Zones in that 
 
 This Zones Vs. Regions is also another lie that AWS sells you. They want to let you believe that having server all over the world is as easy as just pushing a bunch of buttons, and vuala, you have a global reach. This is achievable only if you deal with Zones. If you want to have your infrastructure spread across Regions (the world), then you'll end up in a substantial nightmare. Because Regions are completely separate from each other. For example
 
-## Load balancer
+### Load balancer
 
 You can't have a load balancer in one Region and tell it also the send traffic to servers in other one. To acive multi region load balancing you are forced to use another AWS service, which is called Route 53.
 
-## AMI - Amazon Machine Images
+### AMI - Amazon Machine Images
 
 If you wanted to create one image and spread it across all the Regions that AWS supports, well good luck, this process even with a clever script will take houers dependign on how big your system images are and to how many regions you sould like to send the to. Why is that? Becasue AWS will litererly have to send a copy fo the seelcted image to each region, no ifferent then sendign a big file over FTP. Just plain ol, copy and wait for the transfer to be over. I once move a 100GB image and it took 1h to do so. 
 
-## Elastic IP
+### Elastic IP
 
 Same situation here, Elastic API can’t be moved between Regions. Each region gets its now sets of Elastic IPs and that is it.
+
+### CodeDeploy
+
+This is the truth that you have to realize, CodeDeploy is also Region specifci, meaning in each region you want to deploy your code, you have to create a carbon copy of the original CodeDeploy that you made.
 
 # To sum it up
 
