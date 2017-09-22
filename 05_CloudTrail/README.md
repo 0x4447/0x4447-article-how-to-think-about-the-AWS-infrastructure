@@ -4,6 +4,12 @@ This tool is a very nice debugging tool. Normally SysAdmins will turn this featu
 
 Another benefit of this logging is that API calls from outside will be logged here, making much easier to debug integrations such as GitHub pushing a notification to CodeDeploy. And for example you might see that the credentials are wrong, etc. 
 
+# Be aware of the bad description
+
+When you'll create a new CloudTrail there will be a section called `Data events` and wehn you are ging to read it you'll think that the CloudTrail applyes only to S3 and not to everything. A fristrating mistake that I did. But in reality basically this is how to think of it...
+
+CloudTrail will log evrything but S3 events, and if you would like to alos include S3 events, you cane do it in the `Data events`.
+
 # How to enable CloudTrail
 
 - Go to S3 and create a new Bucket where all the logs are goign to end up
