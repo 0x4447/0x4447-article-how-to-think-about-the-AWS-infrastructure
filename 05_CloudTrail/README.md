@@ -17,4 +17,6 @@ Another benefit of this logging is that API calls from outside will be logged he
 - From the drop down menu select the bucket that you created previously
 - Click Create.
 
+Aditional details can be found [here](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-a-trail-using-the-console-first-time.html#creating-a-trail-in-the-console)
+
 The logs should start showign up within 15 minutes.
