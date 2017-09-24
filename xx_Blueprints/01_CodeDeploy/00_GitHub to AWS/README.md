@@ -111,9 +111,9 @@ This is what decided how to split the traffic among all the servers that you hav
 1. Go to the next section
 1. Select a `Security Group`
 1. Go to the next section
-1. Select the Target Group that we created previously
+1. From the `Target group` from the drop down select `Existign target group`
+1. From the `Name` select the Target group that you created previously
 1. Go to the next section
-1. For now we will skip the `Register Targets` since we don't have any EC2 ready
 1. Go to the next section
 1. Click Create
 
