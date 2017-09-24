@@ -87,7 +87,7 @@ This will be a user with only `Programmatic access`, meaninig we are going to ge
 1. Set the name to GitHub
 1. For the `Access type` select `Programmatic access`
 1. Go to the Next step
-1. Attache the followign policy `Attach existing policies directly`
+1. For the policy, attach the one that we just created above
 1. Go to the Next step
 1. Click Create user
 1. Save the credentials in a save place.
@@ -97,41 +97,6 @@ This will be a user with only `Programmatic access`, meaninig we are going to ge
 The result of the previous steps can be reused in your AutoDeployment, where the followign one needs to be repeated for each project you want to deploy. Meaninig let say you have a micro-servcie infrastructure, you'll have to repeate the followign steps for each micro service. Or to put it even in a differetn way, you'll have to repeat this step for each repository you have on GitHub.
 
 The idea of the cloud is resiliance, and the ability to spin multiple servers with the same code, so the load can be split across multiple machines. In this setup we are going to have aminimum of two servers (always) thus we need a load balancer which will split the traffci betwen the servers that are gogin to be atacched to it.
-
-### Target Group
-
-Before we can configure the Load Balancer itself we need to create a Trget Group. This TG will be used by the Load Balancer to know to which servers the traffic should be directed. Bascially a Target Group is nothing more then a folder with a bunch of servers inside. You can group your EC2 instances, and then attach this groups to your load balancers, this way you can more easelliy manage the servers, without editign the Load Balancer itself.
-
-**The setups to create a Load Balancer**
-
-1. Go to the `Target Group` section in the AWS EC2 page
-1. Click `Create target group`
-1. Name the group
-1. Keep evrythign as is
-1. But expand the `Advanced health check settings` and set the followng values in the fields: 2, 2, 2, 5
-1. Click Create
-
-### Load Balancer
-
-This is what decided how to split the traffic among all the servers that you have. 
-
-**The setups to create a Load Balancer**
-
-1. Go to the `Load Balancer` section in the AWS EC2 page
-1. Click `Create Load Balancer`
-1. Select `Application Load Balancer`
-1. Set the `Name`, 
-1. Select two `Availability Zones`, the EC2 that you are going to create further will have to go in the same AZ
-1. Go to the next section
-1. Don't bother about the HTTPS warninig (in a prodcution setup you'll want SSL enabled)
-1. Go to the next section
-1. Select a `Security Group`
-1. Go to the next section
-1. From the `Target group` from the drop down select `Existign target group`
-1. From the `Name` select the Target group that you created previously
-1. Go to the next section
-1. Go to the next section
-1. Click Create
 
 ### Launch Configurations
 
@@ -180,6 +145,41 @@ This is where you define how many EC2 Instances you would like to have with the 
 1. Set tags
 1. Go to the next section
 1. Click `Create autoscalign group`
+
+### Target Group
+
+Before we can configure the Load Balancer itself we need to create a Trget Group. This TG will be used by the Load Balancer to know to which servers the traffic should be directed. Bascially a Target Group is nothing more then a folder with a bunch of servers inside. You can group your EC2 instances, and then attach this groups to your load balancers, this way you can more easelliy manage the servers, without editign the Load Balancer itself.
+
+**The setups to create a Load Balancer**
+
+1. Go to the `Target Group` section in the AWS EC2 page
+1. Click `Create target group`
+1. Name the group
+1. Keep evrythign as is
+1. But expand the `Advanced health check settings` and set the followng values in the fields: 2, 2, 2, 5
+1. Click Create
+
+### Load Balancer
+
+This is what decided how to split the traffic among all the servers that you have. 
+
+**The setups to create a Load Balancer**
+
+1. Go to the `Load Balancer` section in the AWS EC2 page
+1. Click `Create Load Balancer`
+1. Select `Application Load Balancer`
+1. Set the `Name`, 
+1. Select two `Availability Zones`, the EC2 that you are going to create further will have to go in the same AZ
+1. Go to the next section
+1. Don't bother about the HTTPS warninig (in a prodcution setup you'll want SSL enabled)
+1. Go to the next section
+1. Select a `Security Group`
+1. Go to the next section
+1. From the `Target group` from the drop down select `Existign target group`
+1. From the `Name` select the Target group that you created previously
+1. Go to the next section
+1. Go to the next section
+1. Click Create
     
 ### CodeDeploy
 
