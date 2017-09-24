@@ -166,6 +166,17 @@ Before we can configure the Load Balancer itself we need to create a Trget Group
 1. But expand the `Advanced health check settings` and set the followng values in the fields: 2, 2, 2, 5
 1. Click Create
 
+Once Created
+
+1. Select the Target Group
+1. Go to the `Targets` tab
+1. Click `Edit`
+1. In the `Instances` table bellow you have all the available instances in your Region
+1. Select the one that you want
+1. Click `Add to registered`
+
+Ony now thoes selected instances will be connected to the Group.
+
 ### Load Balancer
 
 This is what decided how to split the traffic among all the servers that you have. 
@@ -214,10 +225,19 @@ A little bit of automation ;)
 
 ### GitHub
 
-We are almost at the finish line. Now we need to go to our GitHub project settigns, to add support for CodeDeploy, by basically telling GitHub to send a webhook to our seelcted CodeDeploy to let it know that there was a new commit. To achive this we need to add two things:
+We are almost at the finish line. Now we need to go to our GitHub project settigns, to add support for CodeDeploy, by basically telling GitHub to send a webhook to our seelcted CodeDeploy to let it know that there was a new commit. To achive this we need to add two integrations and create one `personal access token`:
 
-- Add AWS CodeDeploy
-- Add GitHub Auto-Deployment 
+**The setup to create a personal access token**
+
+1. Go to the Settign page in your gitHub account
+1. From the left side menu select [personal access token](https://github.com/settings/tokens)
+1. Click `Generate new token`
+1. Name the token, for example I choose `AWSCodeDeploy`
+1. In the `Scope` section select:
+  1. repo:status
+  1. repo_deployment
+1. Click `Generate token`
+1. On the next page, copy and store the token in secure place, this token won't be visible once you live this page.
 
 **The setup to create Auto-Deployment**
 
@@ -235,7 +255,7 @@ We are almost at the finish line. Now we need to go to our GitHub project settig
     1. Don’t set the GitHub token
     1. Check Active
 1. From the `Add Service` drop down menu seelct `GitHub Auto-Deployment`
-    1. Set the GitHub token
+    1. Set the GitHub token created from above
     1. Set the Environments
     1. Don’t check Deploy on status
     1. Don’t set GitHub api url
