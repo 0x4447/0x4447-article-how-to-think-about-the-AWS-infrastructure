@@ -80,11 +80,26 @@ The user that is going to be used on the GitHub side
 
 The result of the previous steps can be reused in your AutoDeployment, where the followign one needs to be repeated for each project you want to deploy. Meaninig let say you have a micro-servcie infrastructure, you'll have to repeate the followign steps for each micro service. Or to put it even in a differetn way, you'll have to repeat this step for each repository you have on GitHub.
 
-### Load Balancer
-
 The idea of the cloud is resiliance, and the ability to spin multiple servers with the same code, so the load can be split across multiple machines. In this setup we are going to have aminimum of two servers (always) thus we need a load balancer which will split the traffci betwen the servers that are gogin to be atacched to it.
 
-**The setup to create a Load Balancer**
+### Target Group
+
+Before we can configure the Load Balancer itself we need to create a Trget Group. This TG will be used by the Load Balancer to know to which servers the traffic should be directed. Bascially a Target Group is nothing more then a folder with a bunch of servers inside. You can group your EC2 instances, and then attach this groups to your load balancers, this way you can more easelliy manage the servers, without editign the Load Balancer itself.
+
+**The setups to create a Load Balancer**
+
+1. Go to the `Target Group` section in the AWS EC2 page
+1. Click `Create target group`
+1. Name the group
+1. Keep evrythign as is
+1. But expand the `Advanced health check settings` and set the followng values in the fields: 2, 2, 2, 5
+1. Click Create
+
+### Load Balancer
+
+This is what decided how to split the traffic among all the servers that you have. 
+
+**The setups to create a Load Balancer**
 
 1. Go to the `Load Balancer` section in the AWS EC2 page
 1. Click `Create Load Balancer`
@@ -97,7 +112,6 @@ The idea of the cloud is resiliance, and the ability to spin multiple servers wi
 1. Select a `Security Group`
 1. Go to the next section
 1. Select the Target Group that we created previously
-1. Expand the `Advanced health check settings` and set the followng values: 2, 2, 2, 5
 1. Go to the next section
 1. For now we will skip the `Register Targets` since we don't have any EC2 ready
 1. Go to the next section
