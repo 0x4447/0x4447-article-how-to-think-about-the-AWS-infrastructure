@@ -115,7 +115,15 @@ A thing worth nothing, is that a Launch Configuration can be reused and applayed
 1. Go to the next section
 1. Name the Launch Configuration. I always append ` - V1` so I know which version I'm at
 1. Make sure you select the `IAM role` to the one that we created in the previous section
-1. If you want to add some `User data` you can expand the `Advanced Details` section so every time the server start it will process this Bash file. 
+1. If you want to add some `User data` you can expand the `Advanced Details` section and add the folowing to test out the Env Variable situation 
+
+```
+#!/bin/bash
+set -e -x
+touch /home/admin/.env
+echo TEST_ENV=Hello >> /home/admin/.env
+```
+
 1. Go to the next section
 1. Add how much storgae you'd need
 1. Go to the next section
