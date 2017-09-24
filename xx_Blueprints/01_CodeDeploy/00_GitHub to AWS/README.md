@@ -181,13 +181,13 @@ A little bit of automation ;)
 **The setup to create a CodeDeploy app**
 
 1. Go to the CodeDeploy section
-1. Create a new app
+1. If this is the first time you run CodeDeploy, select `Custom deployment`
 1. Set a name
-1. Set a group
+1. Set a description
 1. Select Blue/green deployment
-1. Select the Auto Scaling Group that you created
-1. Select the Load Balancer
-1. Set the Service Role
+1. In the `Environment configuration` section select `Automatically copy Auto Scaling group` and then seelct the group that we just created
+1. In the `Load balancer` section select the LB that we created
+1. In the `Service Role` select the role that we created before
 
 ### GitHub
 
