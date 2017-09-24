@@ -126,8 +126,27 @@ A thing worth nothing, is that a Launch Configuration can be reused and applayed
 1. Select the SSH Key
 
 ```
-#!/bin/bash
-set -e -x
+#!/bin/bash -x
+
+sudo apt-get update -y &&
+sudo apt-get install -y python-pip &&
+sudo apt-get install -y ruby &&
+sudo apt-get install -y wget &&
+sudo apt-get install -y curl &&
+
+cd /home/admin &&
+
+REGION=$(curl 169.254.169.254/latest/meta-data/placement/availability-zone/ | sed 's/[a-z]$//') &&
+wget https://aws-codedeploy-$REGION.s3.amazonaws.com/latest/install &&
+
+chmod +x ./install &&
+sudo ./install auto &&
+
+sudo apt-get remove -y wget &&
+sudo apt-get remove -y curl &&
+
+sudo service codedeploy-agent start
+
 touch /home/admin/.env
 echo TEST_ENV=Hello >> /home/admin/.env
 ```
