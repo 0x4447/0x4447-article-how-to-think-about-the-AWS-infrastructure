@@ -14,12 +14,11 @@ This is a Role that will be used by CodeDeploy, this wya when you create a new "
 
 **Steps to make the Service Role**
 
-1. Go to AWS IAM Roles
-1. Click Create new role
-1. From the AWS Service Role select AWS CodeDeploy
-1. Check AWSCodeDeployRole
-1. Click Next Step
-1. Name the service however you want, but make sure the name contains the word Service, better identification
+1. Go to the `Roles` section in the AWS IAM apge
+1. Click `Create role`
+1. From `AWS Service` select AWS CodeDeploy
+1. Go to the Next step
+1. Name the service. I choose to use `PermissionsForCodeDeployToEC2`
 1. Click Create role
 
 ### The Instance Role
@@ -28,27 +27,26 @@ This is a Role that will be used by all the EC2 Instance attached to CodeDeploy
 
 **Steps to make the Instance Role**
 
-1. Go to AWS IAM Roles
-1. Click Create new role
-1. From the AWS Service Role select Amazon EC2
+1. Go to the `Roles` section in the AWS IAM apge
+1. Click `Create role`
+1. From `AWS Service` select `EC2`
+1. Go to the Next step
    1. Check AmazonEC2RoleforAWSCodeDeploy
    1. Check AutoScalingNotificationAccessRole
    1. Check AdministratorAccess
-1. Click Next Step
-1. Name the service however you want, but make sure the name contains the word Instance, better identification
+1. Go to the Next step
+1. Name the service. I choose to use `PermissionsForEC2ToCodeDeploy`
 1. Click Create role
 
 ### The GitHub User Policy
 
 The user that is going to be used on the GitHub side
 
-1. Go to AWS IAM
-1. Go to Policies
-1. Click Create Policy
+1. Go to the `Policies` section in the AWS IAM apge
+1. Click `Create policy`
 1. Select Create Your Own Policy
-1. Set the Policy Name
-1. Set the Description
-1. Paste the JSON from bello in to Policy Document
+1. Set the Policy Name, I choose to use `GitHub`
+1. Paste the bellow JSON in to the `Policy Document` field
 
 ```
 {
