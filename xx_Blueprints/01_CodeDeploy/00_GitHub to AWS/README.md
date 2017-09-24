@@ -31,9 +31,9 @@ This is a Role that will be used by all the EC2 Instance attached to CodeDeploy
 1. Click `Create role`
 1. From `AWS Service` select `EC2`
 1. Go to the Next step
-   1. Check AmazonEC2RoleforAWSCodeDeploy
-   1. Check AutoScalingNotificationAccessRole
-   1. Check AdministratorAccess
+   1. Check `AmazonEC2RoleforAWSCodeDeploy`
+   1. Check `AutoScalingNotificationAccessRole`
+   1. Check `AdministratorAccess`
 1. Go to the Next step
 1. Name the service. I choose to use `PermissionsForEC2ToCodeDeploy`
 1. Click Create role
