@@ -86,23 +86,21 @@ The idea of the cloud is resiliance, and the ability to spin multiple servers wi
 
 **The setup to create a Load Balancer**
 
-1. Go to AWS EC2 Load Balancer section
-1. Click Create Load Balancer
-1. Select Classic Load Balancer
-1. Click Continue
-1. Set the Load Balancer name
-1. Select the right VPC if you have more then one
-1. Don’t check Create an internal load balancer
-1. Don’t check Enable advanced VPC configuration
-1. In the Load Balancer Protocol section select the options that best fits your app
-1. Click Next: Assign Security Groups
-1. Select a Security Group
-1. Click Next: Configure Security Settings
-1. Click Next: Configure Health Check
-1. Select TCP in the drop down menu for Ping Protocol
-1. Click Next: Add EC2 Instances
-1. Click Next: Add Tags
-1. Click Review and Create
+1. Go to the `Load Balancer` section in the AWS EC2 page
+1. Click `Create Load Balancer`
+1. Select `Application Load Balancer`
+1. Set the `Name`, 
+1. Select two `Availability Zones`, the EC2 that you are going to create further will have to go in the same AZ
+1. Go to the next section
+1. Don't bother about the HTTPS warninig (in a prodcution setup you'll want SSL enabled)
+1. Go to the next section
+1. Select a `Security Group`
+1. Go to the next section
+1. Select the Target Group that we created previously
+1. Expand the `Advanced health check settings` and set the followng values: 2, 2, 2, 5
+1. Go to the next section
+1. For now we will skip the `Register Targets` since we don't have any EC2 ready
+1. Go to the next section
 1. Click Create
 
 ### Launch Configurations
