@@ -115,7 +115,7 @@ A thing worth nothing, is that a Launch Configuration can be reused and applayed
 1. Go to the next section
 1. Name the Launch Configuration. I always append ` - V1` so I know which version I'm at
 1. Make sure you select the `IAM role` to the one that we created in the previous section
-1. If you want to add some `User data` you can expand the `Advanced Details` section and add the folowing to test out the Env Variable situation. Find the code to past at the end of this list.
+1. If you want to add some `User data` you can expand the `Advanced Details`. Find the code to past at the end of this list, and don't forget to check the [Env Varaibles](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/00_ENV%20Variables/00_the_basics#the-misterious-user-data-section-in-ec2) section to find out more.
 1. Go to the next section
 1. Add how much storgae you'd need
 1. Go to the next section
