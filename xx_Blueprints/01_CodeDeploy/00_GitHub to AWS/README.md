@@ -76,6 +76,22 @@ The user that is going to be used on the GitHub side
 }
 ```
 
+### The GitHub User
+
+This will be a user with only `Programmatic access`, meaninig we are going to get a API Key and secret to be used on GitHub.com to give GitHub programmatic access to AWS.
+
+**Steps to make a Programmatic User**
+
+1. Go to the `Users` section in the AWS IAM apge
+1. Click `Add user`
+1. Set the name to GitHub
+1. For the `Access type` select `Programmatic access`
+1. Go to the Next step
+1. Attache the followign policy `Attach existing policies directly`
+1. Go to the Next step
+1. Click Create user
+1. Save the credentials in a save place.
+
 # Start
 
 The result of the previous steps can be reused in your AutoDeployment, where the followign one needs to be repeated for each project you want to deploy. Meaninig let say you have a micro-servcie infrastructure, you'll have to repeate the followign steps for each micro service. Or to put it even in a differetn way, you'll have to repeat this step for each repository you have on GitHub.
