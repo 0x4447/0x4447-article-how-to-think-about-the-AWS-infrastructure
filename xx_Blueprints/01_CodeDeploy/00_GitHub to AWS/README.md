@@ -199,19 +199,19 @@ We are almost at the finish line. Now we need to go to our GitHub project settig
 **The setup to create Auto-Deployment**
 
 1. Got to GitHub
-1. Go to a project
+1. Go to a project that you like to deploy
 1. Go in to Settings
 1. Go in to Integrations & services
-1. Add AWS CodeDeploy
-    1. Set the Application name
-    1. Set the Deployment group
+1. From the `Add Service` drop down menu seelct `AWS CodeDeploy`
+    1. Set the Application name that you just crated
+    1. Set the Deployment group that you just crated
     1. Set the Aws access key
-    1. Set the Aws region
+    1. Set the Aws region, probably `us-east-1`
     1. Don’t set GitHub api url
     1. Set the Aws secret access key
     1. Don’t set the GitHub token
     1. Check Active
-1. Add GitHub Auto-Deployment
+1. From the `Add Service` drop down menu seelct `GitHub Auto-Deployment`
     1. Set the GitHub token
     1. Set the Environments
     1. Don’t check Deploy on status
