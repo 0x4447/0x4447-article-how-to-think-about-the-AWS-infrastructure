@@ -123,9 +123,28 @@ As you learned before from the Env Variable section. A Launch Configuration allo
 
 A thing worth nothing, is that a Launch Configuration can be reused and applayed to different Auto Scalign Groups. This should help you name a LC in a way that will make more sense to you. Since as with AWS, most of the time you can't reneame somethign once you created it.
 
-**The setup to create a Launch Configurations**
+**IMPORTANT**: The first time you go through this setup, AWS will give you a wizzard that will help you create a Autoscalign Group with the Launch Configurations since for some reason one can't live without the other - it is romantic, but as the Load Balancer show, two things that works toghether can also be crated on their own and just be.
 
-1. Go to...
+**The setup to create a Launch Configurations - Wizzard**
+
+1. Go to the `Launch Configuration` section in the AWS EC2 page
+1. Click Create Autoscalign Group
+1. Go to the next section
+1. Select the System Image that you would like you server to start from
+1. Go to the next section
+1. Name the Launch Configuration. I always append ` - V1` so I know which version I'm at
+1. Make sure you select the `IAM role` to the one that we created in the previous section
+1. If you want to add some `User data` you can expand the `Advanced Details` section so every time the server start it will process this Bash file. 
+1. Go to the next section
+1. Add how much storgae you'd need
+1. Go to the next section
+1. Select a `Security Group`
+1. Go to the next section
+1. Check if evrythign is OK
+1. Click `Create launch configuration`
+1. Select the SSH Key
+
+After this point you'll imediatly see the `Auto Scaling Group` page since we are in the Wizzard mode
 
 ### Auto Scaling Group
 
@@ -133,10 +152,18 @@ This is where you define how many EC2 Instances you would like to have with the 
 
 **The setup to create a Auto Scaling Group**
 
-1. Go to the Auto Scaling Group section and make a new one
-1. Select the Launch Configuration
-1. Select the Load Balancer
-1. Change the cool down time to 120 sec
+1. Give it a name
+1. Set the group size to a minimum of 1 for now
+1. Select a VPC
+1. Select the subnet nettworks that you used in the `Load Balancer` section
+1. Go to the next section
+1. Keep the default selection
+1. Go to the next section
+1. If you want (I recomend doign it eventually) you can have the Autoscalign Grup send you and email everytime a servers gose down and a new one is created in its place.
+1. Go to the next section
+1. Set tags
+1. Go to the next section
+1. Click `Create autoscalign group`
     
 ### CodeDeploy
 
