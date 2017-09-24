@@ -6,7 +6,7 @@ But since you are goign to do this the first time, there is a good chance that t
 
 # Do it once, and never again 
 
-Before we start working with CodeDeploy we need to do two things in our AWS account. We need to create 2 new Roles and 1 custom policy
+Before we start working with CodeDeploy we need to do two things in our AWS account. We need to create 2 new Roles, 1 custom policy and 1 Programmatic User.
 
 ### The Service Role
 
