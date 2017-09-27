@@ -87,7 +87,7 @@ A thing worth nothing, is that a Launch Configuration can be reused and applayed
 1. Go to the next section
 1. Name the Launch Configuration. I always append ` - V1` so I know which version I'm at
 1. Make sure you select the `IAM role` to the one that we created in the previous section
-1. If you want to add some `User data` you can expand the `Advanced Details`. Find the code to past at the end of this list, and don't forget to check the [Env Varaibles](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/00_ENV%20Variables/00_the_basics#the-misterious-user-data-section-in-ec2) section to find out more.
+1. If you want to add some `User data` you can expand the `Advanced Details`. Find the code to past [here](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/blob/master/xx_Blueprints/01_CodeDeploy/00_GitHub%20to%20AWS/user_data.sh), and don't forget to check the [Env Varaibles](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/00_ENV%20Variables/00_the_basics#the-misterious-user-data-section-in-ec2) section to find out more about `User data` if you didn't read it already.
 1. Go to the next section
 1. Add how much storgae you'd need
 1. Go to the next section
@@ -96,74 +96,6 @@ A thing worth nothing, is that a Launch Configuration can be reused and applayed
 1. Check if evrythign is OK
 1. Click `Create launch configuration`
 1. Select the SSH Key
-
-```
-#!/bin/bash -x
-
-#
-#	Update Apt so we download the latest version of the apps
-#
-sudo apt-get update -y &&
-
-#
-#	Install all the essential tools
-#
-sudo apt-get install -y python-pip &&
-sudo apt-get install -y ruby &&
-sudo apt-get install -y wget &&
-sudo apt-get install -y curl &&
-
-#
-#	Move to the Admin home directory
-#
-cd /home/admin &&
-
-#
-#	Find out the region the server is running
-#
-REGION=$(curl 169.254.169.254/latest/meta-data/placement/availability-zone/ | sed 's/[a-z]$//') &&
-
-#
-#	Download the latest version of CodeDeploy agent
-#
-wget https://aws-codedeploy-$REGION.s3.amazonaws.com/latest/install &&
-
-#
-#	Make the script executable
-#
-chmod +x ./install &&
-
-#
-#	Install CodeDeploy wit the default settings
-#
-sudo ./install auto &&
-
-#
-#	Start the CodeDeploy agent
-#
-sudo service codedeploy-agent start
-
-#
-#	Add Node repo to Apt source
-#
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - &&
-
-#
-#	Install the latest version of Node
-#
-sudo apt-get install -y nodejs &&
-
-#
-#	Remove packages that are not going to be used anymore
-#
-sudo apt-get remove -y wget &&
-sudo apt-get remove -y curl &&
-
-#
-#	Add a Env Variable in to the .env file for the server to read and use.
-#
-echo TEST_ENV=Hello >> /home/admin/.env
-```
 
 After this point you'll imediatly see the `Auto Scaling Group` page since we are in the Wizzard mode
 
