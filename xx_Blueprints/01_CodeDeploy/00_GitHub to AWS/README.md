@@ -46,35 +46,7 @@ The user that is going to be used on the GitHub side
 1. Click `Create policy`
 1. Select Create Your Own Policy
 1. Set the Policy Name, I choose to use `GitHub`
-1. Paste the bellow JSON in to the `Policy Document` field
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:GetDeploymentConfig",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:deploymentconfig:*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:RegisterApplicationRevision",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:application:DemoApplication"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:GetApplicationRevision",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:application:DemoApplication"
-    },
-    {
-      "Effect": "Allow",
-      "Action": "codedeploy:CreateDeployment",
-      "Resource": "arn:aws:codedeploy:us-west-1:143651226701:deploymentgroup:DemoApplication/DemoFleet"
-    }
-  ]
-}
-```
+1. Paste the [following JSON](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/blob/master/xx_Blueprints/01_CodeDeploy/00_GitHub%20to%20AWS/GitHub_Policy.json) in to the `Policy Document` field
 
 ### The GitHub User
 
