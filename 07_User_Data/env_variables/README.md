@@ -20,7 +20,7 @@ Well you could write something like this:
 #
 # exit at the first command that fails unexpectedly
 #
-set -e 
+set -e
 
 #
 # Print each command to stdout before executing it
