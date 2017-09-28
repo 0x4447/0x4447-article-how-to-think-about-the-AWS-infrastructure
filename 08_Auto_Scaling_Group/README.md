@@ -32,3 +32,24 @@ An `Auto Scaling Group` can't exists wihout a `Launh Configuration`, thus the la
 
 As you can see this is the identialc setup for a EC2 Instacne, and as you can see from the 3th option, we have access to the `Configure details` where you can specify the `User data`! Meaninig you can reliebliy make EC2 cloens indentical to each other.
 
+# Edit Launh Configuration and update all the EC2
+
+Let say you need to make a chagne in the `Launh Configuration` and updated all the EC2 that were created with the original configuration by the `Auto Scaling Group`. Turns out that this is straigth forward and cool onces someone tells you how to go about it (Wait... am I gettign excited 🤔). 
+
+### Make a Launh Configuration copy
+
+When you visit the `Launh Configuration` menu, you have the chance to make a copy of a specific configuration (you can't edit them dirrectly). When you start makign a copy, you'll have the chnce to name the new configuration, I always append `- V1` to keep track how many edits did I do, and which one is the latest version. 
+
+Then in the 3th tab you can as always edit your `User data` to the new script that you did. Once you are done, you just save the new `Launh Configuration`, and this is step one.
+
+### Update the Auto Scaling Group
+
+The `Auto Scaling Group` have very limited edits options. But one important thing you can edit, is the active `Launh Configuration` to be used when creatgin new EC2 Instances. This means that you select the Group you want to change, select edit, and chagne the `Launh Configuration` to the latest version you made, and save.
+
+Now, notign will happen, all the active and workign EC2 Instance will keep on workign, to apply the new configuration, you'll have to termiante the EC2 Instances. When you do that, the `Auto Scaling Group` will detect that the Group doesnet have the minimum ammount of healty servers, and will start to spin new ones. As you can imagin, it will start new EC2 servers based on the new configuration that you made.
+
+This givews you the option to terminate every EC2 at once, or update the group by termianting one server at the time. It is up to you how you want to go aobut it. 
+
+# Amazing End
+
+As you can see this part is actually fairly cool, and works well once you udnerstand how to trully go about it :).
