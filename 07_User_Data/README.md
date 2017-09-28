@@ -44,3 +44,16 @@ In the logs look for `cloud-init` to find out what your script did.
 # What is Cloud-init?
 
 Cloud-init is the defacto [multi-distribution package](http://cloudinit.readthedocs.io/en/latest/index.html) that handles early initialization of a cloud instance. So if you want to do more with it, check the documentation.
+
+# Can I see the User data of an instance?
+
+Definetly, and you do it like this:
+
+1. Select the instance that you want to check out
+1. Click the `Action` drop down menu
+1. Hover over `Instance Settings`
+1. Then select `View/Change user Data`
+
+# Can I change the User data of an instance?
+
+Yes, to do so you have to first stop the instance and repeate the steps from above. Since the User data will can be applyed only when the system boots. 
