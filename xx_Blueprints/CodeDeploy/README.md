@@ -65,7 +65,7 @@ You can stop it, restart it etc using `service`
 
 ### Test if you have the right Roles
 
-As mentioned in the folder before. Each EC2 Instance needs to have the right permissions to perform the right task. This is done with IAM Roles, and to check if they are set correctly you can call this URLs to see what you have.
+As mentioned in the folder before. Each EC2 Instance needs to have the right permissions to perform the right task. This is done with IAM Roles, and to check if they are set correctly you can call this URL http://169.254.169.254 to see what you have.
 
 The following command will show you the name of the Role that is applyed to the EC2 Instance
 
