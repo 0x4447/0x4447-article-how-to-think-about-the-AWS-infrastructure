@@ -2,6 +2,10 @@
 
 OK, we did spend some time understandign the high level concept of AWS and CodeDeploy, we know by now that the Amazon promises are lies, and we have to put in the work if we don't want to use any 3th party sulution. Lets tart with what CodeDeploy givews you and how it can help you to deploy your code.
 
+# It is just an app
+
+CodeDeploy is truly jsut an [app](http://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html) that you have to install on each deployed server. Then this app is used by CodeDeploy in the AWS dashboard to communicate and perform actions based on the configuration file that is suplied with the project.
+
 # The appspec.yml file
 
 To use CodeDeploy you need to add the appspec.yml file to your project, without it CD won't work at all, becasue this fail contains all the instructions for CodeDeploy to work. You can specify where the code should be moved. You can specify to run Bash scripts that you prepared, before instlation, after instalation etc. Basically this is the place where you construct what will happen once CodeDeploy starts workign inside an EC2 instance. Check out the example file bellow to get an idea of what can be specified.
