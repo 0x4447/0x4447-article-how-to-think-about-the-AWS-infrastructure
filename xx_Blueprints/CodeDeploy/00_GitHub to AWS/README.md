@@ -1,117 +1,11 @@
 # It is time to trully do it
 
-By now I trulls hope I gave you a good picture of AWS, and if you give yoursefle some time to process all of the previous information, from now on, nothing should look complicated anymore. 
+By now I trulls hope I gave you a good picture of AWS, and if you give yoursefle some time to process all of the previous information, from now on, nothing should look complicated anymore.
 
 But since you are goign to do this the first time, there is a good chance that the setup won't work the first time. If this happens, scrap averythign and start over. THere are meny steps in this process, and if you miss one, nothing will wokr. Give yourself time, and be patient. There is a lot to go thorough.
 
-# Do it once, and never again 
-
-Before we start working with CodeDeploy we need to do two things in our AWS account. We need to create 2 new Roles, 1 custom policy and 1 Programmatic User.
-
-### The Service Role
-
-This is a Role that will be used by CodeDeploy, this wya when you create a new "App" in the CodeDeploy UI, you can give this setup the rights to perform actions on your behalf. In this case you'll give it access to the EC2 Instances.
-
-**Steps to make the Service Role**
-
-1. Go to the `Roles` section in the AWS IAM apge
-1. Click `Create role`
-1. From `AWS Service` select AWS CodeDeploy
-1. Go to the Next step
-1. Name the service. I choose to use `PermissionsForCodeDeployToEC2`
-1. Click Create role
-
-### The Instance Role
-
-This is a Role that will be used by all the EC2 Instance attached to CodeDeploy
-
-**Steps to make the Instance Role**
-
-1. Go to the `Roles` section in the AWS IAM apge
-1. Click `Create role`
-1. From `AWS Service` select `EC2`
-1. Go to the Next step
-   1. Check `AmazonEC2RoleforAWSCodeDeploy`
-   1. Check `AutoScalingNotificationAccessRole`
-   1. Check `AdministratorAccess`
-1. Go to the Next step
-1. Name the service. I choose to use `PermissionsForEC2ToCodeDeploy`
-1. Click Create role
-
-### The GitHub User Policy
-
-The user that is going to be used on the GitHub side
-
-1. Go to the `Policies` section in the AWS IAM apge
-1. Click `Create policy`
-1. Select Create Your Own Policy
-1. Set the Policy Name, I choose to use `GitHub`
-1. Paste the [following JSON](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/blob/master/xx_Blueprints/01_CodeDeploy/00_GitHub%20to%20AWS/GitHub_Policy.json) in to the `Policy Document` field
-
-### The GitHub User
-
-This will be a user with only `Programmatic access`, meaninig we are going to get a API Key and secret to be used on GitHub.com to give GitHub programmatic access to AWS.
-
-**Steps to make a Programmatic User**
-
-1. Go to the `Users` section in the AWS IAM apge
-1. Click `Add user`
-1. Set the name to GitHub
-1. For the `Access type` select `Programmatic access`
-1. Go to the Next step
-1. For the policy, attach the one that we just created above
-1. Go to the Next step
-1. Click Create user
-1. Save the credentials in a save place.
-
 - https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling
 
-### Target Group
-
-Before we can configure the Load Balancer itself we need to create a Trget Group. This TG will be used by the Load Balancer to know to which servers the traffic should be directed. Bascially a Target Group is nothing more then a folder with a bunch of servers inside. You can group your EC2 instances, and then attach this groups to your load balancers, this way you can more easelliy manage the servers, without editign the Load Balancer itself.
-
-**The setups to create a Load Balancer**
-
-1. Go to the `Target Group` section in the AWS EC2 page
-1. Click `Create target group`
-1. Name the group
-1. Keep evrythign as is
-1. But expand the `Advanced health check settings` and set the followng values in the fields: 2, 2, 2, 5
-1. Click Create
-
-Once Created
-
-1. Select the Target Group
-1. Go to the `Targets` tab
-1. Click `Edit`
-1. In the `Instances` table bellow you have all the available instances in your Region
-1. Select the one that you want
-1. Click `Add to registered`
-
-Ony now thoes selected instances will be connected to the Group.
-
-### Load Balancer
-
-This is what decided how to split the traffic among all the servers that you have. 
-
-**The setups to create a Load Balancer**
-
-1. Go to the `Load Balancer` section in the AWS EC2 page
-1. Click `Create Load Balancer`
-1. Select `Application Load Balancer`
-1. Set the `Name`, 
-1. Select two `Availability Zones`, the EC2 that you are going to create further will have to go in the same AZ
-1. Go to the next section
-1. Don't bother about the HTTPS warninig (in a prodcution setup you'll want SSL enabled)
-1. Go to the next section
-1. Select a `Security Group`
-1. Go to the next section
-1. From the `Target group` from the drop down select `Existign target group`
-1. From the `Name` select the Target group that you created previously
-1. Go to the next section
-1. Go to the next section
-1. Click Create
-    
 ### CodeDeploy
 
 So many words to just reach this "simple" point in space. The place where all just works, you know, like magic, and can be done in minutes. Yea right ;).
@@ -120,7 +14,7 @@ The CodeDeploy section will have a list of all the "Apps", but lets put big air 
 
 The thing that you can specify in the Dashboard is how the code will be deployed, for example:
 
-- Deploy the new code on each EC2 one by one, and stop if somethign goes wrong. 
+- Deploy the new code on each EC2 one by one, and stop if somethign goes wrong.
 - Replace the code at the same time on all servers.
 
 A little bit of automation ;)
