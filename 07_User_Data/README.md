@@ -2,13 +2,13 @@
 
 Each EC2 Instance has a feature that is not well explained nor talk about much. It has the mysterious name of `User data` and it is hidden in the 3th tab/step `3. Configure Instance` under a folded section called `Advanced Details` when you create a new EC2 instance.
 
-If you unfold this section you'll get a form where you can add some data. If you paste or add a Bash script, then this script will be executed when the new machine boots after the nettwork cards comes on-line. 
+If you unfold this section you'll get a form where you can add some data. If you paste or add a Bash script, then this script will be executed when the new machine boots after the network cards comes on-line.
 
-This givews you the ability to have indentical servers each time you start a new one just by pastign a Bash script that you designed. 
+This gives you the ability to have identical servers each time you start a new one just by pasting a Bash script that you designed.
 
 # Example
 
-This means that you can make sure that you'll have all the applications that you need, languagase support and more. But not limited to beeing able to edit, chagne, delete reshuffle any file in the system. 
+This means that you can make sure that you'll have all the applications that you need, language support and more. But not limited to being able to edit, change, delete reshuffle any file in the system.
 
 # Env Variables for your app
 
@@ -16,20 +16,32 @@ This means also that if you were to paste a script like this:
 
 ```
 #!/bin/bash
-set -e -x
+
+#
+# Print each command to stdout before executing it
+#
+set -x
+
+#
+# Create file
+#
 touch /home/admin/.env
+
+#
+# Appedn data to the file
+#
 echo TEST_ENV=Hello >> /home/admin/.env
 ```
 
-You could have Enviroment Variable that are dynamic for each deployment and unacessible by anybody, but the application iteslef. 
+You could have Environment Variable that are dynamic for each deployment and unaccessible by anybody, but the application it self.
 
-# User data is powerfull but it is a lot fo work
+# User data is powerful but it is a lot fo work
 
-Make not mistake, this is one of thoes things that you'll have to do yoursele and there is no automation, one click to make it work etc. You'll have to know how to wrtie Bash scripts, you'll have to spedn the time to debug them, test them, and make sure they wrok, which is time consumign since EC2 servers don't boot instatly. I recocmend also, don't take it granted that if the script works on your local machine it will work 100% on a EC2. ALwasy test on AWS before you call it a day.
+Make not mistake, this is one of those things that you'll have to do yourself and there is no automation, one click to make it work etc. You'll have to know how to write Bash scripts, you'll have to spend the time to debug them, test them, and make sure they work, which is time consuming since EC2 servers don't boot instantly. I recommend also, don't take it granted that if the script works on your local machine it will work 100% on a EC2. ALwasy test on AWS before you call it a day.
 
 # How to debug User data
 
-As mentioned before, anything that you type in the `User data` field will be executed only after the nettwork card comes on-line. All the logs are going to be send to `syslog` so to see what is happening or happened you can either:
+As mentioned before, anything that you type in the `User data` field will be executed only after the network card comes on-line. All the logs are going to be send to `syslog` so to see what is happening or happened you can either:
 
 **Tail**
 
@@ -39,7 +51,7 @@ As mentioned before, anything that you type in the `User data` field will be exe
 
 `cat /var/log/syslog`
 
-In the logs look for `cloud-init` to find out what your script did. 
+In the logs look for `cloud-init` to find out what your script did.
 
 # What is Cloud-init?
 
@@ -47,7 +59,7 @@ Cloud-init is the defacto [multi-distribution package](http://cloudinit.readthed
 
 # Can I see the User data of an instance?
 
-Definetly, and you do it like this:
+Definitely, and you do it like this:
 
 1. Select the instance that you want to check out
 1. Click the `Action` drop down menu
@@ -56,4 +68,4 @@ Definetly, and you do it like this:
 
 # Can I change the User data of an instance?
 
-Yes, to do so you have to first stop the instance and repeate the steps from above. Since the User data will can be applyed only when the system boots. 
+Yes, to do so you have to first stop the instance and repeate the steps from above. Since the User data will can be applyed only when the system boots.
