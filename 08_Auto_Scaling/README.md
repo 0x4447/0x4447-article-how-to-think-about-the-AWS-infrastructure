@@ -71,3 +71,58 @@ The down side of this aproach is that the developers won't and should not have a
 The idea of CodeDeploy is to use the special configuration file that a develoepr adds to the proejct to tell CodeDeploy waht to do. Whichi intiles anywah writign Bash Scripts ;) so we solved nothing in essenc. 
 
 But I want you to understand this difference, which is sattle, nobody talsk about thus create confusion. Meaninig if you are happy with the `User data` section, just use that and be happy. If you or someoen alse on top of you wants to do it the Hispter way, then you'll have to learn how to do it the CodeDeploy way.
+
+# Step by Step Setup
+
+The result of the previous steps can be reused in your AutoDeployment, where the followign one needs to be repeated for each project you want to deploy. Meaninig let say you have a micro-servcie infrastructure, you'll have to repeate the followign steps for each micro service. Or to put it even in a differetn way, you'll have to repeat this step for each repository you have on GitHub.
+
+The idea of the cloud is resiliance, and the ability to spin multiple servers with the same code, so the load can be split across multiple machines. In this setup we are going to have aminimum of two servers (always) thus we need a load balancer which will split the traffci betwen the servers that are gogin to be atacched to it.
+
+### Launch Configurations
+
+As you learned before from the Env Variable section. A Launch Configuration allows you to create identical EC2 instances, based on what is specified in such configuration. A LC must be created if you are going to use the Auto Scaling featire. 
+
+A thing worth nothing, is that a Launch Configuration can be reused and applayed to different Auto Scalign Groups. This should help you name a LC in a way that will make more sense to you. Since as with AWS, most of the time you can't reneame somethign once you created it.
+
+**IMPORTANT**: The first time you go through this setup, AWS will give you a wizzard that will help you create a Autoscalign Group with the Launch Configurations since for some reason one can't live without the other - it is romantic, but as the Load Balancer show, two things that works toghether can also be crated on their own and just be.
+
+**The setup to create a Launch Configurations - Wizzard**
+
+1. Go to the `Launch Configuration` section in the AWS EC2 page
+1. Click Create Autoscalign Group
+1. Go to the next section
+1. Select the System Image that you would like you server to start from
+1. Go to the next section
+1. Name the Launch Configuration. I always append ` - V1` so I know which version I'm at
+1. Make sure you select the `IAM role` to the one that we created in the previous section
+1. If you want to add some `User data` you can expand the `Advanced Details`. Find the code to past [here](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/blob/master/xx_Blueprints/01_CodeDeploy/00_GitHub%20to%20AWS/user_data.sh), and don't forget to check the [Env Varaibles](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/00_ENV%20Variables/00_the_basics#the-misterious-user-data-section-in-ec2) section to find out more about `User data` if you didn't read it already.
+1. Go to the next section
+1. Add how much storgae you'd need
+1. Go to the next section
+1. Select a `Security Group`
+1. Go to the next section
+1. Check if evrythign is OK
+1. Click `Create launch configuration`
+1. Select the SSH Key
+
+After this point you'll imediatly see the `Auto Scaling Group` page since we are in the Wizzard mode
+
+### Auto Scaling Group
+
+This is where you define how many EC2 Instances you would like to have with the exact same configuration. Based on for example a minimum number of servers, CPU load, Traffic in/out or based on waht the waht is seat to a specifci Load Balancer. This means that you can for example say, that you want a minimum o 2 EC2 Servers. This means that AWS will created 2 servers and apply the Launh Configurations that you have selected, and will alwasy keep a minimum of 2 EC2 Instances.
+
+**The setup to create a Auto Scaling Group**
+
+1. Give it a name
+1. Set the group size to a minimum of 1 for now
+1. Select a VPC
+1. Select the subnet nettworks that you used in the `Load Balancer` section
+1. Go to the next section
+1. Keep the default selection
+1. Go to the next section
+1. If you want (I recomend doign it eventually) you can have the Autoscalign Grup send you and email everytime a servers gose down and a new one is created in its place.
+1. Go to the next section
+1. Set tags
+1. Go to the next section
+1. Click `Create autoscalign group`
+
