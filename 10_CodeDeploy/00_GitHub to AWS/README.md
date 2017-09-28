@@ -4,7 +4,10 @@ By now I trulls hope I gave you a good picture of AWS, and if you give yoursefle
 
 But since you are goign to do this the first time, there is a good chance that the setup won't work the first time. If this happens, scrap averythign and start over. THere are meny steps in this process, and if you miss one, nothing will wokr. Give yourself time, and be patient. There is a lot to go thorough.
 
+- https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM
+- https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/07_User_Data
 - https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling
+- https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/09_Load_Balancing
 
 ### CodeDeploy
 
