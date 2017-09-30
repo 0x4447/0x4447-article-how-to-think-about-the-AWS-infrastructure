@@ -4,11 +4,11 @@ What is the difference right? Amazon have datacenter in different cities, states
 
 Zones on the other hand are different. This are datacenter within the same city, or they might be located in the same datacenter, but on a independent hardware network, infrastructure (building), internet connection etc. This means that if a Zone in a Region fails, all the other Zones will still work - since they are independent. 
 
-But let say that California is hit by a earth quake, then all the Zones in that Region will fail. Thus taking down all the Zones you might have.
+But let say that California is hit by a earth quake, then that Region will go down wit all the Zones.
 
-This Zones Vs. Regions is also another lie that AWS sells you. They want to let you believe that having server all over the world is as easy as just pushing a bunch of buttons, and vuala, you have a global reach. This is achievable only if you deal with Zones. If you want to have your infrastructure spread across Regions (the world), then you'll end up in a substantial nightmare. Because Regions are completely separate from each other. 
+This Zones Vs. Regions is also another lie that AWS sells you. They want to let you believe that having server all over the world is as easy as just pushing a bunch of buttons, and vuala, you have a global reach. This is easier to do if you work with Zones. If you want to have your infrastructure spread across Regions (the world), then you'll end up in a substantial nightmare. Because Regions are completely separate/independent from each other. 
 
-# For Example
+# For Example some Region specifci services
 
 ### Load balancer
 
@@ -28,6 +28,6 @@ This is the truth that you have to realize, CodeDeploy is also Region specifci, 
 
 # To sum it up
 
-AWS wants to let you believe that their infrastructure is homogeneous as if it was working as one big machine. But in reality it is very Region specific. Once you create all your infrastructure in one Region, well you are stuck there. And you have to redo all the work that you jsut did once more for each Region. 
+AWS wants to let you believe that their infrastructure is homogeneous as if it was working as one big machine. But in reality it is very Region specific. Once you create all your infrastructure in one Region, well, you are stuck there. And you have to redo all the work that you jsut did once more for each Region. 
 
 It is possible to autoamte this process, but I don't want to overload you with information at this point. My point is to make sure that you udnerstand this sligth but very imporatant difference, betwen Regions and Zones.
