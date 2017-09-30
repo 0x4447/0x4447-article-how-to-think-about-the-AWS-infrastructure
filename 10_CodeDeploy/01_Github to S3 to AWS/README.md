@@ -1,28 +1,18 @@
-# Where is the promised Global reach?! 
+# Mutli Region Deployment
 
-We managed to make a Auto Deployment but we are not finished yet becasue what was promissed by AWS was gloabl reach with a push of a button. Well yea, sure, one day, but untill then we have to wrtie some software, chagne our aproach, and be even more patietn. 
+If you remember, in the [00_Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions) section I explained the issue with AWS Regions, and how they are islolated island that don't communicate with each other. This section will help you understand how to go about this Multi Region Deployment or anythign for that matter that needs to be done across region. 
 
-# The problem
+# We need to be clear on one thing
 
-If you remember, I explained the issue with AWS Regions, and how they are islolated island that ton't communicate with each other. Well we need to find a way to actually tell different Regions that there was a new commit, or that there is new code to be deployed. 
-
-How to solve this? Well your skills are the limit, and dependign on what type of expert you are you might solve this problem in a different way then I'm doing, but sicne I'm a Software Developer, I'll be solvign this problem with some code.
+Let say you want to have your site to be in multiple regions, you'll have to create the same exact configuration in each region. Evrythign needs to be identical for evrything to work. The only thing that you don't have to repate is the IAM confgiration since that is a Global resource. 
 
 # You can use my code
 
-This fodler contains two other folders which contains code that you can use in your Lambda functions, this way you don't have to write evrythign from scratch. But my code is JavaScript code, and if you prefere another language, go ahead and use whtheer AWS Lambda supports.
+This folder contains two other folders which contains code that you can use in your Lambda functions, this wey you don't have to write evrythign from scratch. But my code is JavaScript code, and if you prefere another language, go ahead and use whtheer AWS Lambda supports. I tryed to comment as much as possible so you should figure out the logic of my code and transalte it in another language that you feal more confortable with. 
 
 # The Good
 
-Yes, you can take and use my code, but also you can reuse the setup from the more simplicstic CodeDeploy setup. 
-
-- The roles stay the same
-- Load Balancer
-- Configuration
-- Autoscaling
-- CodeDeploy just minor changes
-
-Overall the big next step is to learn how to use AWS Lambda function and for that we are coing to use https://serverless.com whichi is goign to make our life much easier.
+Other then settign up evrythign the same in each region, and creatgin a CodeDeploy also in each region the only thing that actually chagnes is the GitHub setup. 
 
 # The plan 
 
