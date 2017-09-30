@@ -12,19 +12,7 @@ This folder contains two other folders which contains code that you can use in y
 
 # The Good
 
-Other then settign up evrythign the same in each region, and creatgin a CodeDeploy also in each region the only thing that actually chagnes is the GitHub setup. 
-
-# The plan 
-
-We'll need two lambda functions to perform all the magic
-
-### serverless-github-listner
-
-This project is a webhook listner which will be trigered by GitHub itselfe every time there is a new commit to the repo we added the webhook for. GitHub by default react to every commit, but the code will take in cosideration only the Master branch. 
-
-### serverless-codedeploy-trigger
-
-This project is responsabile for listening to S3 events created by the previous function and trigerign a CodeDeployment uppon a new file upload.
+Other then settign up evrythign the same in each region, and creatgin a CodeDeploy also in each region the only thing that actually chagnes is the GitHub setup which you cna find in the [serverless-github-listner](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/10_CodeDeploy/01_Github%20to%20S3%20to%20AWS/serverless-github-listner) folder.
 
 # Lets Execute 
 
