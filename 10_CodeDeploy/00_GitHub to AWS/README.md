@@ -3,7 +3,6 @@
 Since this article was designet to be moduler, before you do anythign with CodeDeploy you need to go over the following step. Each section have a details explanation how to create each peace of the puzzle. This section contains only the steps that can't be shared with other part of the article. 
 
 - First we need to create some credentials: [02_IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM)
-- Then we need to know how to use the User data functionality to have a consistent EC2 deployment: [07_User_Data](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/07_User_Data)
 - Then we have to configure autoscaling: [08_Auto_Scaling](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling)
 - And lastly we have to create a Load balancer to attach to the Autoscaling Group [09_Load_Balancing](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/09_Load_Balancing)
 
