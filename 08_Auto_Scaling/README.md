@@ -85,7 +85,7 @@ This are the differecne worth knowing.
 1. Go to the next section
 1. Name the Launch Configuration. I always append ` - V1` so I know which version I'm at
 1. Make sure you select the `IAM role` to the one that we created in the previous section
-1. If you want to add some `User data` you can expand the `Advanced Details`. Find the code to past [here](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/blob/master/xx_Blueprints/01_CodeDeploy/00_GitHub%20to%20AWS/user_data.sh), and don't forget to check the [Env Varaibles](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/00_ENV%20Variables/00_the_basics#the-misterious-user-data-section-in-ec2) section to find out more about `User data` if you didn't read it already.
+1. If you want to add some `User data` you can expand the `Advanced Details`. Find the code to past [here](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/blob/master/08_Auto_Scaling/user_data.sh), and don't forget to check the [07_User_Data](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/07_User_Data) section to find out more about `User data` if you didn't read it already.
 1. Go to the next section
 1. Add how much storgae you'd need
 1. Go to the next section
