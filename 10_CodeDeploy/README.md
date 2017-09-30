@@ -1,51 +1,14 @@
 # CodeDeploy
 
-All the folders in the repo before this one, were put there to prepare you to the biggest lie of them all… CodeDeploy. Very article on the internet will start by telling how easy it is an how everything will just be automatic and works.
+If you go the homepage of this article you'll see that all the names of the folders are prepended with a number. This was done on purpouse to help teach step by step each key aspect of AWS in a order that builds on to of the previouys sections. I belive this order is key to more simply kickstart your midn to structure and organize the key components of AWS. 
 
-This is complete nonsense. That is why first we need to understand what really is CodeDeploy, and how can you interact with it, to make it work the way it was advertised. Because the fans idea spread on-line is that you push a commit to GitHub and magically it will be deployed to all your servers - AHAHAHAHAH - thats all I can say. Good luck finding the magic button or setting.
+A very important thing to understand is that you can't use CodeDepoy before you udnerstand all the othere Lego blocks. I mean you could follow a tutorial that takes you step by step, but you wouldn't be able to chagne he configurations, or deploy another peace of software thath needs some changes. By reachign this poing after going over each other section will allow you to honeslty do whathever you want with AWS at this point, and CodeDeploy is the last missing peace to unlock the whole potential of AWS, any other tool that you'll use afte this point are goign to be nice addition that are not critial to use or understand the Amazon offering. 
 
-The reality is that CodeDeploy is just a an app that AWS did. Meaning this is just an app that you needs to install on each server you want to deploy your code to.
+And so you see how the Marketign materials and all the PR done around AWS and CodeDeploy is far from the truth. We head to leanr 10 other things befroe we could reach this point. But maybe I'm stipud and never found the magic button, or are a bad DevOps becasue I unable to setup evrythign that is needed for CodeDeploy in 5 minuets? Maybe, so if you think that you foudn the magic button, or knwo a trick to deploy all this in minutes as advertised, please let me know. 
 
-In addition to that you won’t be able to deploy in a easy way across all the world, because as we learned, AWS is strictly Region specific, and all regions are independent.
+# What is CodeDeploy?
 
-Am I’m telling that you can’t have servers all over the globe and push a commit to all of them, no. I’m telling that to achieve that you’ll spend months preparing the infrastructure of this scenario.
-
-I hope that I can help you cut down on the time need to achieve it, but lets not lie to ourselves, you’ll still need time and dedication to do it.
-
-# Legos with Legos
-
-If AWS are Legos scattered on the ground, then CodeDepoy are even more fine peaces sprinkled around, because you can go about making an auto deployment in dozens of way. Seriously your imagination and level of masohism is your limit.
-
-# In more detail later, but in the mean time
-
-**Availability Zones**
-
-The "easiest" way to deploy a new commit to multiple server is by just staying in one Region, and deploy to multiple servers scattered across multiple Availability Zones.
-
-This way you can setup a GitHub project to fire a webhook to a seelcted CodeDeploy, which will initiate the deployment if configured the right way.
-
-**Multi Region Deployment**
-
-Since you can't setup GitHub to fire a webhook to multipe CodeDeploys in diffeent regions, we need to chagne the aproach, and the simplest solution is this:
-
-1. You create a Lambda function waht will receive the GitHub webhook notifciation when there is a new commit.
-1. The Lambda function will dowload the compressed repo and save it in a S3 Bucket
-1. Any code Deploy that you might have setup will listen to events created by that S3 bucket
-1. A new file will trigger CodeDeploy to get the file and deploy it.
-
-This solution will allow you to trully deploy acros Regions since S3 is not Region specifci. Simple right? Just works right? Wait untill you'll see the real setup 🤣.
-
-# And done!
-
-We arrive at the end, where you should have the bare minimum knoledge require to start having an undestandign how to put the Lego blocks together. I know there is a lot to take in, but my hope is that I'll shorten the time required to get a graps of the core elemtns of AWS.
-
-# Time for the details
-
-OK, we did spend some time understandign the high level concept of AWS and CodeDeploy, we know by now that the Amazon promises are lies, and we have to put in the work if we don't want to use any 3th party sulution. Lets tart with what CodeDeploy givews you and how it can help you to deploy your code.
-
-# It is just an app
-
-CodeDeploy is truly jsut an [app](http://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html) that you have to install on each deployed server. Then this app is used by CodeDeploy in the AWS dashboard to communicate and perform actions based on the configuration file that is suplied with the project.
+CodeDeploy is truly just an [app](http://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html) that you have to install on each deployed server (if you don't use the official AWS images). This app is used by CodeDeploy in the AWS dashboard to communicate with the server and perform actions based on the configuration file that is suplied with the project.
 
 # The appspec.yml file
 
@@ -120,5 +83,22 @@ This one will show you details about the Role.
 curl http://169.254.169.254/latest/meta-data/iam/security-credentials/NAME_OF_THE_ROLE_THAT_YOU_GOT_FROM_THE_COMMAND_BEFORE
 ```
 
+# The two folders in this section
 
+**Availability Zones**
 
+The "easiest" way to deploy a new commit to multiple server is by just staying in one Region, and deploy to multiple servers scattered across multiple Availability Zones.
+
+Usign this aproach you can setup GitHub to actually trigger a CodeDeploy deployment fairly easy sicne each repo can have a CodeDeploy trigger. 
+
+**Multi Region Deployment**
+
+The triggers that you configured in the single Region setup don't have the option to trigger multiple CodeDeployments setup. Meaning there is no way for GitHub to notify more then one CodeDeploy application. This means that we need to come up with a custom solution to achive this. And the simpleast aproach that I can think of is this:
+
+1. Create a Lambda function which will receive the GitHub webhook notifciation when there is a new commit.
+1. The Lambda function will then dowload the compressed repo and save it in a S3 Bucket which have versioning enbald (this allows us to use the same file name so it is easier to lisen to a new event and get the file)
+1. Then another Lambda function will listen to S3 events, and when one happens it will tell CodeDeploy to start a new deplaomnet with usign the code from the latest version of the file. 
+
+In the last Lambda function you will have an array containing all the CodeDeployment setup that you have across the world, and trigger a new deployment for each reagion.
+
+Simple right? Just works right? In just few minutes? Yea right 🤣. It is time to start creatign our setup and see how it goeas.
