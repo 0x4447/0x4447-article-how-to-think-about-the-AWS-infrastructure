@@ -1,26 +1,19 @@
-# It is time to trully do it
+# Singe Region Deployment
 
-By now I trulls hope I gave you a good picture of AWS, and if you give yoursefle some time to process all of the previous information, from now on, nothing should look complicated anymore.
+Since this article was designet to be moduler, before you do anythign with CodeDeploy you need to go over the following step. Each section have a details explanation how to create each peace of the puzzle. This section contains only the steps that can't be shared with other part of the article. 
 
-But since you are goign to do this the first time, there is a good chance that the setup won't work the first time. If this happens, scrap averythign and start over. THere are meny steps in this process, and if you miss one, nothing will wokr. Give yourself time, and be patient. There is a lot to go thorough.
-
-- https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM
-- https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/07_User_Data
-- https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling
-- https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/09_Load_Balancing
+- First we need to create some credentials: [02_IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM)
+- Then we need to know how to use the User data functionality to have a consistent EC2 deployment: [07_User_Data](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/07_User_Data)
+- Then we have to configure autoscaling: [08_Auto_Scaling](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling)
+- And lastly we have to create a Load balancer to attach to the Autoscaling Group [09_Load_Balancing](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/09_Load_Balancing)
 
 ### CodeDeploy
 
-So many words to just reach this "simple" point in space. The place where all just works, you know, like magic, and can be done in minutes. Yea right ;).
-
-The CodeDeploy section will have a list of all the "Apps", but lets put big air quotes here, this has nothign to do with an app, becasue that word implys some sorth of automation. An app is just a colelction of configurations that will be executed when an event happens. Meaninig when an event happens, the CodeDeploy from the dashboard will reach out to the CodeDeploy installed in the EC2 instacne, whichi in that case will pull the new code and follow the instructions from the `appspec.yml` configuration file.
-
-The thing that you can specify in the Dashboard is how the code will be deployed, for example:
+When you create a CodeDeploy setup, the thing that you can specify in the Dashboard is how the code will be deployed, for example:
 
 - Deploy the new code on each EC2 one by one, and stop if somethign goes wrong.
 - Replace the code at the same time on all servers.
-
-A little bit of automation ;)
+- Etc.
 
 **The setup to create a CodeDeploy app**
 
@@ -70,3 +63,7 @@ We are almost at the finish line. Now we need to go to our GitHub project settig
     1. Don’t check Deploy on status
     1. Don’t set GitHub api url
     1. Check Active
+    
+# You will fail the first time
+
+If you are doing this the frist time for sure your first few tries won't wokr. But don't give up. This is perfectly normal with the share ammount of knoledege an peaces that you have to put toghether. Relax, take your time, and repeat this tutorial untill you can reproduce it with youe eyes closed.
