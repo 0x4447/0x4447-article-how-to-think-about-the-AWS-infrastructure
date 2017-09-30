@@ -6,8 +6,6 @@ Still 🚧🍺 Work In Progres...
 
 ---
 
-> I don't know everything, but what I know, I know how to explain 😄
-
 A biggest omission in documentations in general is the frame of reference, a story, and explanation that will help you better understand a complex idea. Some very simple truth, that you can build on top of.
 
 If you were to check all the other articles and project that I have on [GitHub](https://github.com/davidgatti), you’d see that I try to give that to you, because I believe it is the most important peace of information that you should get.
@@ -58,7 +56,7 @@ My hope is this. If I managed to explain how to handle the AWS lies, and you acc
 
 # The End
 
-If you've enjoyed this article/project, please consider giving it a 🌟 or donate.
+I don't know everything, but what I know, I know how to explain 😄, and if you've enjoyed this article/project, please consider giving it a 🌟 or donate.
 
 - [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/gattidavid/25)
 - [![Star on GitHub](https://img.shields.io/github/stars/davidgatti/how-to-think-about-the-AWS-infrastructure.svg?style=social)](https://github.com/davidgatti/how-to-think-about-the-AWS-infrastructure/stargazers)
