@@ -42,3 +42,17 @@ This project also requires two Env Variables that can be set in the main page of
 1. **API_KEY** - this is a key that you have to create in your personal GitHub account in the  [Personal access tokens](https://github.com/settings/tokens) section. When you crate a new API Key make sure to check the box that ses `repo`. The Key will be used to access to the URL with the ZIP file of a private repo.
 1. **SECRET** - this is a secret used to make sure that the request that we get comes from GitHub itself. This strign is up to you, and you'll have to use it when you add a Webhook for the selected repo.
 
+# GitHub Setup
+
+This is goign to be straight forward
+
+1. Go to your Repo
+1. Go to the Setting page of the Repo
+1. From the left menu select `Webhooks`
+1. In the `Payload URL` input field add the endpoint of the Lambda Function
+1. Set the `Content type` to `application/json`
+1. Set a Secret, which is going to be used to verify if the webhook came actually from GitHub
+1. For the question `Which events would you like to trigger this webhook?` anwser `Just the push event.`
+1. Check the `Active` status
+
+And you are done. From now on, GitHub will mape a POST request to the endpoint you entered. A cool feature that GitHub provides is the `Recent Deliveries` table view where they'll show all the webhooks that have been fired so yo ucan easilly debug is something goes wrong.
