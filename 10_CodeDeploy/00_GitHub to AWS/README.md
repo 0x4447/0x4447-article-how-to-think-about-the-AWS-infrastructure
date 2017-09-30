@@ -7,7 +7,7 @@ Since this article was designet to be moduler, before you do anythign with CodeD
 - Then we have to configure autoscaling: [08_Auto_Scaling](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling)
 - And lastly we have to create a Load balancer to attach to the Autoscaling Group [09_Load_Balancing](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/09_Load_Balancing)
 
-### CodeDeploy
+# CodeDeploy
 
 When you create a CodeDeploy setup, the thing that you can specify in the Dashboard is how the code will be deployed, for example:
 
