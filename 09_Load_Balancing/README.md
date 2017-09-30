@@ -1,8 +1,16 @@
+# Spread the traffic among meny servers
+
+The idea of the Load Balancer is the Back Bone of the cloud computing since the point of the cloud is to have multiple smaller an chaper servers spread acorss the internet to split the traffci amond thoes servers or to point the user to the closests srver to the user to reduce latency. 
+
+This means that a Load Balancer is the main entry point for your servers that were createded usight Auto Scaling.
+
+To create a workign Load Balancer you'll need first a `Target Group` and only they you'll be able to attach a `Load Balancer` to it. 
+
 ### Target Group
 
-Before we can configure the Load Balancer itself we need to create a Trget Group. This TG will be used by the Load Balancer to know to which servers the traffic should be directed. Bascially a Target Group is nothing more then a folder with a bunch of servers inside. You can group your EC2 instances, and then attach this groups to your load balancers, this way you can more easelliy manage the servers, without editign the Load Balancer itself.
+This Target Group will be used by our Load Balancer to understand to which servers the traffic should be directed. Bascially a Target Group is nothing more then a folder with a bunch of servers inside. This allow you to group your EC2 instances, and then attach this groups to your load balancers, this way you can more easelliy manage the servers, without editign the Load Balancer itself.
 
-**The setups to create a Load Balancer**
+**The setups to create a Target Group**
 
 1. Go to the `Target Group` section in the AWS EC2 page
 1. Click `Create target group`
@@ -20,11 +28,11 @@ Once Created
 1. Select the one that you want
 1. Click `Add to registered`
 
-Ony now thoes selected instances will be connected to the Group.
+Only now thoes selected instances will be connected to the Group.
 
 ### Load Balancer
 
-This is what decided how to split the traffic among all the servers that you have.
+Now that we have a group of servers, we can make a new Load Balancer and attach it to that group.
 
 **The setups to create a Load Balancer**
 
