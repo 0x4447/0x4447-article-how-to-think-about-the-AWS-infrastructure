@@ -56,7 +56,7 @@ As you can see this part is actually fairly cool, and works well once you udners
 
 # Befroe we go to CodeDeploy
 
-There is a big chance that you just had an idea to just use the `User data` section to automatically deploy your coce right? You could wrtie a Bash file that would:
+There is a big chance that you just had the following idea: why not just use the `User data` section to automatically deploy a project. And this is a valid way of going about it. You could wrtie a Bash file that would:
 
 - updated the package manager
 - install all you need
@@ -64,25 +64,15 @@ There is a big chance that you just had an idea to just use the `User data` sect
 - configure the projet
 - start it 
 
-You are right, this would be one way of doign it in the simplest form.
+If you were to choose this proach, then you need to be aware that your developers won't have dirrect access to what should happen when the code is beeing deployed. Becasue the whole configuration where you specify what to do before and after will be in this one Bash file. 
 
-The down side of this aproach is that the developers won't and should not have access to the EC2 instacnes. They should be writign code, and not managing servers, but if we belived that then this aproach is not perfect.
+CodeDeploy adds the ability to create a special configuration files where you can specify what Bash script should be cexuted an at which stage befreo startign a proejct. This way the developer have fll controll how a porject should be deployed. Which makes the whole process more flexible. 
 
-The idea of CodeDeploy is to use the special configuration file that a develoepr adds to the proejct to tell CodeDeploy waht to do. Whichi intiles anywah writign Bash Scripts ;) so we solved nothing in essenc. 
+This are the differecne worth knowing.
 
-But I want you to understand this difference, which is sattle, nobody talsk about thus create confusion. Meaninig if you are happy with the `User data` section, just use that and be happy. If you or someoen alse on top of you wants to do it the Hispter way, then you'll have to learn how to do it the CodeDeploy way.
-
-# Step by Step Setup
-
-The result of the previous steps can be reused in your AutoDeployment, where the followign one needs to be repeated for each project you want to deploy. Meaninig let say you have a micro-servcie infrastructure, you'll have to repeate the followign steps for each micro service. Or to put it even in a differetn way, you'll have to repeat this step for each repository you have on GitHub.
-
-The idea of the cloud is resiliance, and the ability to spin multiple servers with the same code, so the load can be split across multiple machines. In this setup we are going to have aminimum of two servers (always) thus we need a load balancer which will split the traffci betwen the servers that are gogin to be atacched to it.
+# Step by step configuration
 
 ### Launch Configurations
-
-As you learned before from the Env Variable section. A Launch Configuration allows you to create identical EC2 instances, based on what is specified in such configuration. A LC must be created if you are going to use the Auto Scaling featire. 
-
-A thing worth nothing, is that a Launch Configuration can be reused and applayed to different Auto Scalign Groups. This should help you name a LC in a way that will make more sense to you. Since as with AWS, most of the time you can't reneame somethign once you created it.
 
 **IMPORTANT**: The first time you go through this setup, AWS will give you a wizzard that will help you create a Autoscalign Group with the Launch Configurations since for some reason one can't live without the other - it is romantic, but as the Load Balancer show, two things that works toghether can also be crated on their own and just be.
 
@@ -108,8 +98,6 @@ A thing worth nothing, is that a Launch Configuration can be reused and applayed
 After this point you'll imediatly see the `Auto Scaling Group` page since we are in the Wizzard mode
 
 ### Auto Scaling Group
-
-This is where you define how many EC2 Instances you would like to have with the exact same configuration. Based on for example a minimum number of servers, CPU load, Traffic in/out or based on waht the waht is seat to a specifci Load Balancer. This means that you can for example say, that you want a minimum o 2 EC2 Servers. This means that AWS will created 2 servers and apply the Launh Configurations that you have selected, and will alwasy keep a minimum of 2 EC2 Instances.
 
 **The setup to create a Auto Scaling Group**
 
