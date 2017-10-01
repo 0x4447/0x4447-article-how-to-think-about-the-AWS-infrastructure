@@ -1,6 +1,6 @@
 # The Mysterious User Data
 
-Each EC2 Instance has a feature that is not well explained nor talk about much. It has the mysterious name of `User data` and it is hidden in the 3th tab/step `3. Configure Instance` under a folded section called `Advanced Details` when you create a new EC2 instance.
+Each EC2 Instance has a feature that is not well explained nor talk much about. It has the mysterious name of `User data` and it is hidden in the 3th tab/step `3. Configure Instance` under a folded section called `Advanced Details` when you create a new EC2 instance.
 
 If you unfold this section you'll get a form where you can add some data. If you paste or add a Bash script, then this script will be executed when the new machine boots after the network cards comes on-line.
 
@@ -37,7 +37,7 @@ You could have Environment Variable that are dynamic for each deployment and una
 
 # User data is powerful but it is a lot fo work
 
-Make not mistake, this is one of those things that you'll have to do yourself and there is no automation, one click to make it work etc. You'll have to know how to write Bash scripts, you'll have to spend the time to debug them, test them, and make sure they work, which is time consuming since EC2 servers don't boot instantly. I recommend also, don't take it granted that if the script works on your local machine it will work 100% on a EC2. ALwasy test on AWS before you call it a day.
+Make not mistake, this is one of those things that you'll have to do yourself and there is no automation, one click to make it work etc. You'll have to know how to write Bash scripts, you'll have to spend the time to debug them, test them, and make sure they work, which is time consuming since EC2 servers don't boot instantly. I recommend also, don't take it granted that if the script works on your local machine it will work 100% on a EC2. Alwasy test on AWS before you call it a day.
 
 # How to debug User data
 
@@ -68,4 +68,4 @@ Definitely, and you do it like this:
 
 # Can I change the User data of an instance?
 
-Yes, to do so you have to first stop the instance and repeate the steps from above. Since the User data will can be applyed only when the system boots.
+Yes, to do so you have to first stop the instance and repeate the steps from above. Since the `User data` will can be applyed only when the system boots. But remember! If your script already run on the machine, runninig the same code if not done correctly might casue issues, you are not running the Bash script on a fresh instalation anymore.
