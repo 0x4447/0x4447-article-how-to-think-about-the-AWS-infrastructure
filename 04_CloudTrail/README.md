@@ -1,14 +1,14 @@
 # CloudTrail
 
-This tool is a very nice debugging tool. Normally SysAdmins will turn this feature on to see what is happening in the AWS infrastructure, since you can see, who loved in, who created a EC2 instance, who deleted a RDS database. Hence the name Trail. 
+This is a very nice debugging tool. Normally SysAdmins will turn this feature on to see what is happening in the AWS infrastructure, since you can see, who logged in, who created EC2 instance, who deleted a RDS database, or anythign that is hapeninig under your AWS account. Hence the name Trail. 
 
-Another benefit of this logging is that API calls from outside will be logged here, making much easier to debug integrations such as GitHub pushing a notification to CodeDeploy. And for example you might see that the credentials are wrong, etc. 
+Another benefit of this logging tool is that any API calls that comes from the outside will be logged here, making it much easier to debug integrations such as GitHub pushing a notification to CodeDeploy. This insight will help you see if there was an error and if so, what went wrong. 
 
 # Be aware of the bad description
 
-When you'll create a new CloudTrail there will be a section called `Data events` and wehn you are ging to read it you'll think that the CloudTrail applyes only to S3 and not to everything. A fristrating mistake that I did. But in reality basically this is how to think of it...
+When you'll create a new CloudTrail there will be a section called `Data events` and when you are ging to read it you'll think that the CloudTrail applyes only to S3 events. A mistake that I did. But in reality basically this is how to think of it...
 
-CloudTrail will log evrything but S3 events, and if you would like to alos include S3 events, you cane do it in the `Data events`.
+CloudTrail will log evrything but S3 events, and if you would like to include S3 events, you cane do it in the `Data events` section.
 
 # How to enable CloudTrail
 
@@ -23,6 +23,8 @@ CloudTrail will log evrything but S3 events, and if you would like to alos inclu
 - From the drop down menu select the bucket that you created previously
 - Click Create.
 
-Aditional details can be found [here](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-a-trail-using-the-console-first-time.html#creating-a-trail-in-the-console)
+Aditional details can be found [here](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-create-a-trail-using-the-console-first-time.html#creating-a-trail-in-the-console).
 
-The logs should start showign up within 15 minutes.
+# Be aware of the delay
+
+CloudTrail is not workign in real time, there is a dicent delay betwen an action and the action showign up in the logs. Some times it can take up to 15 minutes for somethign to show up. Remember to be patient befroe you asume that nothing happened.
