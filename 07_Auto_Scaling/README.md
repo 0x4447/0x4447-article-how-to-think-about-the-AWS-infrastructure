@@ -7,7 +7,7 @@ AWS Auto Scaling is one of thoes things that actualy is fairly straight forward 
 The idea of Auto Scaling is to have multiple servers with the same exact code and configuration for two main reasons:
 
 - redundancy: one server goes down, the other can still process incommign requests
-- spread the load: instead of upgardgin one server to a bigger one you spread the load among multiple servers
+- spread the load: instead of upgardgin one server to a bigger one you spread the load among multiple smaller servers
 
 To take advantage of this feature you'll alos need a Load Balancer, but more on this in the next sectin.
 
@@ -15,13 +15,13 @@ To take advantage of this feature you'll alos need a Load Balancer, but more on 
 
 In the `Auto Scalign Group` configuration is where you specify how AWS should handle your setup. You cna speficy the minimum ammount of server and the maximum allwoed, you cna specify how the healt of a server should be monitored, how many AZ do you want to use etc.
 
-The `Auto Scalign Group` is the one responsabile to spin a new EC2 server if a server is not reachable, or the app that should be run on the server is not respondign anymore becasue maybe it crashed. If that happens, the `Auto Scalign Group` will spinn more EC2 instances to preserve the minimum ammount of server that we specifyed in the configuration. 
+The `Auto Scalign Group` is the one responsabile to spin a new EC2 server if a server is not reachable, or the app that should be running on the server is not respondign anymore becasue of a crash crashed. If that happens, the `Auto Scalign Group` will spinn more EC2 instances to preserve the minimum healty ammount of server that we specifyed in the configuration. 
 
-But to work the `Auto Scalign Group` needs to know how to configure the EC2 servers, and this is where the `Launh Configuration` comes to play.
+But for this to work, the `Auto Scalign Group` needs to know how to configure the EC2 servers, and this is where the `Launh Configuration` comes to play.
 
 # Launh Configuration brake down
 
-An `Auto Scaling Group` can't exists wihout a `Launh Configuration`, thus the later needs to come first. In this section is where you create a configuration that will be used by `Auto Scaling Group` to create new EC2 instances. The prcoess of creating a `Launh Configuration` is very similar to when you Launch a new EC2 Instance. With the difference that you have to name the `Launh Configuration` etc. You get to specify the following:
+An `Auto Scaling Group` can't exists wihout a `Launh Configuration`, thus the later needs to come first. In this section you create a configuration that will be used by the `Auto Scaling Group` to create new EC2 instances. The prcoess of creating a `Launh Configuration` is very similar to when you Launch a new EC2 Instance. With the difference that you have to name the `Launh Configuration` etc. This are the steps that you get to configure:
 
 1. Choose AMI
 1. Choose Instance Type
@@ -34,7 +34,7 @@ As you can see this is the identialc setup for a EC2 Instacne, and as you can se
 
 # Edit Launh Configuration and update all the EC2
 
-Let say you need to make a chagne in the `Launh Configuration` and updated all the EC2 that were created with the original configuration by the `Auto Scaling Group`. Turns out that this is straigth forward and cool onces someone tells you how to go about it (Wait... am I gettign excited 🤔). 
+Let say you need to make a chagne in the `Launh Configuration` and updated all the EC2 that were created with the original configuration. Turns out that this is straigth forward and cool onces someone tells you how to go about it (Wait... am I gettign excited 🤔). 
 
 ### Make a Launh Configuration copy
 
@@ -46,7 +46,7 @@ Then in the 3th tab you can as always edit your `User data` to the new script th
 
 The `Auto Scaling Group` have very limited edits options. But one important thing you can edit, is the active `Launh Configuration` to be used when creatgin new EC2 Instances. This means that you select the Group you want to change, select edit, and chagne the `Launh Configuration` to the latest version you made, and save.
 
-Now, notign will happen, all the active and workign EC2 Instance will keep on workign, to apply the new configuration, you'll have to termiante the EC2 Instances. When you do that, the `Auto Scaling Group` will detect that the Group doesnet have the minimum ammount of healty servers, and will start to spin new ones. As you can imagin, it will start new EC2 servers based on the new configuration that you made.
+Now, notign will happen, all the active and workign EC2 Instance will keep on workign, to apply the new configuration, you'll have to termiante the EC2 Instances. When you do that, the `Auto Scaling Group` will detect that the Group doesnet have the minimum ammount of healty servers, and will spin new ones. As you can imagin, it will start new EC2 servers based on the new configuration that you made.
 
 This givews you the option to terminate every EC2 at once, or update the group by termianting one server at the time. It is up to you how you want to go aobut it. 
 
@@ -64,9 +64,9 @@ There is a big chance that you just had the following idea: why not just use the
 - configure the projet
 - start it 
 
-If you were to choose this proach, then you need to be aware that your developers won't have dirrect access to what should happen when the code is beeing deployed. Becasue the whole configuration where you specify what to do before and after will be in this one Bash file. 
+If you were to choose this aproach, then you need to be aware that your developers won't have dirrect access to what should happen when the code is beeing deployed. Becasue the whole configuration where you specify what to do before and after will be in this one Bash file. 
 
-CodeDeploy adds the ability to create a special configuration files where you can specify what Bash script should be cexuted an at which stage befreo startign a proejct. This way the developer have fll controll how a porject should be deployed. Which makes the whole process more flexible. 
+CodeDeploy adds the ability to create a special configuration files where you can specify what Bash script should be cexuted an at which stage befreo startign a proejct. This way the developer have full controll how a porject should be deployed. Which makes the whole process more flexible. 
 
 This are the differecne worth knowing.
 
