@@ -1,10 +1,10 @@
 # Spread the traffic among meny servers
 
-The idea of the Load Balancer is the Back Bone of the cloud computing since the point of the cloud is to have multiple smaller an chaper servers spread acorss the internet to split the traffci amond thoes servers or to point the user to the closests srver to the user to reduce latency. 
+The idea of the Load Balancer is the Back Bone of the cloud computing, since the point of the cloud is to have multiple smaller an chaper servers spread acorss the internet to split the traffci amond thoes servers.
 
 This means that a Load Balancer is the main entry point for your servers that were createded usight Auto Scaling.
 
-To create a workign Load Balancer you'll need first a `Target Group` and only they you'll be able to attach a `Load Balancer` to it. 
+To create a workign Load Balancer you'll need first a `Target Group` and only then you'll be able to attach a `Load Balancer` to it. 
 
 ### Target Group
 
