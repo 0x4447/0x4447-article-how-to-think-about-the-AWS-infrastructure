@@ -34,7 +34,7 @@ Once you think you are ready, jump in to all the different topics, and see what 
 
 First thing first, the order of this list is on purposue. It was designed this way becasue I belive this is the right order to go about learning the AWS ecosystem. Becasue again, with the Lego anaglogy, the blocks are sctered on the floor, and nobody tells you where to start. 
 
-The first goal of this article is to reach a point where we can acomplish one prosmies thisng by AWS, to trully autodeploy code around the world. After this we'll keep on exploring what AWS has to offer.
+The first goal of this article is to reach a point where we can acomplish one prosmies thisng by AWS, to trully autodeploy code around the world. After this we'll keep on exploring what AWS has to offer. Meaninig all the folder starting with an `x` are secondary, and not crucial to use the basci functionality of AWS.
 
 # In the end
 
