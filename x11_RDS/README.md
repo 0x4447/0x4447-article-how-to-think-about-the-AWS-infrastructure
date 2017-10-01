@@ -36,4 +36,4 @@ Knowign that, you can stanrt thinking... what if I set up a RR of my main DB in 
 
 This is basically a DB backup in a different Region, and if evrythign fails in your main DB, you can promote a Read Replica to become a regular DB, and then once the operation is completed you can switch over to it. 
 
-Check the 
+Check the [RDS Backup](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/x11_RDS/RDS%20Backups) folder for more details.
