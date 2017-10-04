@@ -22,7 +22,7 @@ So remember...Lego blocks.
 
 It's hard for our minds to let go of previously held truths. That takes a lot of energy, and our minds don’t like to waste energy. But you need to make the switch if you want to enjoy using AWS. Because AWS is quite flexible, and it enables you to build very cool things. But you need to have the right mind set, and AWS never really created that.
 
-When you decode that you're ready, jump into all of the different topics. Explore the possibilities and learn to achieve what was falsely advertised to us.
+When you decide that you're ready, jump into all of the different topics. Explore the possibilities and learn to achieve what was falsely advertised to us.
 
 # The Structure of this Repo
 
@@ -58,7 +58,7 @@ Follow me on social media 🐙😇:
 
 ## More about me
 
-I don’t only live on GitHub, I try to do many things not to get bored 🙃. To learn more about me, you can visit the following links:
+I don’t live on GitHub alone, I try to avoid boredom by doing many things 🙃. To learn more about me, visit the following links:
 
 - [Podcasts](http://david.gatti.pl/podcasts)
 - [Articles](http://david.gatti.pl/articles)
