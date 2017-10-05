@@ -1,18 +1,18 @@
 # The Mysterious User Data
 
-Each EC2 Instance has a feature that is not well explained nor talk much about. It has the mysterious name of `User data` and it is hidden in the 3th tab/step `3. Configure Instance` under a folded section called `Advanced Details` when you create a new EC2 instance.
+Each EC2 Instance has a feature that isn't thoroughly explained or even discussed. It's mysteriously named "User data", and it's hidden in the third tab/Step 3. "Configure Instance" under a folded section called "Advanced Details" when you create a new EC2 instance.
 
-If you unfold this section you'll get a form where you can add some data. If you paste or add a Bash script, then this script will be executed when the new machine boots after the network cards comes on-line.
+If you unfold this section, you'll have a form in which you can add some data. If you paste or add a Bash script, the script will execute when the new machine boots and after the network cards comes on-line.
 
-This gives you the ability to have identical servers each time you start a new one just by pasting a Bash script that you designed.
+This enables you to have identical servers each time you start a new instance, just by pasting a Bash script you designed.
 
 # Example
 
-This means that you can make sure that you'll have all the applications that you need, language support and more. But not limited to being able to edit, change, delete reshuffle any file in the system.
+This means that you can ensure that you have all needed applications, language support, and more. But it's not limited; you're able to edit, change, delete, or reshuffle any file in the system.
 
-# Env Variables for your app
+# Env Variables for Your App
 
-This means also that if you were to paste a script like this:
+It also means that if you pasted a script like this...
 
 ```
 #!/bin/bash
@@ -28,20 +28,20 @@ set -x
 touch /home/admin/.env
 
 #
-# Appedn data to the file
+# Append data to the file
 #
 echo TEST_ENV=Hello >> /home/admin/.env
 ```
 
-You could have Environment Variable that are dynamic for each deployment and unaccessible by anybody, but the application it self.
+...you could have Environment Variables that are dynamic for each deployment and not accessible to anyone besides the application itself.
 
-# User data is powerful but it is a lot fo work
+# User data is Powerful, but a Lot of Work
 
-Make not mistake, this is one of those things that you'll have to do yourself and there is no automation, one click to make it work etc. You'll have to know how to write Bash scripts, you'll have to spend the time to debug them, test them, and make sure they work, which is time consuming since EC2 servers don't boot instantly. I recommend also, don't take it granted that if the script works on your local machine it will work 100% on a EC2. Alwasy test on AWS before you call it a day.
+Make no mistake. This is something you'll have to do yourself. There's no automation, one click to make it work, etc. You'll need to know how to write Bash scripts, and you'll have to invest your time in debugging, testing, and ensuring that they work. This is time consuming, because EC2 servers don't boot instantly. I also recommend that you don't take it for granted that a script that works on your local machine may not work 100 percent on an EC2. Always test on AWS before you call it a day.
 
-# How to debug User data
+# How to Debug User Data
 
-As mentioned before, anything that you type in the `User data` field will be executed only after the network card comes on-line. All the logs are going to be send to `syslog` so to see what is happening or happened you can either:
+Again, anything you type in the "User data" field will be executed only after the network card comes online. All logs will be sent to "syslog". To see what's happening - or what happened - you can either:
 
 **Tail**
 
@@ -51,21 +51,21 @@ As mentioned before, anything that you type in the `User data` field will be exe
 
 `cat /var/log/syslog`
 
-In the logs look for `cloud-init` to find out what your script did.
+In the logs, look for `cloud-init` to determine what your script did.
 
 # What is Cloud-init?
 
-Cloud-init is the defacto [multi-distribution package](http://cloudinit.readthedocs.io/en/latest/index.html) that handles early initialization of a cloud instance. So if you want to do more with it, check the documentation.
+Cloud-init is the defacto [multi-distribution package](http://cloudinit.readthedocs.io/en/latest/index.html) that handles early initialization of a cloud instance. If you want to do more with it, check the documentation.
 
-# Can I see the User data of an instance?
+# Can I See the User Data of an Instance?
 
-Definitely, and you do it like this:
+You definitely can. Do it like this:
 
-1. Select the instance that you want to check out
-1. Click the `Action` drop down menu
-1. Hover over `Instance Settings`
-1. Then select `View/Change user Data`
+1. Select the instance you want to check.
+2. Click the "Action" dropdown menu.
+3. Hover over "Instance Settings".
+4. Select "View/Change user Data".
 
-# Can I change the User data of an instance?
+# Can I Change an Instance's User Data?
 
-Yes, to do so you have to first stop the instance and repeate the steps from above. Since the `User data` will can be applyed only when the system boots. But remember! If your script already run on the machine, runninig the same code if not done correctly might casue issues, you are not running the Bash script on a fresh instalation anymore.
+Yes! To do so, stop the instance and repeat the steps from above, since the "User data" is only applied when the system boots. But remember that if your script has already run on the machine, running the same code can cause issues if it's not done correctly. You're not running the Bash script on a fresh installation anymore.
