@@ -1,68 +1,68 @@
-# Singe Region Deployment
+# Single Region Deployment
 
-Since this article was designet to be moduler, before you do anythign with CodeDeploy you need to go over the following step. Each section have a details explanation how to create each peace of the puzzle. This section contains only the steps that can't be shared with other part of the article. 
+This article was designed to be modular, so before you do anything with CodeDeploy, you need to go over the following step. Each section gives a detailed explanation of how to create each piece of the puzzle. This section contains only the steps that can't be shared through other parts of the article. 
 
-- First we need to create some credentials: [02_IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM)
-- Then we have to configure autoscaling: [08_Auto_Scaling](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling)
-- And lastly we have to create a Load balancer to attach to the Autoscaling Group [09_Load_Balancing](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/09_Load_Balancing)
+1.  Create some credentials: [02_IAM](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/02_IAM).
+2.  Configure autoscaling: [08_Auto_Scaling](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/08_Auto_Scaling).
+3.  Create a load balancer to attach to the Autoscaling Group [09_Load_Balancing](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/09_Load_Balancing).
 
 # CodeDeploy
 
-When you create a CodeDeploy setup, the thing that you can specify in the Dashboard is how the code will be deployed, for example:
+When you create a CodeDeploy setup, you can specify how the code will be deployed in the Dashboard. For example:
 
-- Deploy the new code on each EC2 one by one, and stop if somethign goes wrong.
-- Replace the code at the same time on all servers.
-- Etc.
+1. Deploy the new codes one by one on each EC2, and stop if something goes wrong.
+2. Replace codes at the same time on all servers.
+3. Etc.
 
-**The setup to create a CodeDeploy app**
+**Steps to Create a CodeDeploy App**
 
-1. Go to the CodeDeploy section
-1. If this is the first time you run CodeDeploy, select `Custom deployment`
-1. Set a name
-1. Set a description
-1. Select Blue/green deployment
-1. In the `Environment configuration` section select `Automatically copy Auto Scaling group` and then seelct the group that we just created
-1. In the `Load balancer` section select the LB that we created
-1. In the `Service Role` select the role that we created before
+1. Go to the CodeDeploy section.
+2. If this is your first time running CodeDeploy, select "Custom deployment".
+3. Set a name.
+4. Set a description.
+5. Select blue/green deployment.
+6. In the "Environment configuration" section, select "Automatically copy Auto Scaling group", and then seelct the group we just created.
+7. In the "Load balancer" section, select the LB we created.
+8. In the "Service role" section, select the role we created.
 
 ### GitHub
 
-We are almost at the finish line. Now we need to go to our GitHub project settigns, to add support for CodeDeploy, by basically telling GitHub to send a webhook to our seelcted CodeDeploy to let it know that there was a new commit. To achive this we need to add two integrations and create one `personal access token`:
+We're almost at the finish line! Now we need to go to our GitHub project settings to add support for CodeDeploy. Basically, we'll tell GitHub to send a webhook to our selected CodeDeploy and let it know that there was a new commit. To achieve this, we need to add two integrations and create one "personal access token":
 
-**The setup to create a personal access token**
+**Steps to Create a Personal Access Token**
 
-1. Go to the Settign page in your gitHub account
-1. From the left side menu select [personal access token](https://github.com/settings/tokens)
-1. Click `Generate new token`
-1. Name the token, for example I choose `AWSCodeDeploy`
-1. In the `Scope` section select:
-  1. repo:status
-  1. repo_deployment
-1. Click `Generate token`
-1. On the next page, copy and store the token in secure place, this token won't be visible once you live this page.
+1. Go to the Settings page in your gitHub account.
+2. From the left side menu, select [personal access token](https://github.com/settings/tokens).
+3. Click "Generate new token".
+4. Name the token. For example, I chose "AWSCodeDeploy".
+5. In the "Scope" section, select:
+  a. repo:status
+  b. repo_deployment
+6. Click "Generate token".
+7. On the next page, copy and store the token in a secure place, because it won't be visible once you leave this page.
 
-**The setup to create Auto-Deployment**
+**Steps to Create Auto-Deployment**
 
-1. Got to GitHub
-1. Go to a project that you like to deploy
-1. Go in to Settings
-1. Go in to Integrations & services
-1. From the `Add Service` drop down menu seelct `AWS CodeDeploy`
-    1. Set the Application name that you just crated
-    1. Set the Deployment group that you just crated
-    1. Set the Aws access key
-    1. Set the Aws region, probably `us-east-1`
-    1. Don’t set GitHub api url
-    1. Set the Aws secret access key
-    1. Don’t set the GitHub token
-    1. Check Active
-1. From the `Add Service` drop down menu seelct `GitHub Auto-Deployment`
-    1. Set the GitHub token created from above
-    1. Set the Environments
-    1. Don’t check Deploy on status
-    1. Don’t set GitHub api url
-    1. Check Active
+1. Go to GitHub.
+2. Go to the project you'd like to deploy.
+3. Go into Settings.
+4. Go into Integrations and Services.
+5. From the "Add Service" dropdown menu, select "AWS CodeDeploy".
+    a. Set the Application name you just created.
+    b. Set the Deployment group you just created.
+    c. Set the AWS access key.
+    d. Set the AWS region, probably "us-east-1".
+    e. Don’t set GitHub API URL.
+    f. Set the AWS secret access key.
+    g. Don’t set the GitHub token.
+    h. Check Active.
+6. From the "Add Service" dropdown menu, select "GitHub Auto-Deployment".
+    a. Set the GitHub token created above.
+    b. Set the Environments.
+    c. Don’t check Deploy on status.
+    d. Don’t set GitHub API URL.
+    e. Check Active.
     
-# You will fail the first time
+# You Will Fail the First Time
 
-If you are doing this the frist time for sure your first few tries won't wokr. But don't give up. This is perfectly normal with the share ammount of knoledege an peaces that you have to put toghether. Relax, take your time, and repeat this tutorial untill you can reproduce it with youe eyes closed.
+If you're new to this, it's pretty much guaranteed that your first few tries aren't going to work. But don't give up. This is perfectly normal, with the sheer amount of necessary knowledge and all of the pieces you have to put toghether. Relax, take your time, and repeat this tutorial until you can reproduce it with your eyes closed.
