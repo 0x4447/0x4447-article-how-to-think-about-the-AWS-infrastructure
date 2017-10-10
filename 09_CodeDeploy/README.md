@@ -1,18 +1,18 @@
 # CodeDeploy
 
-If you go the homepage of this article you'll see that all the names of the folders are prepended with a number. This was done on purpouse to help teach step by step each key aspect of AWS in a order that builds on to of the previouys sections. I belive this order is key to more simply kickstart your midn to structure and organize the key components of AWS. 
+If you go this article's homepage, you'll see that all of the folder names are prepended with numbers. I did this on purpose to teach the key aspects of AWS, step-by-step and in order, so each section builds on the previous one. I believe that presenting the steps in order is key to helping to kickstart your mind to structure and organize the key components of AWS. 
 
-A very important thing to understand is that you can't use CodeDepoy before you udnerstand all the othere Lego blocks. I mean you could follow a tutorial that takes you step by step, but you wouldn't be able to chagne he configurations, or deploy another peace of software thath needs some changes. By reachign this poing after going over each other section will allow you to honeslty do whathever you want with AWS at this point, and CodeDeploy is the last missing peace to unlock the whole potential of AWS, any other tool that you'll use afte this point are goign to be nice addition that are not critial to use or understand the Amazon offering. 
+It's very important that you understand that you can't use CodeDeploy before you understand all the other Lego blocks. You could follow a step-by-step tutorial, but you wouldn't be able to change the configurations or deploy another piece of software that needs some changes. If you reach this point after you've gone over every other section, you can do virtually whatever you want with AWS. CodeDeploy is the last missing piece to unlock everything AWS has to offer, and any other tool that you might use after this will just be a nice addition. 
 
-And so you see how the Marketign materials and all the PR done around AWS and CodeDeploy is far from the truth. We head to leanr 10 other things befroe we could reach this point. But maybe I'm stipud and never found the magic button, or are a bad DevOps becasue I unable to setup evrythign that is needed for CodeDeploy in 5 minuets? Maybe, so if you think that you foudn the magic button, or knwo a trick to deploy all this in minutes as advertised, please let me know. 
+You can see that the information in the AWS marketing materials and PR is actually far from the truth. We need to learn ten extra things before we reach this point. Maybe I'm stupid and never found the magic button, or maybe I'm a bad DevOps, because I was unable to set up evrything needed for CodeDeploy within five minutes. So if you think that you've found the magic button, or if you know a trick for deploying everything in minutes, as advertised, please let me know. 
 
 # What is CodeDeploy?
 
-CodeDeploy is truly just an [app](http://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html) that you have to install on each deployed server (if you don't use the official AWS images). This app is used by CodeDeploy in the AWS dashboard to communicate with the server and perform actions based on the configuration file that is suplied with the project.
+CodeDeploy is really just an [app](http://docs.aws.amazon.com/codedeploy/latest/userguide/welcome.html) that you install on each deployed server (if you don't use the official AWS images). CodeDeploy uses the app in the AWS dashboard to communicate with the server and perform actions based on the configuration file that's supplied with the project.
 
-# The appspec.yml file
+# The appspec.yml File
 
-To use CodeDeploy you need to add the appspec.yml file to your project, without it CD won't work at all, becasue this fail contains all the instructions for CodeDeploy to work. You can specify where the code should be moved. You can specify to run Bash scripts that you prepared, before instlation, after instalation etc. Basically this is the place where you construct what will happen once CodeDeploy starts workign inside an EC2 instance. Check out the example file bellow to get an idea of what can be specified.
+To use CodeDeploy, add the appspec.yml file to your project. Without that file, CD won't work at all, because the file contains all instructions needed to make CodeDeploy work. You can specify where the code should be moved. You can specify to run your Bash scripts, before installation, after installation, and so on. Basically, this is the place where you'll construct what will happen once CodeDeploy starts working inside an EC2 instance. Check out the example file below to get an idea of what can be specified:
 
 ```
 version: 1.0
@@ -37,68 +37,68 @@ hooks:
       runas: root
 ```
 
-This are of course my own examples, that you don’t have to follow. If I’d recommend checking out the documentation to find out all the options that are at your disposal [here](http://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html).
+Of course, this is my own example, and you don’t have to follow it. I’d recommend that you check out the documentation to discover all the options that are at your disposal [here](http://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file.html).
 
-# Hot to debug CodeDeploy
+# How to Debug CodeDeploy
 
-The last helpful peace of information that I can give you is how to debug a setup for auto deployment.
+The one last helpful piece of information I have concerns debugging a setup for auto deployment.
 
-### Check CodeDeploy version
+### Check CodeDeploy Version
 
-`sudo dpkg -s codedeploy-agent`
+"sudo dpkg -s codedeploy-agent"
 
-### Code deploy installation logs
+### CodeDeploy Installation Logs
 
-`tail -f /tmp/codedeploy-agent.update.log`
+"tail -f /tmp/codedeploy-agent.update.log"
 
-### Code Deploy work logs
+### CodeDeploy Work Logs
 
-`tail -f /var/log/aws/codedeploy-agent/codedeploy-agent.log`
+"tail -f /var/log/aws/codedeploy-agent/codedeploy-agent.log"
 
-### Where is CodeDeploy in my system?
+### Where is CodeDeploy in My System?
 
-You’ll find it in `/opt/codedeploy`. Worth getting around the folder to get a sense of what you can find there.
+You’ll find it in "/opt/codedeploy". It's worth the effort of getting around within the folder to get a sense of what you can find there.
 
 ### Manage CodeDeploy
 
-Since CodeDeploy is run as a service, it is easy to manage it:
+Since CodeDeploy is run as a service, it's easy to manage it:
 
-`sudo service codedeploy-agent status`
+"sudo service codedeploy-agent status"
 
-You can stop it, restart it etc using `service`
+You can stop it, restart it, and so on, using "service"
 
-### Test if you have the right Roles
+### Test to See If You Have the Right Roles
 
-As mentioned in the folder before. Each EC2 Instance needs to have the right permissions to perform the right task. This is done with IAM Roles, and to check if they are set correctly you can call this URL http://169.254.169.254 to see what you have.
+As mentioned in the previous folder, each EC2 Instance requires the right permissions to perform a task. Do this with IAM Roles, and to check whether they're set correctly, call this URL http://169.254.169.254 to see what you have.
 
-The following command will show you the name of the Role that is applyed to the EC2 Instance
+The following command will show you the name of the Role that's applied to the EC2 Instance:
 
 ```
 curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
 ```
 
-This one will show you details about the Role.
+This one will show you details about the Role:
 
 ```
 curl http://169.254.169.254/latest/meta-data/iam/security-credentials/NAME_OF_THE_ROLE_THAT_YOU_GOT_FROM_THE_COMMAND_BEFORE
 ```
 
-# The two folders in this section
+# The Two Folders in This Section
 
 **Availability Zones**
 
-The "easiest" way to deploy a new commit to multiple server is by just staying in one Region, and deploy to multiple servers scattered across multiple Availability Zones.
+The "easiest" way to deploy a new commit to multiple servers is simply to stay in one region and deploy to multiple servers scattered across multiple Availability Zones.
 
-Usign this aproach you can setup GitHub to actually trigger a CodeDeploy deployment fairly easy sicne each repo can have a CodeDeploy trigger. 
+Using this aproach allows you to set up GitHub to fairly easily trigger a CodeDeploy deployment, since each repo can have a CodeDeploy trigger. 
 
-**Multi Region Deployment**
+**Multi-Region Deployment**
 
-The triggers that you configured in the single Region setup don't have the option to trigger multiple CodeDeployments setup. Meaning there is no way for GitHub to notify more then one CodeDeploy application. This means that we need to come up with a custom solution to achive this. And the simpleast aproach that I can think of is this:
+The triggers configured in the single-region setup don't have the option to trigger set-up for multiple CodeDeployments. This means that there's no way for GitHub to notify more than one CodeDeploy application, so we need to come up with a custom solution to achieve that. This is the simplest approach I can think of:
 
-1. Create a Lambda function which will receive the GitHub webhook notifciation when there is a new commit.
-1. The Lambda function will then dowload the compressed repo and save it in a S3 Bucket which have versioning enbald (this allows us to use the same file name so it is easier to lisen to a new event and get the file)
-1. Then another Lambda function will listen to S3 events, and when one happens it will tell CodeDeploy to start a new deplaomnet with usign the code from the latest version of the file. 
+1. Create a Lambda function that will receive the GitHub webhook notification when there's a new commit.
+2. The Lambda function will then download the compressed repo and save it in an S3 Bucket that has versioning enabled (allowing us to use the same file name so it's easier to listen to a new event and get the file).
+3. Then another Lambda function will listen to S3 events, and when one happens, it will tell CodeDeploy to start a new deployment using the code from the latest version of the file. 
 
-In the last Lambda function you will have an array containing all the CodeDeployment setup that you have across the world, and trigger a new deployment for each reagion.
+In the last Lambda function, you'll have an array that contains all the CodeDeployment setup you have across the world, and trigger a new deployment for each region.
 
-Simple right? Just works right? In just few minutes? Yea right 🤣. It is time to start creatign our setup and see how it goeas.
+Simple, right? Just works, right? In just few minutes? Yea right. It's time to start creating our setup and see how it goeas.
