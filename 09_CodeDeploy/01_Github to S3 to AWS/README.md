@@ -1,22 +1,22 @@
-# Mutli Region Deployment
+# Multi-Region Deployment
 
-If you remember, in the [00_Regions](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions) section I explained the issue with AWS Regions, and how they are islolated island that don't communicate with each other. This section will help you understand how to go about this Multi Region Deployment or anythign for that matter that needs to be done across region. 
+If you remember, I explained in the [00_Regions]  section(https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/00_Regions) that AWS Regions are isolated islands that don't communicate with each other. This section will help you understand how to go about Multi-Region Deployment or anything else that needs to be done across a number of regions. 
 
-# We need to be clear on one thing
+# We Need to Be Clear About One Thing
 
-Let say you want to have your site to be in multiple regions, you'll have to create the same exact configuration in each region. Evrythign needs to be identical for evrything to work. The only thing that you don't have to repate is the IAM confgiration since that is a Global resource. 
+Let's say that you want to make your site available in multiple regions. To accomplish this, create the exact same configuration in each region. For this to work, every detail has to be identical. The only thing you don't have to duplicate is the IAM configuration, as that's a Global resource. 
 
-# You can use my code
+# You Can Use My Code
 
-This folder contains two other folders which contains code that you can use in your Lambda functions, this wey you don't have to write evrythign from scratch. But my code is JavaScript code, and if you prefere another language, go ahead and use whtheer AWS Lambda supports. I tryed to comment as much as possible so you should figure out the logic of my code and transalte it in another language that you feal more confortable with. 
+This folder contains two additional folders with code you can use in your Lambda functions. This way, you don't have to write everything from scratch. However, my code is in JavaScript code, so if you prefer to use another language, go ahead and use whatever AWS Lambda will support. I tried to add as many comments as possible to help you decipher the logic of my code and translate it into a language you might be more confortable with. 
 
 # The Good
 
-Other then settign up evrythign the same in each region, and creatgin a CodeDeploy also in each region the only thing that actually chagnes is the GitHub setup which you cna find in the [serverless-github-listner](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/10_CodeDeploy/01_Github%20to%20S3%20to%20AWS/serverless-github-listner) folder.
+Other than setting up everything so all of your regions match and creating a CodeDeploy in each region, the GitHub set-up is the only aspect that actually changes. You can find it in the [serverless-github-listner] folder (https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/10_CodeDeploy/01_Github%20to%20S3%20to%20AWS/serverless-github-listner).
 
-# Lets Execute 
+# Let's Execute 
 
-Follow the READE.md file fo each projects, where you'll learn how to start workign with Serverless and how to setup each project.
+For each project, follow the READE.md file to learn how to work with Serverless and how to set up each project.
 
 - [serverless-github-listner](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/01_CodeDeploy/01_Github%20to%20S3%20to%20AWS/serverless-github-listner)
 - [serverless-codedeploy-trigger](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/xx_Blueprints/01_CodeDeploy/01_Github%20to%20S3%20to%20AWS/serverless-codedeploy-trigger)
