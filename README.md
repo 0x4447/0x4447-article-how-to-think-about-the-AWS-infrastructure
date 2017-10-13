@@ -4,15 +4,15 @@ One of the most important and common omissions in documentation is a frame of re
 
 If you were to check out all of my articles and projects on [GitHub](https://github.com/davidgatti), you’d see that I try to provide that. I believe it's the most important piece of information I can offer.
 
-If that's left out, and you also mislead and lie to your customers, you then have a recipe for misery and pain. In this article I'll focus on demistifying all of the lies that AWS tells you, and I'll provide you with a better frame of reference to help you better understand what AWS has to offer.
+If you leave that out, and you mislead and lie to your customers, you'll have a recipe for misery and pain. In this article, I'll focus on demystifying all of the lies that AWS tells you, and I'll provide you with a better frame of reference for understanding what AWS has to offer.
 
-# The Lies that Amazon Tells Us
+# The Lies Amazon Tells Us
 
-Whether you're watching video, reading, or talking to someone face to face, just about everyone will tell you that AWS is amazing. Everything's automatic, it scales indefinitely, and it's all just a few clicks away. But this is complete nonsense, and the sooner you realize that, the sooner you'll understand that you have to put all the pieces together, write the code, and create the configuration files to make it all work automatically and "automagically", as advertised.
+Whether you're watching a video, reading, or talking to someone face-to-face, just about everyone will tell you that AWS is amazing. Everything's automatic, it scales indefinitely, and it's all just a few clicks away. But this is complete nonsense, and the sooner you realize that, the sooner you'll understand that you have to put all of the pieces together, write the code, and create the configuration files to make it all work automatically and "automagically", as advertised.
 
-# Lego blocks - The lost frame of reference
+# Lego Blocks - The Lost Frame of Reference
 
-You have to think about AWS like Lego bricks scattered all over the floor, with no instructions on what to do with them. There's documentation for each individual piece, but no blueprint or tutorial putting the pieces together. The most skeptical among you might say that there are tutorials out there. But the reality is that those tutorials were probably written five years ago, and the AWS interface has changed drastically since then. The steps are different now, but no one's bothered to update the tutorials. I've argued with AWS Tech Support, and they always respond that they'll notify the author to update the posts, but nothing ever happens.
+AWS is a lot like Lego bricks scattered all over the floor, with no instructions on what to do with them. There's documentation for each individual piece, but no blueprint or tutorial on putting the pieces together. The most skeptical among you might say that there are tutorials out there. But the reality is that those tutorials were probably written five years ago, and the AWS interface has changed drastically since then. The steps are different now, but no one's bothered to update the tutorials. I've argued with AWS Tech Support, and they always respond that they'll notify the author to update the posts, but nothing ever happens.
 
 If a tutorial is not working for you, the problem is not with you, it is with the tutorial itself.
 
@@ -20,7 +20,7 @@ So remember...Lego blocks.
 
 # Take Your Time
 
-It's hard for our minds to let go of previously held truths. That takes a lot of energy, and our minds don’t like to waste energy. But you need to make the switch if you want to enjoy using AWS. Because AWS is quite flexible, and it enables you to build very cool things. But you need to have the right mind set, and AWS never really created that.
+It's hard for our minds to let go of previously held truths. That takes a lot of energy, and our minds don’t like to waste energy. But you need to make the switch if you want to enjoy using AWS. AWS is quite flexible, and it enables you to build very cool things. But you need to have the right mind set, and AWS never really created that.
 
 When you decide that you're ready, jump into all of the different topics. Explore the possibilities and learn to achieve what was falsely advertised to us.
 
@@ -56,7 +56,7 @@ Follow me on social media 🐙😇:
 - [Twitter](https://twitter.com/dawidgatti)
 - [Instagram](https://www.instagram.com/gattidavid/)
 
-## More about me
+## More about Me
 
 I don’t live on GitHub alone, I try to avoid boredom by doing many things 🙃. To learn more about me, visit the following links:
 
