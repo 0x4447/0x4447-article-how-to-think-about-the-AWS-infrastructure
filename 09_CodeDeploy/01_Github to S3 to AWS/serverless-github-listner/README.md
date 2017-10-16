@@ -39,7 +39,7 @@ Typing this in your terminal will bring up all logs for that specific function:
 
 This project also requires two Env Variables that can be set up in the main page of the specific Lambda function. 
 
-1. **API_KEY** - You have to create this key in the [Personal access tokens] section of your personal GitHub account (https://github.com/settings/tokens). When you create a new API Key, be sure that you've checked the "repo" box. The key will be used to access the URL with the ZIP file of a private repo.
+1. **API_KEY** - Create this key in the [Personal access tokens] section of your personal GitHub account (https://github.com/settings/tokens). When you create a new API Key, be sure that you've checked the "repo" box. The key will be used to access the URL with the ZIP file of a private repo.
 2. **SECRET** - This secret is used to ensure that any request we get comes from GitHub itself. The string is up to you, and you'll need to use it when you add a webhook for the selected repo.
 
 # GitHub Setup
