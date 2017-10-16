@@ -34,7 +34,7 @@ wget https://aws-codedeploy-$REGION.s3.amazonaws.com/latest/install &&
 chmod +x ./install &&
 
 #
-#	Install CodeDeploy wit the default settings
+#	Install CodeDeploy with the default settings
 #
 sudo ./install auto &&
 
