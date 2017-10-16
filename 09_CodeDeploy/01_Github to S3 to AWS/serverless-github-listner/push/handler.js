@@ -32,14 +32,14 @@ module.exports.push = function (event, context, callback) {
 	}
 
 	//
-	//  2. 	Before we do anything, we check to ensure that we didn't forget
+	//  2. 	Before we do anything, check to ensure that we didn't forget
 	//  	to add an Env variable with the GitHub API key.
 	//
 	check_if_the_api_key_is_present(container)
 		.then(function(container) {
 
 			//
-			//  2.  Ensure that the Secret env variable is present.
+			//  2.  Ensure that the secret env variable is present.
 			//
 			return check_if_the_secret_is_present(container);
 
@@ -138,7 +138,7 @@ module.exports.push = function (event, context, callback) {
 			};
 
 			//
-			//  ->  Tell lambda that we finished.
+			//  ->  Tell Lambda that we finished.
 			//
 			callback(null, message);
 
@@ -163,8 +163,7 @@ module.exports.push = function (event, context, callback) {
 
 //
 //	Since Lambda functions need a human to manually add all the Env Variables,
-//	we need to check if all are present and the developer didn't forget
-//	about something.
+//	we need to check to ensure that all are present and the developer hasn't forgotten about anything.
 //
 function check_if_the_api_key_is_present(container)
 {
@@ -188,7 +187,7 @@ function check_if_the_api_key_is_present(container)
 
 //
 //	Since Lambda functions need a human to manually add all the Env Variables,
-//	we need to ensure that all is present and the developer didn't forget
+//	we need to ensure that everything is present and the developer didn't forget
 //	about something.
 //
 function check_if_the_secret_is_present(container)
@@ -212,8 +211,8 @@ function check_if_the_secret_is_present(container)
 }
 
 //
-//  Each request will have a hashed secret that was added on GitHub, and is
-//  sent back to us so we can make sure that the request actually came from
+//  Each request will have a hashed secret that was added on GitHub. That secret is
+//  sent back to us so we can be sure that the request actually came from
 //  GitHub itself.
 //
 function check_if_the_request_is_from_github(container)
@@ -254,7 +253,7 @@ function check_if_the_request_is_from_github(container)
 }
 
 //
-//  Get the owner name of the repo. It can be the organization name or the
+//  Get the owner name for the repo. It can be the organization name or the
 //  regular user name.
 //
 function react_only_to_master_branch(container)
@@ -300,7 +299,7 @@ function get_owner_name(container)
 }
 
 //
-//  Get the name of the repo that is being affected.
+//  Get the name of the affected repo.
 //
 function get_repo_name(container)
 {
