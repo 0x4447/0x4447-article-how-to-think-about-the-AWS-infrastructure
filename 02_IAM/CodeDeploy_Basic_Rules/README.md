@@ -2,11 +2,11 @@
 
 Now that we've explained the basics of roles, how can you use them? You could call the AWS Security Token Service (STS), where the APIs return a set of temporary security credentials that applications can then use to sign requests to AWS service APIs. Of course, this is done when you want to write your own app.
 
-But if you're going to use someone else's app - in this case, the AWS' CodeDeploy app - they’ll ask you to attach a specific role to the EC2 instance, and the app will then use it to access AutoDeploy (the service). Similarly, you’ll need to add a special role to an AutoDeploy (the service) setup so it can actually access the EC2 instances.
+But if you're going to use someone else's app - in this case, the AWS CodeDeploy app - they’ll ask you to attach a specific role to the EC2 instance, and the app will then use it to access AutoDeploy (the service). Similarly, you’ll need to add a special role to an AutoDeploy (the service) setup so it can actually access the EC2 instances.
 
 To Sum It Up:
 
-- You need to allow a EC2 instance to access CodeDeploy.
+- You need to allow an EC2 instance to access CodeDeploy.
 - You need to allow CodeDeploy to access the EC2 instances.
 
 If I had to summarize roles in one sentence, I would write: Roles are the security glue that allows you to piece all of the Lego blocks together.
@@ -15,13 +15,13 @@ If I had to summarize roles in one sentence, I would write: Roles are the securi
 
 This role will be used by CodeDeploy, so when you create a new "app" in the CodeDeploy UI, you can give the setup the right to perform actions on your behalf. In this case, you'll give it access to the EC2 Instances.
 
-**Steps in Making the Service Role**
+**Steps for Making the Service Role**
 
 1. Go to the "Roles" section in the AWS IAM page.
 2. Click "Create role".
 3. From "AWS Service", select AWS CodeDeploy.
 4. Go to the Next step.
-5. Name the service; I use "PermissionsForCodeDeployToEC2"
+5. Name the service; I use "PermissionsForCodeDeployToEC2".
 6. Click Create Role.
 
 ### The Instance Role
