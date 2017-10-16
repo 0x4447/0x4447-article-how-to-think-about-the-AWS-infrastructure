@@ -14,7 +14,7 @@ Surprisingly, when AWS writes this time, you don’t have to worry about the und
 
 It just feels so good to say it out loud and write it, too. It's a nice feeling to know you're not being lied to.
 
-# Why am I mentioning AWS Lambda before CodeDeploy?
+# Why Am I Mentioning AWS Lambda Before CodeDeploy?
 
 Because this too will be crucial when you need help making a setup to auto deploy code to multiple regions. 
 
