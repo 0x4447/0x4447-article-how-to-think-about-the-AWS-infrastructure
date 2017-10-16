@@ -35,7 +35,7 @@ echo TEST_ENV=Hello >> /home/admin/.env
 
 ...you could have Environment Variables that are dynamic for each deployment and not accessible to anyone besides the application itself.
 
-# User data is Powerful, but a Lot of Work
+# User Data is Powerful, But a Lot of Work
 
 Make no mistake. This is something you'll have to do yourself. There's no automation, one click to make it work, etc. You'll need to know how to write Bash scripts, and you'll have to invest your time in debugging, testing, and ensuring that they work. This is time consuming, because EC2 servers don't boot instantly. I also recommend that you don't take it for granted that a script that works on your local machine may not work 100 percent on an EC2. Always test on AWS before you call it a day.
 
@@ -64,7 +64,7 @@ You definitely can. Do it like this:
 1. Select the instance you want to check.
 2. Click the "Action" dropdown menu.
 3. Hover over "Instance Settings".
-4. Select "View/Change user Data".
+4. Select "View/Change User Data".
 
 # Can I Change an Instance's User Data?
 
