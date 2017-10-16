@@ -1,39 +1,39 @@
-# How to take advantage of RDS
+# How to Take Advantage of RDS
 
-I must say, the RDS section of AWS is the only happy place there is in their whole offering. This section is the most automated of them all, and it fully lives up to the dream of, click… click and it just dose stuff automatically for you. But lets start from the beginning.
+I must say, AWS' RDS section is the only happy place in their entire offering. It's the most automated of all of the sections, and it fully lives up to the dream of click…click...and it just automatically does stuff for you. But let's start from the beginning.
 
-RDS is the section where you create and manage all your databases on AWS. You have a selection of different provider that you can choose from, with an eazy way to make sure your data is backuped and safe. 
+You'll create and manage all of your AWS databases in the RDS section. There's a selection of different provider to choose from, and it's an easy way to make sure your data is backed up and safe. 
 
 # Backups 
 
-We have 3 options to make our database disaster prone.
+There are three options for preventing database disasters.
 
-- Regular backus which are snapshots of the whole DB server.
-- Multiple DB in different Availability Zones
-- Read Replicas
+1. Regular backups that are snapshots of the whole DB server
+2. Multiple DBs in different availability zones
+3. Read Replicas
 
-Lets brake down each one.
+Lets break down each one.
 
 ### Regular Backup
 
-When you create a database you have the option to set it so it will take a snapshot of the whole DB every so often (the lowest settign is once a day). The cool thing is that once you set this option it will do its thing, and you can forget about it. If you want to restore from a snapshot you will create a new server based on the seelcted snapshot.
+When you create a database, you have the option to set up a backup that will take a snapshot of the whole DB every so often (the lowest setting is once a day). The cool thing is that once you set this option, it will do its thing, and you can forget about it. If you want to restore from a snapshot, you'll create a new server based on the selected snapshot.
 
-### Multiple DBs in different AZ
+### Multiple DBs in Different AZs
 
-Similar to a EC2 instance, you can take advantage of the AZ (Availability Zones) of your VPC. Meaninig when you create or edit a DB, you can specify that you want the DB to have a copy in another AZ. If you enable this option you'll get an automated system which will take care of itself. 
+Similar to an EC2 instance, you can take advantage of your VPC's AZs (Availability Zones). This means that when you create or edit a DB, you can specify that you want to have a copy of the DB in another AZ. Enabling this option will result in an automated system that will take care of itself. 
 
-If the main DB becomes unavailable for whathever reson, AWS will automatically fall over the other DB from the other AZ. The process if fully automatic and takes betwen 50 to 60 sec to complete. 
+If the main DB becomes unavailable for whatever reason, AWS will automatically call over the DB copy from the other AZ. The process is fully automatic, and takes 50 to 60 seconds to complete. 
 
-Now, when the original DB comes back on-line, it will become the new fail over DB, so with this system in theory you should be good. Since the servers will constatly rotate if somethign bad happens.
+Now, when the original DB comes back online, it will become the new fail over DB. So, in theory, you should be good with this system, since the servers will constantly rotate if something bad happens.
 
 ### Read Replica
 
-You can take your data resilinacy one step further, and take advantage of a Read Replica and the AWS Regions. The two options above, are solutions where your data stayis in the same Region, and if that Region fails your data will be lost. Not likelly, but you never know. 
+To take your data resiliency one step further, take advantage of a Read Replica and the AWS Regions. With the two options described above, your data stays in one region, and if that region fails, your data will be lost. It's not likely that this will happen, but you never know. 
 
-Normally RR are used to sped up the delivery of data to a user, becasue you can put a RR in a Region closer to the user, and the configuration of this database is such that you can only read from it, you can't edit or delete data. This operations must be performed on the main DB, which then will be shared across all the Read Replicas.
+RRs are typically used to speed up data delivery to a user. You can put an RR in a region that's closer to the user. The configuration of this database is such that you can only read from it; you can't edit or delete data. These operations must be performed on the main DB, and then they're shared across all of the Read Replicas.
 
-Knowign that, you can stanrt thinking... what if I set up a RR of my main DB in a different Region, but never use it?
+With that in mind, you might think...What if I set up an RR for my main DB in a different region, but never use it?
 
-This is basically a DB backup in a different Region, and if evrythign fails in your main DB, you can promote a Read Replica to become a regular DB, and then once the operation is completed you can switch over to it. 
+This is basically a DB backup in a different region. If everything fails in your main DB, you can promote a Read Replica to become a regular DB. Once the operation is completed, you can switch over to it. 
 
-Check the [RDS Backup](https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/x11_RDS/RDS%20Backups) folder for more details.
+Check the [RDS Backup] folder (https://github.com/davidgatti/How-to-think-about-the-AWS-infrastructure/tree/master/x11_RDS/RDS%20Backups) for more details.
