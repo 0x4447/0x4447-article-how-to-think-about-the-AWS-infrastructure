@@ -1,10 +1,10 @@
 # The Mysterious User Data
 
-Each EC2 Instance has a feature that isn't thoroughly explained or even discussed. It's mysteriously named "User data", and it's hidden in the third tab/Step 3. "Configure Instance" under a folded section called "Advanced Details" when you create a new EC2 instance.
+Each EC2 Instance has a feature that isn't thoroughly explained or even discussed. It's mysteriously named "User Data", and it's hidden in the third tab/Step 3, "Configure Instance" under a folded section called "Advanced Details" when you create a new EC2 instance.
 
 If you unfold this section, you'll have a form in which you can add some data. If you paste or add a Bash script, the script will execute when the new machine boots and after the network cards comes on-line.
 
-This enables you to have identical servers each time you start a new instance, just by pasting a Bash script you designed.
+This enables you to have identical servers each time you start a new instance, just by pasting a Bash script that you designed.
 
 # Example
 
