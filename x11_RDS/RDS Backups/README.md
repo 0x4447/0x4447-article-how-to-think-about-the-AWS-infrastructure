@@ -17,7 +17,7 @@ Converting an RR into a regular DB is as simple as clicking a button in the Dash
 - The process is not instant.
 - Although the credentials are the same, the database URL is different, so you'll have to edit your server(s).
 - Once the conversion is complete, you have to manually enable AZ support.
-- All previous RRs that received data from the decised DB, will stop working, so you'll have to delete them. You can't tell them to start getting data from the newly promoted RR. 
+- All previous RRs that received data from the deceased DB, will stop working, so you'll have to delete them. You can't tell them to start getting data from the newly promoted RR. 
 - You'll have to create new RRs from the newly promoted Read Replica. 
 
 As you can see, after promoting an RR, the process to have what you had is manual. But I'll give AWS a pass here, since if you need to go through this scenario, some serious stuff has happend, anyway. This is not a switch that you want to make every other week.
