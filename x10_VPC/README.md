@@ -1,48 +1,48 @@
-# What is a Virtual Private Cloud (VPC)
+# What is a Virtual Private Cloud (VPC)?
 
-AWS VPC is basically a LAN (Local Area Network) with the distinction that you get a virtual router attach to a VPC, and not a Switch which allows you to create a LAN, but doesent give you routign capabilities. Meaninig the traffci of your LAN can't go outside to a different nettwork. But AWS allows you to configure the virtual Router in a way that you can prevent the traffic from escaping your LAN, or to get access to the Internet.
+AWS' VPC is basically an LAN (Local Area Network). The distinction is that you'll get a virtual router attached to a VPC, as opposed to a switch, that allows you to create an LAN, but doesn't give you routing capabilities. This means that your LAN's traffic can't go outside to a different network. But AWS allows you to configure the virtual router in a way that you can prevent traffic from escaping your LAN, or gaining access to the Internet.
 
-Under the VPC Dashboard you get the followign tool to build out a Virtual Private Cloud:
+The VPC Dashboard includes following tools for to building out a Virtual Private Cloud:
 
-- **Internet**: well the general access to the Internet. If you don’t attach this part to the VPC your servers won’t be able to access the internet and anyone on the internet won’t be able to access those servers.
-- **Internet Getaway**: is the DSL Modem, Cable Modem, etc. The device that connects the outsie wordl with your internal infrastructure.
-- **Route Tables**: The Router that will route the traffic to different devices in our virtual LAN. There is only one Internet Getaway per Router, meaning you can’t for example have two separated internet connections for one VPC.
-- **Network ACL**: This is the main firewall. Meaning here you can decide what type of traffic do you wan to allow or block. It is exactly the same idea as the ACL for a specific EC2 Instance, with the difference that here you control all the traffic getting in and out of the VPC.
-- **Subnets**: a part of a larger network, so you can fragment your network, and this are also the Avilibity Zones within a Region. Meaninig each Subnet will end up in its own infrastructure givign you grater resiliance.
+**Internet** General access to the Internet. If you don’t attach this part to the VPC, your servers won’t be able to access the internet and others will be unable to access those servers.
+**Internet Getaway** DSL Modem, Cable Modem, etc. The device that connects the outside world with your internal infrastructure.
+**Route Tables** The router that directs traffic to various devices in your virtual LAN. There is only one internet gateway per router. For example, you can't have two separate internet connections for one VPC.
+**Network ACL** The main firewall. This allows you to decide what type of traffic you'll allow or block. It's exactly the same idea as the ACL for a specific EC2 instance. The difference is that here you control all traffic entering or exiting the VPC.
+**Subnets** Part of a larger network that allows you to fragment your network. These are also the availability zones within a region, meaning each subnet will end up in its own infrastructure, giving you grater resilience.
 
-# What is the point of makign a VPC?
+# What's the Point of Making a VPC?
 
-Two things, keepin everything mroe organized, but most importantly, keeping your infrastructure more secure. 
+There are two reasons for creating a VPC: It will help keep everything organized. Most importantly, it will make your infrastructure more secure. 
 
-When you create a AWS account for the first time you'll get a `default` VPC where every service will be added by default. This is OK for testing and gettign a server or service up and running. But this is not a good aproach when you are running a prodcut for the public, becasue it is a very insecure and dangerous setup to have. 
+When you first create an AWS account, you'll have a "default" VPC that will add every service by default. This is okay for testing and getting a server or service up and running. But it's not a good aproach when running a product for the public, because it's a highly insecure and dangerous set-up. 
 
 **Example**
 
-Let say you want to have 2 environments, one for production and the other for development. If you put everything in one VPC, all your servers will be able to access each other, sicne they are in the same nettwork. Where if you create 2 seaprated VPC, one called Prodution and the other Development, then even if someoen gains access to the Development servers, they won't be able to access the production ones since they are on a separate nettwork (unelss you allow thoes two VPC talk to each other). 
+Let's say you'd like to have two environments, one for production and another for development. If you put everything in one VPC, all of your servers will be able to access each other, since they're in the same network. If you create two separate VPCs, named Production and Development, even if someone gains access to the servers for Development, they won't be able to access the servers in Production, which are on a separate nettwork (unless you allow the two VPCs to talk to each other). 
 
-# Steps to create a VPC from Scratch
+# Steps for Creating a VPC from Scratch
 
-If you go to the VPC Dashboard, you'll see on the left a menu with all the Lego blocks available to you. But they are not in the right order, the are jsut scatered on the floor. The list below is in the right order to create a VPC.
+In the VPC Dashboard, you'll see a menu on the left that makes all of the Lego blocks available to you. But they're not in the right order; they're scatered on the floor. The list below shows the correct order of steps for creating a VPC.
 
 1. Your VPCs
-    1. Create a VPC
-    1. Set a name that makes sense: example-web-homepage-dev
-    1. Set a subset that can be fragmented: 192.168.0.0/16
-    1. Enable DNS Hostnames
-1. Internet Gateways 
-    1. Create a Internet Getaway
-    1. Then Attach it to the VPC created
-1. Then go to Route Tables
-    1. Rename the table RT crate to better know what is app
-    1. Go to Routes tab and add 0.0.0.0/0 to give the RT access to the Internet and select the Internet Getaway
-1. Create Network ACL
-    1. Attach it to the VPC
-    1. Select the ACL and makes sure the right traffic is set from outbound and inbound
-1. Create a bunch subnets
-    1. 192.168.0.0/24
-    1. 192.168.1.0/24
-    1. 192.168.2.0/24
-    1. 192.168.3.0/24
-    1. 192.168.128.0/24
-1. Then each subne tenable public DNS
+    a. Create a VPC.
+    b. Set a name that makes sense: example-web-homepage-dev.
+    c. Set a subset that can be fragmented: 192.168.0.0/16.
+    d. Enable DNS Hostnames.
+2. Internet Gateways 
+    a. Create an internet gateway.
+    b. Attach it to the VPC you created.
+3. Go to Route Tables
+    a. Rename the table RT 
+    b. Go to the Routes tab and add 0.0.0.0/0 to give the RT access to the internet. Select the internet gateway.
+4. Create Network ACL
+    a. Attach it to the VPC.
+    b. Select the ACL, and ensure that the correct traffic is set for outbound and inbound.
+5. Create a bunch of subnets
+    a. 192.168.0.0/24
+    b. 192.168.1.0/24
+    c. 192.168.2.0/24
+    d. 192.168.3.0/24
+    e. 192.168.128.0/24
+6. Then each subnet tenable public DNS
 

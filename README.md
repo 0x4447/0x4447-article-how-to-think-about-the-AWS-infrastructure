@@ -1,64 +1,64 @@
-# How to think about the AWS infrastructure
+# How to Think about the AWS Infrastructure
 
-A biggest omission in documentations in general is the frame of reference, a story, and explanation that will help you better understand a complex idea. Some very simple truth, that you can build on top of.
+One of the most important and common omissions in documentation is a frame of reference, a story, an explanation that will create a better understanding of a complex idea. This should be a very simple truth that serves as a foundation on which you can build.
 
-If you were to check all the other articles and project that I have on [GitHub](https://github.com/davidgatti), you’d see that I try to give that to you, because I believe it is the most important peace of information that you should get.
+If you were to check out all of my articles and projects on [GitHub](https://github.com/davidgatti), you’d see that I try to provide that. I believe it's the most important piece of information I can offer.
 
-If on top of that you lie to your customers, amd mislide them, then you havea a receipit for mizery and pain. And so, this article will be focused on dimistifiying all the lies that AWS tells you, while giving you a better freme of refernece that should thelp you btter udnerstadn the offerign of AWS.
+If you leave that out, and you mislead and lie to your customers, you'll have a recipe for misery and pain. In this article, I'll focus on demystifying all of the lies that AWS tells you, and I'll provide you with a better frame of reference for understanding what AWS has to offer.
 
-# The lies that Amazon tells us
+# The Lies Amazon Tells Us
 
-Everywhere you watch, read and talk to will tell you that AWS is amazing, everything is automatic, scales indefinitely, and is just few clicks away. This is complete nonsense, and the sooner you realize this the sooner you'll understand that you have to put all the peaces together yourself, write code and create configurations files to make it all work automatically and automagically, as advertised.
+Whether you're watching a video, reading, or talking to someone face-to-face, just about everyone will tell you that AWS is amazing. Everything's automatic, it scales indefinitely, and it's all just a few clicks away. But this is complete nonsense, and the sooner you realize that, the sooner you'll understand that you have to put all of the pieces together, write the code, and create the configuration files to make it all work automatically and "automagically", as advertised.
 
-# Lego blocks - The lost frame of reference
+# Lego Blocks - The Lost Frame of Reference
 
-You have to think about AWS like Lego bricks scattered all on the floor with no instruction what to do with them. You get documentation for each individual pace, but no blueprint or tutorial how to put this peaces together. The most skeptical of you might say that there are tutorials out there. But the reality is that either were written 5 years ago (the AWS interface changed drastically since then), or the steps now are different and nobody bothers updating those tutorials. I argued a lot with AWS Tech Support and they always came back to me telling me the will notify the author to updated those posts, but nothing ever happens.
+AWS is a lot like Lego bricks scattered all over the floor, with no instructions on what to do with them. There's documentation for each individual piece, but no blueprint or tutorial on putting the pieces together. The most skeptical among you might say that there are tutorials out there. But the reality is that those tutorials were probably written five years ago, and the AWS interface has changed drastically since then. The steps are different now, but no one's bothered to update the tutorials. I've argued with AWS Tech Support, and they always respond that they'll notify the author to update the posts, but nothing ever happens.
 
 If a tutorial is not working for you, the problem is not with you, it is with the tutorial itself.
 
-So remember... Lego blocks.
+So remember...Lego blocks.
 
-# Take your time
+# Take Your Time
 
-It is hard to for our minds to let go of a previous truth. It takes a lot of energy, and our minds don’t like wasting it. But in this case, you need to make the switch if you want to enjoy using AWS. Because AWS have lots of flexibly and you can build very cool things. But to do so. You need the right mind set, and AWS never did a good job creating a good one.
+It's hard for our minds to let go of previously held truths. That takes a lot of energy, and our minds don’t like to waste energy. But you need to make the switch if you want to enjoy using AWS. AWS is quite flexible, and it enables you to build very cool things. But you need to have the right mind set, and AWS never really created that.
 
-Once you think you are ready, jump in to all the different topics, and see what is really possible and how to achieve what was falsely advertised to us.
+When you decide that you're ready, jump into all of the different topics. Explore the possibilities and learn to achieve what was falsely advertised to us.
 
-# The Structure of this repo
+# The Structure of this Repo
 
-First thing first, the order of this list is on purposue. It was designed this way becasue I belive this is the right order to go about learning the AWS ecosystem. Becasue again, with the Lego anaglogy, the blocks are sctered on the floor, and nobody tells you where to start. 
+First things first! I put this list in this order on purpose. I designed it this way because I believe that it's the most effective way to go about learning the AWS ecosystem. Back to the Lego analogy, the blocks are scattered on the floor, and nobody tells you where to begin. 
 
-The first goal of this article is to reach a point where we can acomplish one prosmies thisng by AWS, to trully autodeploy code around the world. After this we'll keep on exploring what AWS has to offer. Meaninig all the folder starting with an `x` are secondary, and not crucial to use the basci functionality of AWS.
+The first goal of this article is to reach a point where we can accomplish one thing AWS promises, and that's to truly autodeploy code around the world. After that, we'll continue to explore what AWS has to offer. So, all folders that start with "x" are secondary, and not crucial to the basic AWS functionality.
 
-# In the end
+# In the End
 
-My hope is this. If I managed to explain how to handle the AWS lies, and you accepted this truth. Then you should be able to do anything with AWS, since it is a powerful platform, and the documentation is good, once you stop looking for the magical button that will to everything for you. The documentation givews you a detail explanation of the part that you are dealign with, but don’t look for a general instruction that will tell you how to put it all together.
+My hope is this: If I manage to explain how to handle AWS' lies, and you accept it as the truth, you should be able to do everything you want to do with AWS. It's a powerful platform, and the documentation is good once you stop looking for a magic button that will do everything for you. The documentation will give you a detailed explanation, but don’t look for anything that will tell you how to put it all together.
 
 # The End
 
-I don't know everything, but what I know, I know how to explain 😄, and if you've enjoyed this article/project, please consider giving it a 🌟 or donate.
+I don't know everything, but what I do know, I know how to explain! 😄 If you've enjoyed this article/project, please consider giving it a 🌟 or donating.
 
 - [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/gattidavid/25)
 - [![Star on GitHub](https://img.shields.io/github/stars/davidgatti/how-to-think-about-the-AWS-infrastructure.svg?style=social)](https://github.com/davidgatti/how-to-think-about-the-AWS-infrastructure/stargazers)
 - [![Watch on GitHub](https://img.shields.io/github/watchers/davidgatti/how-to-think-about-the-AWS-infrastructure.svg?style=social)](https://github.com/davidgatti/how-to-think-about-the-AWS-infrastructure/watchers)
 
-Also check out my [GitHub account](https://github.com/davidgatti), where I have other articles and apps that you might find interesting.
+And check out my [GitHub account](https://github.com/davidgatti), where I have other articles and apps that you might find interesting.
 
 ## For Hire 👨‍💻
 
 If you'd like me to help you, I'm available for hire. Contact me at job@gatti.pl.
 
-## Where to follow
+## Where to Follow
 
-You can follow me on social media 🐙😇, at the following locations:
+Follow me on social media 🐙😇:
 
 - [GitHub](https://github.com/davidgatti)
 - [Twitter](https://twitter.com/dawidgatti)
 - [Instagram](https://www.instagram.com/gattidavid/)
 
-## More about me
+## More about Me
 
-I don’t only live on GitHub, I try to do many things not to get bored 🙃. To learn more about me, you can visit the following links:
+I don’t live on GitHub alone, I try to avoid boredom by doing many things 🙃. To learn more about me, visit the following links:
 
 - [Podcasts](http://david.gatti.pl/podcasts)
 - [Articles](http://david.gatti.pl/articles)

@@ -1,33 +1,33 @@
-# Zones Vs. Regions or Regions Vs. Zones?
+# Zones vs. Regions or Regions vs. Zones?
 
-What is the difference right? Amazon have datacenter in different cities, states and countries. You could say that a Region is a different country, but a Region can also be a datacenter in a different time zone. For example the US has different regions named after states. Where other smaller countries are just the name of the country itself, like Singapore.
+What's the difference, right? Amazon has datacenters in various cities, states, and countries. You could say that a region is a different country, but a region can also be a datacenter in a different time zone. For example, the regions in the US are named after states. In a smaller country, like Singapore, a region is simply given the name of the country.
 
-Zones on the other hand are different. This are datacenter within the same city, or they might be located in the same datacenter, but on a independent hardware network, infrastructure (building), internet connection etc. This means that if a Zone in a Region fails, all the other Zones will still work - since they are independent. 
+On the other hand, zones are datacenters within the same city. They can also be located within the same datacenter, but on a independent hardware network, infrastructure (building), internet connection, etc. This means that if a zone within a region fails, all of the other zones will continue to work, because they're independent of each other. 
 
-But let say that California is hit by a earth quake, then that Region will go down wit all the Zones.
+Let's say that California is hit by an earthquake. That region will go down, along with all of its zones.
 
-This Zones Vs. Regions is also another lie that AWS sells you. They want to let you believe that having server all over the world is as easy as just pushing a bunch of buttons, and vuala, you have a global reach. This is easier to do if you work with Zones. If you want to have your infrastructure spread across Regions (the world), then you'll end up in a substantial nightmare. Because Regions are completely separate/independent from each other. 
+This zones vs. regions issue is another lie that AWS sells you. They want you to believe that to have servers all over the world, all you need to do is push some buttons, and voila, you'll have a global reach. Working with zones makes this easier. If you want to spread your infrastructure across regions (the world), you'll end up with a substantial nightmare, because Regions are completely separate and independent from each other. 
 
-# For Example some Region specifci services
+# For example, some region-specific services
 
-### Load balancer
+### Load Balancer
 
-You can't have a load balancer in one Region and tell it also the send traffic to servers in other one. To acive multi region load balancing you are forced to use another AWS service, which is called Route 53.
+You can't have a load balancer in one region and tell it to also send traffic to servers in another region. To achieve multi-region load balancing, you're forced to use another AWS service called Route 53.
 
-### AMI - Amazon Machine Images
+### AMI: Amazon Machine Images
 
-If you wanted to create one image and spread it across all the Regions that AWS supports, well good luck, this process even with a clever script will take houers dependign on how big your system images are and to how many regions you sould like to send the to. Why is that? Becasue AWS will litererly have to send a copy fo the seelcted image to each region, no ifferent then sendign a big file over FTP. Just plain ol, copy and wait for the transfer to be over. I once move a 100GB image and it took 1h to do so. 
+If you want to create one image and spread it across all of the regions that AWS supports...Well, good luck, because even if you have a clever script, the process will take hours, depending on how big your system images are and the number of regions you're sending them to. Why is that? It's the same as sending a file over FTP; AWS will literally have to send a copy of the selected image to each region. It's just that plain ol' copy and wait for the transfer to complete. It once took me an hour to move a 100 GB image. 
 
 ### Elastic IP
 
-Same situation here, Elastic API can’t be moved between Regions. Each region gets its now sets of Elastic IPs and that is it.
+It's the same situation here. Elastic API can’t be moved from one region to another. Each region gets its own sets of Elastic IPs, and that's it.
 
 ### CodeDeploy
 
-This is the truth that you have to realize, CodeDeploy is also Region specifci, meaning in each region you want to deploy your code, you have to create a carbon copy of the original CodeDeploy that you made.
+You have to realize that CodeDeploy is also region-specific. So, in each region where you want to deploy your code, you have to create a carbon copy of your original CodeDeploy.
 
-# To sum it up
+# To Sum It Up
 
-AWS wants to let you believe that their infrastructure is homogeneous as if it was working as one big machine. But in reality it is very Region specific. Once you create all your infrastructure in one Region, well, you are stuck there. And you have to redo all the work that you jsut did once more for each Region. 
+AWS wants you to believe that their infrastructure is homogeneous, as if it works as one big machine. In reality, it's very region-specific. Once you create all of your infrastructure in one region...well, you're stuck there. And you have to redo all the work you just did for each region. 
 
-It is possible to autoamte this process, but I don't want to overload you with information at this point. My point is to make sure that you udnerstand this sligth but very imporatant difference, betwen Regions and Zones.
+It's possible to automate this process, but I don't want to overload you with information at this point. My goal is to ensure that you understand this slight, but very important, difference between regions and zones.

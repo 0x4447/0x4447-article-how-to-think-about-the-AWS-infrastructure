@@ -1,34 +1,34 @@
-# Understandign Auto Scaling the right way
+# Understanding Auto Scaling the Right Way
 
-AWS Auto Scaling is one of thoes things that actualy is fairly straight forward to understand and work with, but AWS fails to explain the relation betwen the `Launh Configuration` and the `Auto Scalign Group`. Let see if we can do better.
+Understanding and working with AWS Auto Scaling is actually fairly straightforward, but AWS fails to explain the relationship between the "Launch Configuration" and the "Auto Scaling Group". Let's see if we can do better.
 
 # The General Idea
 
-The idea of Auto Scaling is to have multiple servers with the same exact code and configuration for two main reasons:
+The idea behind Auto Scaling is to have multiple servers with identical code and configuration. There are two main reasons for this:
 
-- redundancy: one server goes down, the other can still process incommign requests
-- spread the load: instead of upgardgin one server to a bigger one you spread the load among multiple smaller servers
+1.  Redundancy: One server goes down, but the other can still process incoming requests.
+2.  Spread the load: Rather than upgrading one server to a bigger one, the load is spread among multiple smaller servers.
 
-To take advantage of this feature you'll alos need a Load Balancer, but more on this in the next sectin.
+To take advantage of this feature, you'll also need a Load Balancer. More on that in the next section.
 
-# Auto Scalign Group dose all the work
+# Auto Scaling Group Does All the Work
 
-In the `Auto Scalign Group` configuration is where you specify how AWS should handle your setup. You cna speficy the minimum ammount of server and the maximum allwoed, you cna specify how the healt of a server should be monitored, how many AZ do you want to use etc.
+In the "Auto Scaling Group", configuration is where you specify how AWS should handle your setup. You can specify the minimum and maximum amount of server, how to monitor the health of a server, how many AZ you want to use, etc.
 
-The `Auto Scalign Group` is the one responsabile to spin a new EC2 server if a server is not reachable, or the app that should be running on the server is not respondign anymore becasue of a crash crashed. If that happens, the `Auto Scalign Group` will spinn more EC2 instances to preserve the minimum healty ammount of server that we specifyed in the configuration. 
+The "Auto Scaling Group" is responsible for spinning a new EC2 server when a server can't be reached or the app that should be running on the server no longer responds due to a crash. In that case, the "Auto Scaling Group" will spin more EC2 instances to preserve the minimum healty amount of server we specified in the configuration. 
 
-But for this to work, the `Auto Scalign Group` needs to know how to configure the EC2 servers, and this is where the `Launh Configuration` comes to play.
+For this to work, the "Auto Scaling Group" needs to know how to configure the EC2 servers. This is where the "Launch Configuration" comes in.
 
-# Launh Configuration brake down
+# Launch Configuration Breakdown
 
-An `Auto Scaling Group` can't exists wihout a `Launh Configuration`, thus the later needs to come first. In this section you create a configuration that will be used by the `Auto Scaling Group` to create new EC2 instances. The prcoess of creating a `Launh Configuration` is very similar to when you Launch a new EC2 Instance. With the difference that you have to name the `Launh Configuration` etc. This are the steps that you get to configure:
+An "Auto Scaling Group" can't exist without "Launch Configuration", so the latter needs to come first. In this section, you'll create a configuration for the "Auto Scaling Group" to use to create new EC2 instances. The process of creating a "Launch Configuration` is very similar to launching a new EC2 Instance. The difference is that you have to name the "Launch Configuration", etc. Here are the steps to configure:
 
-1. Choose AMI
-1. Choose Instance Type
-1. Configure details
-1. Add Storage
-1. Configure Security Group
-1. Review
+1. Choose AMI.
+2. Choose Instance Type.
+3. Configure details.
+4. Add Storage.
+5. Configure Security Group.
+6. Review.
 
 As you can see this is the identialc setup for a EC2 Instacne, and as you can see from the 3th option, we have access to the `Configure details` where you can specify the `User data`! Meaninig you can reliebliy make EC2 cloens indentical to each other.
 

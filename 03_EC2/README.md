@@ -1,22 +1,22 @@
-# What is a EC2
+# What is an EC2?
 
-This is the easiest part of AWS to understand. EC2 is nothing more then a fancy name for a regular virtual server. The only thing to remember is that EC2 instances are virtual machines, meaning Amazon uses one real computer to run a bunch of virtual machines to more eficently manage the resoruces.
+This part of AWS is the easiest to understand. EC2 is nothing more than a fancy name for a regular virtual server. The only thing you need to remember is that EC2 instances are virtual machines. Amazon uses one real computer to run a bunch of virtual machines that more efficiently manage the resources.
 
-On the other hand EC2 is the biggest misconception, the starting point of all the AWS lies. 
+On the other hand, EC2 is also AWS's biggest misconception, the point where all of the lies begin. 
 
-All the demos done at various events shows how easy it is to scale a web app on thousends of EC2 instances all over the world. But we know already that Region are separated from each other. So how can this be? Well it can after a month fo work, lods of code written, and Bash script made to actually make this happens.
+All of the demos presented at various events show how easy it is to scale a web app on thousands of EC2 instances all over the world. But we already know that regions are separated from each other. So how can this be? Well it can be, but it takes a month of work - writing loads of code and creating Bash script - to actually make this happen.
 
-There is no magic button... I repeat, there is none. Just plain old servers that you have to put together.
+There's no magic button...I repeat, there is no magic button. Just plain old servers that you have to put together.
 
 # Heroku
 
-This is a small digression, but Heroku is a perfect example of waht you can do with the AWS infrastructure. Becasue Heroku is built on top AWS - Heroku is AWS but with easy to use UI, end extra featureslike 
+This is a slight digression, but Heroku is a perfect example of what you can do with the AWS infrastructure. Heroku is built on top of AWS. Heroku is AWS, but with an easy-to-use UI, plus some extra features: 
 
-- true autodeployment
-- true autoscalign with just a slider
-- load balancign that works out of the box
-- easy and free to sue SSL certificats 
+1. True autodeployment
+2. True autoscaling with just a slider
+3. Load balancing that works out of the box
+4. SSL certificates that are easy to use and free 
 
-To build what Heroku did is I undertakign, which I hope by the end of this article/tutoria you'll know how to do, but it will never look so nice and it won't be as felxible as waht Heroku did.
+To build what Heroku did is a major undertaking. I hope that by the end of this article/tutorial, you'll know how to do something similar. But it will never look as nice or be as flexible as Heroku.
 
-People say taht Heroku is expensive, there is a good reason for that - the work that went in to makign this whole service is trully unvalibable once you get to know waht AWS really is.
+People say that Heroku is expensive, but there's a good reason for that. Once you get to know what AWS really is, you'll understand that the work that went into making this service was truly invaluable.

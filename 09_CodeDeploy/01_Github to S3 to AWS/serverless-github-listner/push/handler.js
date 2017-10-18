@@ -32,29 +32,29 @@ module.exports.push = function (event, context, callback) {
 	}
 
 	//
-	//  2. 	Before we do anything we just check if we didn't forget
-	//  	to add a Env variable with the GitHub API key.
+	//  2. 	Before we do anything, check to ensure that we didn't forget
+	//  	to add an Env variable with the GitHub API key.
 	//
 	check_if_the_api_key_is_present(container)
 		.then(function(container) {
 
 			//
-			//  2.  Make also sure the Secret env variable is present
+			//  2.  Ensure that the secret env variable is present.
 			//
 			return check_if_the_secret_is_present(container);
 
 		}).then(function(container) {
 
 			//
-			//  2.	Validate the GitHub request by checking the Hash
+			//  2.	Validate the GitHub request by checking the Hash.
 			//
 			return check_if_the_request_is_from_github(container);
 
 		}).then(function(container) {
 
 			//
-			//  2.  Make sure we are going to deploy new code only when it
-			//  	lands in the master branch
+			//  2.  Ensure that we're going to deploy new code only when it
+			//  	lands in the master branch.
 			//
 			return react_only_to_master_branch(container);
 
@@ -75,21 +75,21 @@ module.exports.push = function (event, context, callback) {
 		}).then(function(container) {
 
 			//
-			//  4.  Get the URL to the archive file on GitHub with the code
+			//  4.  Get the URL to the archive file on GitHub with the code.
 			//
 			return get_ball_url(container);
 
 		}).then(function(container) {
 
 			//
-			//  5.  Download the repo to the tmp dir. max 500MB
+			//  5.  Download the repo to the tmp dir. max 500MB.
 			//
 			return download_the_repo_to_the_tmp_dir(container);
 
 		}).then(function(container) {
 
 			//
-			//  6.  Create a folder where to extract the code
+			//  6.  Create a folder for extracted code.
 			//
 			return make_extraction_folder(container);
 
@@ -103,7 +103,7 @@ module.exports.push = function (event, context, callback) {
 		}).then(function(container) {
 
 			//
-			//  8.  Remove the parent folder
+			//  8.  Remove the parent folder.
 			//
 			return get_the_root_dir_from_the_extracted_repo(container);
 
@@ -124,7 +124,7 @@ module.exports.push = function (event, context, callback) {
 		}).then(function(container) {
 
 			//
-			//  11.  Clean the mess before leaving.
+			//  11.  Clean up the mess before leaving.
 			//
 			return clean_after_the_work_is_done(container);
 
@@ -138,7 +138,7 @@ module.exports.push = function (event, context, callback) {
 			};
 
 			//
-			//  ->  Tell lambda that we finished.
+			//  ->  Tell Lambda that we finished.
 			//
 			callback(null, message);
 
@@ -162,16 +162,15 @@ module.exports.push = function (event, context, callback) {
 //
 
 //
-//	Since Lambda functions needs a human to manually add all the Env Variables
-//	we need to check if all is present and the developer didn't forget
-//	about something.
+//	Since Lambda functions need a human to manually add all the Env Variables,
+//	we need to check to ensure that all are present and the developer hasn't forgotten about anything.
 //
 function check_if_the_api_key_is_present(container)
 {
 	return new Promise(function(resolve, reject) {
 
 		//
-		//  1.  Check if the API Key was added on AWS.
+		//  1.  Ensure that the API Key was added on AWS.
 		//
 		if(!process.env.API_KEY)
 		{
@@ -179,7 +178,7 @@ function check_if_the_api_key_is_present(container)
 		}
 
 		//
-		//  ->  Move to the next chain
+		//  ->  Move to the next chain.
 		//
 		return resolve(container);
 
@@ -187,8 +186,8 @@ function check_if_the_api_key_is_present(container)
 }
 
 //
-//	Since Lambda functions needs a human to manually add all the Env Variables
-//	we need to check if all is present and the developer didn't forget
+//	Since Lambda functions need a human to manually add all the Env Variables,
+//	we need to ensure that everything is present and the developer didn't forget
 //	about something.
 //
 function check_if_the_secret_is_present(container)
@@ -196,7 +195,7 @@ function check_if_the_secret_is_present(container)
 	return new Promise(function(resolve, reject) {
 
 		//
-		//  1.  Check if the API Key was added on AWS
+		//  1.  Ensure that the API Key was added on AWS.
 		//
 		if(!process.env.SECRET)
 		{
@@ -204,7 +203,7 @@ function check_if_the_secret_is_present(container)
 		}
 
 		//
-		//  ->  Move to the next chain
+		//  ->  Move to the next chain.
 		//
 		return resolve(container);
 
@@ -212,8 +211,8 @@ function check_if_the_secret_is_present(container)
 }
 
 //
-//  Each request will have a hashed Secret that was added on GitHub, and is
-//  sent back to us so we can make sure that the request actually came from
+//  Each request will have a hashed secret that was added on GitHub. That secret is
+//  sent back to us so we can be sure that the request actually came from
 //  GitHub itself.
 //
 function check_if_the_request_is_from_github(container)
@@ -221,24 +220,24 @@ function check_if_the_request_is_from_github(container)
 	return new Promise(function(resolve, reject) {
 
 		//
-		//	1.	Convert object in to a string
+		//	1.	Convert object to a string.
 		//
 		let string = JSON.stringify(container.github_event)
 
 		//
-		//	2.	Convert string in to a buffer
+		//	2.	Convert string to a buffer.
 		//
 		let body = Buffer.from(string, 'utf-8');
 
 		//
-		//	2.	Hash the body with the secret
+		//	2.	Hash the body with the secret.
 		//
 		let hash = crypto.createHmac('sha1', process.env.SECRET)
 						 .update(body)
 						 .digest('hex');
 
 		//
-		//	3.	Compare what GitHub sent us with what we created
+		//	3.	Compare what GitHub sent us with what we created.
 		//
 		if(container.secret != hash)
 		{
@@ -246,7 +245,7 @@ function check_if_the_request_is_from_github(container)
 		}
 
 		//
-		//  ->  Move to the next chain
+		//  ->  Move to the next chain.
 		//
 		return resolve(container);
 
@@ -254,7 +253,7 @@ function check_if_the_request_is_from_github(container)
 }
 
 //
-//  Get the owner name of the reop. It can be the organization name or the
+//  Get the owner name for the repo. It can be the organization name or the
 //  regular user name.
 //
 function react_only_to_master_branch(container)
@@ -263,7 +262,7 @@ function react_only_to_master_branch(container)
 
 		//
 		//  1.  Make sure we perform the work only when something
-		//      changed in the master branch
+		//      changes in the master branch.
 		//
 		if(container.github_event.ref !== "refs/heads/master")
 		{
@@ -271,7 +270,7 @@ function react_only_to_master_branch(container)
 		}
 
 		//
-		//  ->  Move to the next chain
+		//  ->  Move to the next chain.
 		//
 		return resolve(container);
 
@@ -279,7 +278,7 @@ function react_only_to_master_branch(container)
 }
 
 //
-//  Get the owner name of the reop. It can be the organization name or the
+//  Get the owner name of the repo. It can be the organization name or the
 //  regular user name.
 //
 function get_owner_name(container)
@@ -287,12 +286,12 @@ function get_owner_name(container)
 	return new Promise(function(resolve, reject) {
 
 		//
-		//  1.  Add new data to the container
+		//  1.  Add new data to the container.
 		//
 		container.owner = container.github_event.repository.owner.name;
 
 		//
-		//  ->  Move to the next chain
+		//  ->  Move to the next chain.
 		//
 		return resolve(container);
 
@@ -300,19 +299,19 @@ function get_owner_name(container)
 }
 
 //
-//  Get the name of the repo that is being effected.
+//  Get the name of the affected repo.
 //
 function get_repo_name(container)
 {
 	return new Promise(function(resolve, reject) {
 
 		//
-		//  1.  Add new data to the container
+		//  1.  Add new data to the container.
 		//
 		container.repo_name = container.github_event.repository.name;
 
 		//
-		//  ->  Move to the next chain
+		//  ->  Move to the next chain.
 		//
 		return resolve(container);
 
@@ -320,15 +319,14 @@ function get_repo_name(container)
 }
 
 //
-//  Get the URL where from download the zipped repository.
+//  Get the URL for the site from which the zipped repository was downloaded.
 //
 function get_ball_url(container)
 {
 	return new Promise(function(resolve, reject) {
 
 		//
-		//  1.  The array that contains all the different parts of the URL,
-		//      this way we have a more clear code.
+		//  1.  Get the array that contains all the different parts of the URL, so we have clearer code.
 		//
 		let url_elements = [
 			"https://api.github.com/",
@@ -340,12 +338,12 @@ function get_ball_url(container)
 		];
 
 		//
-		//  2.  Combine the URL in to one long string.
+		//  2.  Combine the URL into one long string.
 		//
 		let request_url = url_elements.join("");
 
 		//
-		//  3.  Make a request to GitHub to get the URL of the Zip archive.
+		//  3.  Make a request to GitHub to get the URL for the Zip archive.
 		//
 		unirest.get(request_url)
 		.headers({
@@ -360,7 +358,7 @@ function get_ball_url(container)
 		.end(function(response) {
 
 			//
-			//	1.	Check if something went wrong.
+			//	1.	Determine whether something went wrong.
 			//
 			if(response.code === 401)
 			{
@@ -387,16 +385,16 @@ function get_ball_url(container)
 //
 //  IMPORTANT
 //
-//  	- 	The size of the TMP dir is 500MB
-//  	- 	The TMP won't be cleared evry time the function runs, meaning you
-//  		can't relies on its state.
+//  	- 	The size of the TMP dir is 500MB.
+//  	- 	The TMP won't be cleared every time the function runs, so you
+//  		can't rely on its state.
 //
 function download_the_repo_to_the_tmp_dir(container)
 {
 	return new Promise(function(resolve, reject) {
 
 		//
-		//	1.	The tmp file where to save the repo so we can modify
+		//	1.	The TMP file where we'll save the repo so we can modify
 		//		the content of the archive.
 		//
 		let file = fs.createWriteStream("/tmp/repo.tgz");
@@ -407,24 +405,24 @@ function download_the_repo_to_the_tmp_dir(container)
 		https.get(container.tarball_url, function(res) {
 
 			//
-			//	1.	Keep on writing to the open file in the TMP dir.
+			//	1.	Keep writing to the open file in the TMP dir.
 			//
 			res.on('data', function(data) {
 
 				//
-				//	1.	Write data in to the file.
+				//	1.	Write data into the file.
 				//
 				file.write(data);
 
 			});
 
 			//
-			//	2.	Close the file and on once the file is 100% downloaded.
+			//	2.	Close the file once it's 100% downloaded.
 			//
 			res.on('end', function() {
 
 				//
-				//	1.	Once we have it all we close the file.
+				//	1.	Once we have it all, we close the file.
 				//
 				file.end();
 
@@ -441,7 +439,7 @@ function download_the_repo_to_the_tmp_dir(container)
 }
 
 //
-//  Create the folder where the content of the archive will be
+//  Create the folder to which the content of the archive will be
 //  extracted.
 //
 function make_extraction_folder(container)
@@ -449,11 +447,11 @@ function make_extraction_folder(container)
 	return new Promise(function(resolve, reject) {
 
 		//
-		//	1.	Check first if the folder already exists. Since it turns out
+		//	1.	First, check to see if the folder already exists. Since it turns out
 		//		that the TMP directory is some what persistent, if the function
 		//		is being executed in short succession, the TMP dir remains
-		//		in place. But it will be deleted if the function won't be
-		//		used for a longer period of time.
+		//		in place. But it will be deleted if the function isn't
+		//		used for a long time.
 		//
 		if(!fs.existsSync("/tmp/extracted"))
 		{
@@ -502,13 +500,13 @@ function extract_the_files(container)
 }
 
 //
-//	Turns out that when GitHub compresses your repo, it creates a folder, in
-//	which it puts the content of the folder.
+//	It turns out that when GitHub compresses your repo, it creates a folder in
+//	which it puts the folder's content.
 //
-//	Sadly CodeDeploy won't work with nested folders, all the necessary files
-//	need to be in the highest hierarchy.
+//	Sadly, CodeDeploy won't work with nested folders; all necessary files
+//	must be in the highest hierarchy.
 //
-//	Meaning we need to extract the archive, and decompress the project to
+//	So, we need to extract the archive and decompress the project to
 //	remove the parent folder.
 //
 function get_the_root_dir_from_the_extracted_repo(container)
@@ -517,12 +515,12 @@ function get_the_root_dir_from_the_extracted_repo(container)
 
 		//
 		//	1.	Read the content of the extracted folder. There should be only
-		//		one folder, the folder that we want to get rid off.
+		//		one folder: the folder that we want to get rid of.
 		//
 		let content = fs.readdirSync("/tmp/extracted");
 
 		//
-		//	2.	Add that one folder to the container.
+		//	2.	Add that single folder to the container.
 		//
 		container.folder_to_go = content[0];
 
@@ -545,7 +543,7 @@ function get_the_root_dir_from_the_extracted_repo(container)
 }
 
 //
-//  After extracting the content of the folder we re-compress it so
+//  After extracting the content of the folder, we re-compress it so
 //  we can get rid of the root folder where the repo is located.
 //
 function recompress_the_content_of_the_extraced_folder(container)
@@ -553,7 +551,7 @@ function recompress_the_content_of_the_extraced_folder(container)
 	return new Promise(function(resolve, reject) {
 
 		//
-		//	1.	Options for the compression.
+		//	1.	Options for compression.
 		//
 		let options = {
 			gzip: true,
@@ -600,17 +598,17 @@ function stream_data_to_s3(container)
 		file.pipe(stream_to_s3(container.repo_name));
 
 		//
-		//	3.	Make sure keep track of errors.
+		//	3.	Keep track of errors.
 		//
 		let was_error = false;
 
 		//
-		//	4.	When there is an error we react to it and log the situation.
+		//	4.	When there is an error, react to it and log the situation.
 		//
 		file.on('error', function(error) {
 
 			//
-			//	1.	Make that there was an error.
+			//	1.	Make sure that there was an error.
 			//
 			was_error = true;
 
@@ -622,12 +620,12 @@ function stream_data_to_s3(container)
 		});
 
 		//
-		//	5.	React to then the file get closed after it was all streamed.
+		//	5.	React, then the file is closed after everything is streamed.
 		//
 		file.on('close', function(){
 
 			//
-			//	1.	Only send a positive reply when there was no error.
+			//	1.	Only send a positive reply when there's no error.
 			//
 			if(!was_error)
 			{
@@ -643,20 +641,20 @@ function stream_data_to_s3(container)
 }
 
 //
-//  After we finish streaming we have to clean after our selfs since the TMP
+//  After we finish streaming, it's necessary to clean up after ourselves, because the TMP
 //  directory won't be removed immediately. It will be removed only if the
-//  lambda function won't be active for a while.
+//  Lambda function won't be active for a while.
 //
-//  This means that we need to always clean after ourself.
+//  This means that we always need to clean up after ourselves.
 //
 function clean_after_the_work_is_done(container)
 {
 	return new Promise(function(resolve, reject) {
 
 		//
-		//	1.	Remove the directory where we extract the content of the repo
-		//		if we don't do this, after the work is done then the next
-		//		deployment will have old data because the files won't be
+		//	1.	Remove the directory to which we extract the content of the repo.
+		//		If we don't do this after the work is done, the next
+		//		deployment will contain old data because the files won't be
 		//		overwritten.
 		//
 		rimraf("/tmp/extracted/", function() {
@@ -667,7 +665,7 @@ function clean_after_the_work_is_done(container)
 			fs.unlinkSync("/tmp/repo.tgz");
 
 			//
-			//	3.	Remove the new archive that we created to clean the dir
+			//	3.	Remove the new archive we created to clean the dir
 			//		path.
 			//
 			fs.unlinkSync("/tmp/" + container.repo_name + ".tgz");
@@ -686,11 +684,11 @@ function clean_after_the_work_is_done(container)
 //
 //  DON'T DELETE
 //
-//      This is a check that would be nice to have, but right now there is
-//      an issue with the rights to access all the buckets and I have no time
-//      to fight AWS ;)
+//      It would be nice to have this check, but there's currently
+//      an issue with the rights to access all the buckets, and I have no time
+//      to fight AWS. ;)
 //
-//  Check if the main bucket exists on S3 for a given account.
+//  Check to see whether the main bucket exists on S3 for a given account.
 //
 function check_if_the_bucket_exists(container)
 {
@@ -710,14 +708,13 @@ function check_if_the_bucket_exists(container)
 			}
 
 			//
-			//  2.  Create a variable that will help us understand if the bucket
-			//      that we care about exists.
+			//  2.  Create a variable to help us understand whether the bucket
+			//      we're concerned with exists.
 			//
 			let was_bucket_found = false;
 
 			//
-			//  3.  Loop over the buckets that we got back to see if there is
-			//      the one that we care about.
+			//  3.  Loop over the buckets that we got back to see if the one we're concerned with is there.
 			//
 			for(let index in data.Buckets)
 			{
@@ -731,7 +728,7 @@ function check_if_the_bucket_exists(container)
 			}
 
 			//
-			//  4.  Check if the bucket still exists before we try to save to
+			//  4.  Check to see whether the bucket still exists before we try to save to
 			//      it.
 			//
 			if(!was_bucket_found)
@@ -760,8 +757,8 @@ function check_if_the_bucket_exists(container)
 //
 
 //
-//  Function that streams data to Amazon S3, meaning we can use this function
-//  in to a .pipe() chain.
+//  Function that streams data to Amazon S3. This means that we can use this function
+//  into a .pipe() chain.
 //
 function stream_to_s3(repo_name)
 {

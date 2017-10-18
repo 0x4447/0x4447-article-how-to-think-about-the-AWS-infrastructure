@@ -1,23 +1,23 @@
-We learned from the RDS section that databases on AWS are fairly easy to work with, compared to the rest of the tools at our disposal. But only if we are in the same Region, if we wanted to brake out of a Region with our DB, we need to look at Read Replicas. Thankfully thy are also fairly easy to work with. Suprisign, but it trully is. 
+We learned in the RDS section that, compared with the other tools we have at our disposal, AWS databases are fairly easy to work with. But this only applies if we stay within the same region. If we want to break out of a region with our DB, we need to look at Read Replicas. Thankfully, they're also fairly easy to work with. Suprising, but true. 
 
 # Creating a Read Replica
 
-Once you have your main DB up and runninig, from the options menu you'll have the ability to attach a Read Replica to it. You can have as many RR as you want and in any Region that you want. 
+Once you have your main DB up and running, you'll have the ability to attach a Read Replica to that DB through the Options menu. You can have as many RRs as you want, in any region you want. 
 
-- RR are of course read only
-- RR can be in different Region 
-- You don't have to use them, they can jsut be and recive data from the main DB
-- You can promote a RR to become a regulard DB, with read, write, edit and delete options
-- RR have the same user name and password from the main DB, only the endpoint chagnes (URL)
+- Of course, RRs are read-only.
+- RRs can exist in different regions. 
+- You don't have to use RRs; they can just be there and receive data from the main DB.
+- You can promote an RR to become a regular DB, with read, write, edit, and delete options.
+- RRs have the same user name and password as the main DB; only the endpoint (URL) changes.
 
 # Promoting a Read Replica
 
-Converting a RR in to a regular DB is as simple as clikcign a button in the Dashboard. The things to remember are this:
+Converting an RR into a regular DB is as simple as clicking a button in the Dashboard. Here are some things to remember:
 
-- the process is not instant
-- even dought the credentials are the same the URL to the DB is different, so you'll have to edit your server(s)
-- once converted you have to enable manualy AZ support, yes don't forget to add support for that once you switched
-- all the other RR that were recivign data from the decised DB, will stop workign, and you'll have to delete them. You can't tell them to start gettign data from the newly promoted RR. 
-- you'll have to create new RR from the newly promote Read Replica. 
+- The process is not instant.
+- Although the credentials are the same, the database URL is different, so you'll have to edit your server(s).
+- Once the conversion is complete, you have to manually enable AZ support.
+- All previous RRs that received data from the deceased DB, will stop working, so you'll have to delete them. You can't tell them to start getting data from the newly promoted RR. 
+- You'll have to create new RRs from the newly promoted Read Replica. 
 
-As you can see, after promotign a RR, the process to have what you had is manual, but i'l give AWS a pass here, since if you need to go over this scenario, it measn that some serious stuff happend anyway, and this is not a switch that you want to do evry other week.
+As you can see, after promoting an RR, the process to have what you had is manual. But I'll give AWS a pass here, since if you need to go through this scenario, some serious stuff has happend, anyway. This is not a switch that you want to make every other week.
