@@ -36,32 +36,8 @@ My hope is this: If I manage to explain how to handle AWS' lies, and you accept 
 
 # The End
 
-I don't know everything, but what I do know, I know how to explain! 😄 If you've enjoyed this article/project, please consider giving it a 🌟 or donating.
+If you enjoyed this article/project, please consider giving it a 🌟. And check out our [0x4447 GitHub account](https://github.com/0x4447), where we have additional articles and tools that you might find interesting.
 
-- [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/gattidavid/25)
-- [![Star on GitHub](https://img.shields.io/github/stars/davidgatti/how-to-think-about-the-AWS-infrastructure.svg?style=social)](https://github.com/davidgatti/how-to-think-about-the-AWS-infrastructure/stargazers)
-- [![Watch on GitHub](https://img.shields.io/github/watchers/davidgatti/how-to-think-about-the-AWS-infrastructure.svg?style=social)](https://github.com/davidgatti/how-to-think-about-the-AWS-infrastructure/watchers)
+# For Hire 👨‍💻
 
-And check out my [GitHub account](https://github.com/davidgatti), where I have other articles and apps that you might find interesting.
-
-## For Hire 👨‍💻
-
-If you'd like me to help you, I'm available for hire. Contact me at job@gatti.pl.
-
-## Where to Follow
-
-Follow me on social media 🐙😇:
-
-- [GitHub](https://github.com/davidgatti)
-- [Twitter](https://twitter.com/dawidgatti)
-- [Instagram](https://www.instagram.com/gattidavid/)
-
-## More about Me
-
-I don’t live on GitHub alone, I try to avoid boredom by doing many things 🙃. To learn more about me, visit the following links:
-
-- [Podcasts](http://david.gatti.pl/podcasts)
-- [Articles](http://david.gatti.pl/articles)
-- [Technical Articles](http://david.gatti.pl/technical_articles)
-- [Software Projects](http://david.gatti.pl/software_projects)
-- [Hardware Projects](http://david.gatti.pl/hardware_projects)
+If you'd like us to help you with something, please feel free to say hello@0x4447.com, and share what's on your mind. We'll take a look, and try our best to help you.
